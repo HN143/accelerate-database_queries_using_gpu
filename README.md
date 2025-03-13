@@ -8,22 +8,19 @@ This repository contains tools and methods to optimize database queries by lever
 
 ## Prerequisites
 
-- **Python 3.12.7**
 - **uv** (Python package manager)
   - Windows: `winget install --id=astral-sh.uv -e`
 - **Taskfile** (Task runner)
   - Windows: `winget install Task.Task`
+- **Python 3.12.7**
+  ```sh
+  uv python install 3.12.7
+  uv python pin 3.12.7
+  ```
 
 ## Installation
 
-1. Install and set Python version:
-
-   ```sh
-   uv python install 3.12.7
-   uv python pin 3.12.7
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```sh
    task i
    ```
