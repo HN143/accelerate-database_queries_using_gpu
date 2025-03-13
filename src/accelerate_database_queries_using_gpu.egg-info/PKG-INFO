@@ -1,0 +1,15 @@
+Metadata-Version: 2.2
+Name: accelerate-database_queries_using_gpu
+Version: 0.1.0
+Requires-Python: ==3.12.7
+Requires-Dist: ipykernel==6.29.5
+Requires-Dist: ipython==8.12.3
+Requires-Dist: jupyterlab==4.2.5
+Requires-Dist: matplotlib-inline==0.1.7
+Requires-Dist: matplotlib==3.9.2
+Requires-Dist: numpy==1.26.4
+Requires-Dist: pandas==2.2.3
+Requires-Dist: scikit-learn==1.5.2
+Requires-Dist: setuptools==75.3.0
+Requires-Dist: language-tool-python>=2.8.1
+Requires-Dist: heavyai
