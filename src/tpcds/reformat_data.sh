@@ -2,7 +2,7 @@
 # Replace NULL values in the first field with 0 to convert ^| into 0|.
 # Replace NULL values in the middle fields with 0 to convert || into |0|.
 # Replace NULL values in the last field with 0 to convert |$ into |0.
-for s_f in `ls *dat`
+for s_f in `ls results/data/*dat`
 do
     echo "$s_f"
     i=1
