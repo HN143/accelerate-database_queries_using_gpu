@@ -13,6 +13,7 @@ This repository contains tools and methods to optimize database queries by lever
 - **Taskfile** (Task runner)
   - Windows: `winget install Task.Task`
 - **Python 3.12.7**
+
   ```sh
   uv python install 3.12.7
   uv python pin 3.12.7
@@ -21,6 +22,7 @@ This repository contains tools and methods to optimize database queries by lever
 ## Installation
 
 1. Install dependencies:
+
    ```sh
    task i
    ```

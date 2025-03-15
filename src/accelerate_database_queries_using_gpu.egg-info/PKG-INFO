@@ -14,3 +14,5 @@ Requires-Dist: setuptools==75.3.0
 Requires-Dist: language-tool-python>=2.8.1
 Requires-Dist: heavyai
 Requires-Dist: python-dotenv>=1.0.1
+Requires-Dist: iplantuml>=0.1.1
+Requires-Dist: plantuml>=0.3.0

@@ -8,6 +8,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "heavyai" },
+    { name = "iplantuml" },
     { name = "ipykernel" },
     { name = "ipython" },
     { name = "jupyterlab" },
@@ -16,6 +17,7 @@ dependencies = [
     { name = "matplotlib-inline" },
     { name = "numpy" },
     { name = "pandas" },
+    { name = "plantuml" },
     { name = "python-dotenv" },
     { name = "scikit-learn" },
     { name = "setuptools" },
@@ -24,6 +26,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "heavyai" },
+    { name = "iplantuml", specifier = ">=0.1.1" },
     { name = "ipykernel", specifier = "==6.29.5" },
     { name = "ipython", specifier = "==8.12.3" },
     { name = "jupyterlab", specifier = "==4.2.5" },
@@ -32,6 +35,7 @@ requires-dist = [
     { name = "matplotlib-inline", specifier = "==0.1.7" },
     { name = "numpy", specifier = "==1.26.4" },
     { name = "pandas", specifier = "==2.2.3" },
+    { name = "plantuml", specifier = ">=0.3.0" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "scikit-learn", specifier = "==1.5.2" },
     { name = "setuptools", specifier = "==75.3.0" },
@@ -313,6 +317,15 @@ wheels = [
 ]
 
 [[package]]
+name = "docutils"
+version = "0.21.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ae/ed/aefcc8cd0ba62a0560c3c18c33925362d46c6075480bfa4df87b28e169a9/docutils-0.21.2.tar.gz", hash = "sha256:3a6b18732edf182daa3cd12775bbb338cf5691468f91eeeb109deff6ebfa986f", size = 2204444 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8f/d7/9322c609343d929e75e7e5e6255e614fcc67572cfd083959cdef3b7aad79/docutils-0.21.2-py3-none-any.whl", hash = "sha256:dafca5b9e384f0e419294eb4d2ff9fa826435bf15f15b7bd45723e8ad76811b2", size = 587408 },
+]
+
+[[package]]
 name = "executing"
 version = "2.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -413,6 +426,18 @@ wheels = [
 ]
 
 [[package]]
+name = "httplib2"
+version = "0.22.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pyparsing" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/3d/ad/2371116b22d616c194aa25ec410c9c6c37f23599dcd590502b74db197584/httplib2-0.22.0.tar.gz", hash = "sha256:d7a10bc5ef5ab08322488bde8c726eeee5c8618723fdb399597ec58f3d82df81", size = 351116 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a8/6c/d2fbdaaa5959339d53ba38e94c123e4e84b8fbc4b84beb0e70d7c1608486/httplib2-0.22.0-py3-none-any.whl", hash = "sha256:14ae0a53c1ba8f3d37e9e27cf37eabb0fb9980f435ba405d546948b009dd64dc", size = 96854 },
+]
+
+[[package]]
 name = "httpx"
 version = "0.28.0"
 source = { registry = "https://pypi.org/simple" }
@@ -447,6 +472,15 @@ sdist = { url = "https://files.pythonhosted.org/packages/33/08/c1395a292bb23fd03
 wheels = [
     { url = "https://files.pythonhosted.org/packages/79/9d/0fb148dc4d6fa4a7dd1d8378168d9b4cd8d4560a6fbf6f0121c5fc34eb68/importlib_metadata-8.6.1-py3-none-any.whl", hash = "sha256:02a89390c1e15fdfdc0d7c6b25cb3e62650d0494005c97d6f148bf5b9787525e", size = 26971 },
 ]
+
+[[package]]
+name = "iplantuml"
+version = "0.1.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "plantweb" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/10/b9/4db9b9ce81184d1d67f82284ca6131258b32f3f69376ee88aab5f7ff60a4/IPlantUML-0.1.1.tar.gz", hash = "sha256:0f86df712b6697f6d7499976af5c5a8572517a79c377b2ce0894951923223c5c", size = 5479 }
 
 [[package]]
 name = "ipykernel"
@@ -1051,6 +1085,31 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f4/b1/b422acd212ad7eedddaf7981eee6e5de085154ff726459cf2da7c5a184c1/pip-24.3.1.tar.gz", hash = "sha256:ebcb60557f2aefabc2e0f918751cd24ea0d56d8ec5445fe1807f1d2109660b99", size = 1931073 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ef/7d/500c9ad20238fcfcb4cb9243eede163594d7020ce87bd9610c9e02771876/pip-24.3.1-py3-none-any.whl", hash = "sha256:3790624780082365f47549d032f3770eeb2b1e8bd1f7b2e02dace1afa361b4ed", size = 1822182 },
+]
+
+[[package]]
+name = "plantuml"
+version = "0.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httplib2" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a9/1a/4603314acf466fdad91b7f6c83eb1364a7e279f9a8805febe3554f17faf6/plantuml-0.3.0-py3-none-any.whl", hash = "sha256:f21789bc4abc3e8888d23a8fa010e942989f1a73d6e50e10a54688cbee52aa1c", size = 5777 },
+]
+
+[[package]]
+name = "plantweb"
+version = "1.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "docutils" },
+    { name = "requests" },
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/4c/a9/2e1e573df12d7dadc058e0ab1e485483a673a593e0b8ce640b6e1c50152d/plantweb-1.3.0.tar.gz", hash = "sha256:8dc0c862541763f73b361716a9377bcc8139e77f0bc78aeb957946761b50ba7d", size = 17099 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9e/3d/d2d36e503d131d99980db36844679ba6a9edda08b493d86ace8560c02c39/plantweb-1.3.0-py3-none-any.whl", hash = "sha256:6123633a68322a7d9e26fcf4bf05af7a5cf13199724c2d92221c8d4987bc238f", size = 20933 },
 ]
 
 [[package]]

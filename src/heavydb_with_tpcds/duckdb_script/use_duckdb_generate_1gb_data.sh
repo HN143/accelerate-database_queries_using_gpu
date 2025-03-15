@@ -16,4 +16,3 @@ EXPORT DATABASE '$TARGET_DIR' (FORMAT CSV, DELIMITER '|');
 EOF
 
 echo "DuckDB has completed execution. Data exported to: $TARGET_DIR"
-
