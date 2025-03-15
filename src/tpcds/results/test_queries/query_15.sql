@@ -1,3 +1,9 @@
+-- Mô tả: Câu query này tính tổng giá bán của các đơn hàng từ bảng catalog_sales,
+-- bảng customer, bảng customer_address và bảng date_dim.
+-- Điều kiện lọc bao gồm mã zip của địa chỉ khách hàng,
+-- trạng thái của địa chỉ khách hàng, giá bán lớn hơn 500,
+-- quý bán hàng là quý 2 của năm 2000.
+-- Kết quả được nhóm theo mã zip và giới hạn 100 dòng.
 select
 	ca_zip,
 	sum(cs_sales_price)

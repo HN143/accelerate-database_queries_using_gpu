@@ -1,3 +1,13 @@
+-- Query Description:
+-- Truy vấn này phân tích phân bố địa lý của khách hàng mua các sản phẩm có giá cao.
+-- Chi tiết:
+-- 1. Xét các giao dịch trong tháng 2 năm 2000
+-- 2. Chỉ xem xét các sản phẩm có giá bán cao hơn 120% giá trung bình trong cùng danh mục
+-- 3. Đếm số lượng khách hàng theo từng bang
+-- 4. Chỉ hiển thị các bang có từ 10 khách hàng trở lên
+-- 5. Sắp xếp theo số lượng khách hàng và tên bang
+-- 6. Giới hạn 100 kết quả
+-- Bảng sử dụng: customer_address, customer, store_sales, date_dim, item
 select
 	a.ca_state state,
 	count(*) cnt

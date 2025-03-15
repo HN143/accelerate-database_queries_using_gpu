@@ -1,3 +1,6 @@
+-- Mô tả: Truy vấn này tính tổng doanh thu (ext_price) của từng thương hiệu (brand)
+-- do người quản lý có id=1 phụ trách trong tháng 12 năm 1998.
+-- Kết quả được sắp xếp theo doanh thu giảm dần.
 select
 	dt.d_year,
 	item.i_brand_id brand_id,

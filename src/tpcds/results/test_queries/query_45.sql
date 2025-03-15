@@ -1,3 +1,10 @@
+-- Truy vấn này phân tích doanh số bán hàng trực tuyến theo địa điểm:
+-- 1. Tính tổng giá trị bán hàng theo mã bưu điện và quận
+-- 2. Chỉ xét các đơn hàng trong quý 2 năm 2000
+-- 3. Lọc theo một trong hai điều kiện:
+--    - Khách hàng ở các mã bưu điện cụ thể (85669, 86197,...)
+--    - Hoặc mua các mặt hàng có mã cụ thể (2, 3, 5, 7,...)
+-- Kết quả được sắp xếp theo mã bưu điện và quận
 select
 	ca_zip,
 	ca_county,

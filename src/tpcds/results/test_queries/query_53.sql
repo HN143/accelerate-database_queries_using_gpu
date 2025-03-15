@@ -1,3 +1,6 @@
+-- Mô tả: Truy vấn này phân tích doanh số bán hàng theo từng nhà sản xuất trong 12 tháng liên tiếp.
+-- Chỉ xét các mặt hàng thuộc một số danh mục và thương hiệu cụ thể.
+-- Tìm ra những nhà sản xuất có doanh số biến động >10% so với trung bình.
 select
 	*
 from

@@ -1,3 +1,14 @@
+-- Truy vấn này phân tích tỷ lệ trả hàng qua các kênh bán hàng:
+-- 1. So sánh giữa 3 kênh: web, catalog và cửa hàng
+-- 2. Tính hai tỷ lệ cho mỗi kênh:
+--    - Tỷ lệ số lượng hàng trả/số lượng bán
+--    - Tỷ lệ giá trị hoàn tiền/doanh thu
+-- 3. Điều kiện cho mỗi kênh:
+--    - Giá trị trả hàng > 10000
+--    - Lợi nhuận ròng > 1
+--    - Doanh thu và số lượng bán > 0
+-- 4. Thời gian: tháng 12 năm 2000
+-- 5. Chọn top 10 mặt hàng theo mỗi tỷ lệ
 select
 	channel,
 	item,
