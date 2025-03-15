@@ -30,7 +30,7 @@ sudo chmod +x reformat_data.sh
 # Remove primary key definition lines after copying
 cp tpcds.sql results/schemas.sql
 
-# Generate test queries
+# Generate test queries (if you want to test with the new test queries)
 ./convert_to_lf.sh query_templates
 ./convert_to_lf.sh query_variants
 ./generate_queries.sh
