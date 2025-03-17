@@ -7,6 +7,11 @@ echo "Installing curl..."
 sudo apt update -y
 sudo apt install -y curl
 
+echo "Installing card driver..."
+# Kiểm tra card đồ họa
+chmod +x graphic_card/check_and_install_card_driver.sh
+./graphic_card/check_and_install_card_driver.sh
+
 # Kiểm tra thư mục DuckDB
 if [[ ! -d "duckdb_script" ]]; then
     echo "Error: Directory 'duckdb' not found!"

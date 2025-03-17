@@ -1,8 +1,9 @@
 curl https://releases.heavy.ai/GPG-KEY-heavyai | sudo apt-key add -
 
+sudo dpkg --configure -a
 
 echo "use gpu free"
-echo "deb https://releases.heavy.ai/os/apt/ stable cpu" \
+echo "deb https://releases.heavy.ai/os/apt/ stable cuda" \
 | sudo tee /etc/apt/sources.list.d/heavyai.list
 
 sudo apt update
