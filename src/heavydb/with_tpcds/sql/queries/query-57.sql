@@ -1,5 +1,5 @@
 
-with v1 as(
+@with v1 as(
  select i_category, i_brand,
         cc_name,
         d_year, d_moy,

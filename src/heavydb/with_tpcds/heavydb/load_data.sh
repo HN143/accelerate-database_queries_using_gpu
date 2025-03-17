@@ -12,3 +12,6 @@ echo "Create tables successful..........."
 SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cat "$load_data" | sed "s|exported_data/|$SCRIPT_DIR/exported_data/|g" | heavysql -t -p vien
 echo "Load data successful.........."
+
+
+
