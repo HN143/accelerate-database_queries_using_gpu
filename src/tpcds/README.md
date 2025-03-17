@@ -19,16 +19,16 @@ make CC=gcc-9
 # Generate dataset and schemas
 ./dsdgen -sc 1 -dir ../results/data -TERMINATE N
 
+# Copy schemas (only when unable to import the current schemas.sql)
+# Remove primary key definition lines after copying
+cp tpcds.sql ../results/tpcds.sql
+
 # Navigate to parent folder
 cd ..
 
 # Reformat data
 sudo chmod +x reformat_data.sh
 ./reformat_data.sh
-
-# Copy schemas (only when unable to import the current schemas.sql)
-# Remove primary key definition lines after copying
-cp tpcds.sql results/schemas.sql
 
 # Generate test queries (if you want to test with the new test queries)
 ./convert_to_lf.sh query_templates
