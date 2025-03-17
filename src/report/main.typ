@@ -18,6 +18,8 @@
 #include "chapter1.typ"
 #include "chapter2.typ"
 #include "chapter3.typ"
+#include "chapter4.typ"
+#include "chapter5.typ"
 
 #h1("Tài liệu tham khảo", numbering: false)
 

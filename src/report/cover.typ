@@ -15,7 +15,7 @@
       #line(start: (0%, 20pt), length: 3.5cm)
       #image("./images/logo.png", width: 3.5cm) \
       ĐỀ TÀI NGHIÊN CỨU KHOA HỌC \ \
-      #text(weight: "bold", size: 16pt, "SO SÁNH TĂNG TỐC TRUY VẤN \n DỰA VÀO GPU VÀ CPU VỚI HEAVYDB VÀ DUCKDB") \ \ \
+      #text(weight: "bold", size: 16pt, "TĂNG TỐC TRUY VẤN CƠ SỞ DỮ LIỆU SỬ DỤNG GPU") \ \ \
       #set align(left)
       #pad(
         left: 8cm,
@@ -45,7 +45,7 @@
             left: 1cm,
             top: 0.5cm,
             [
-              *ThS. Nguyễn Văn F* \
+              *ThS. Cao Thanh Vinh* \
               Khoa Công Nghệ Thông Tin - Học viện Kỹ thuật Mật Mã
             ],
           )
