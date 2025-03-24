@@ -12,6 +12,7 @@ sudo apt install -y postgresql postgresql-contrib
 # Install Git
 echo "### Installing Git..."
 sudo apt install -y git
+git clone https://github.com/HN143/accelerate-database_queries_using_gpu.git
 
 # Install DuckDB
 echo "### Installing DuckDB..."
@@ -20,20 +21,21 @@ curl https://install.duckdb.org | sh
 chmod +x $HOME/.duckdb/cli/latest/duckdb
 sudo ln -sf $HOME/.duckdb/cli/latest/duckdb /usr/local/bin/duckdb
 
-# Create DuckDB database and install TPC-H Extension
-echo "### Installing and generating TPC-H data in DuckDB..."
-duckdb tpch.duckdb <<EOF
-INSTALL tpch;
-LOAD tpch;
-CALL dbgen(sf=1);  -- Generate 1GB of data
-EOF
+# Create tables
+echo "### Creating tables in DuckDB..."
 
-# Install Python3 and required libraries
-# echo "### Installing Python3 and necessary libraries..."
-#sudo apt install -y python3 python3-pip
-# sudo apt install python3-matplotlib -y
-# pip3 install matplotlib
-# pip3 install numpy
-# sudo apt install fim
+# Define DuckDB binary and database path
+DUCKDB_BIN="duckdb"
+DB_PATH="$HOME/nckh.duckdb"
+SQL_FILE="$HOME/accelerate-database_queries_using_gpu/src/tpcds/results/tpcds_duckdb.sql"
+
+# Execute the SQL script with DuckDB
+$DUCKDB_BIN $DB_PATH < $SQL_FILE
+
+if [ $? -eq 0 ]; then
+    echo "SQL script executed successfully, data stored in $DB_PATH."
+else
+    echo "Error executing SQL script."
+fi
 
 echo "### Installation complete!"
