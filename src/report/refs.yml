@@ -1,35 +1,85 @@
-# owasp-top-10:
-#   type: web
-#   title: OWASP Top 10 Vulnerabilities 2021
-#   url: https://www.edudwar.com/owasp-top-10-vulnerabilities
-# responsive-web-design:
-#   type: web
-#   title: What Is Responsive Web Design?
-#   url: https://www.lambdatest.com/blog/importance-of-responsive-web-design
-# crm-system:
-#   type: web
-#   title: Hệ thống CRM
-#   url: https://www.zoho.com/vi/crm/what-is-crm.html
-# tapchicongthuong1:
-#   type: web
-#   title: Những điểm nổi bật của thương mại điện tử Việt Nam trong giai đoạn tới
-#   url: https://tapchicongthuong.vn/bai-viet/nhung-diem-noi-bat-cua-thuong-mai-dien-tu-viet-nam-trong-giai-doan-toi-104548.htm
-# oauth20google:
-#   type: web
-#   title: Using OAuth 2.0 for Web Server Applications
-#   url: https://developers.google.com/identity/protocols/oauth2/web-server?hl=en
-# breeze:
-#   type: web
-#   title: Laravel Breeze
-#   url: https://github.com/laravel/breeze
-# buildwebapp:
-#   type: book
-#   language: vi
-#   title: Giáo trình xây dựng web an toàn
-#   author: ["TS. Nguyễn Tuấn Anh", "KS. Hoàng Thanh Nam"]
-#   date: 2013
-#   location: Học viện Kỹ thuật mật mã
-# vite:
-#   type: web
-#   title: "Vite: Build tool front-end 'thế hệ mới'"
-#   url: https://atekco.io/1663226080655-vite-build-tool-front-end-the-he-moi
+OLTP:
+  type: web
+  title: OLTP
+  url: https://en.wikipedia.org/wiki/Online_transaction_processing
+
+OLAP:
+  type: web
+  title: OLAP
+  url: https://en.wikipedia.org/wiki/Online_analytical_processing
+
+bigdata:
+  type: web
+  title: Big Data
+  url: https://en.wikipedia.org/wiki/Big_data
+
+heavydb:
+  type: web
+  title: HeavyDB Technical Overview
+  url: https://docs.heavy.ai/
+
+walmart:
+  type: web
+  title: Walmart Annual Report 2020
+  url: https://corporate.walmart.com
+
+netflix:
+  type: web
+  title: Netflix Case Study
+  url: https://aws.amazon.com/solutions/case-studies/netflix/
+
+idc:
+  type: web
+  title: IDC Data Growth Report
+  url: https://www.idc.com/getdoc.jsp?containerId=prUS47560321
+
+gartner:
+  type: web
+  title: Gartner Data and Analytics Trends
+  url: https://www.gartner.com/en/information-technology/insights/data-analytics
+
+cpu_architecture:
+  type: web
+  title: CPU Architecture Overview
+  url: https://en.wikipedia.org/wiki/Central_processing_unit
+
+heavydb_docs:
+  type: web
+  title: HeavyDB Technical Overview
+  url: https://docs.heavy.ai/
+
+nvidia_cuda:
+  type: web
+  title: NVIDIA CUDA Zone
+  url: https://developer.nvidia.com/cuda-zone
+
+gpu_architecture:
+  type: web
+  title: GPU Architecture Overview
+  url: https://en.wikipedia.org/wiki/Graphics_processing_unit
+
+duckdb_paper:
+  type: web
+  title: "DuckDB: an Embeddable Analytical Database"
+  author: "H. Mühleisen and M. Raasveldt"
+  year: 2019
+  url: "https://arxiv.org/abs/1906.01608"
+
+duckdb_docs:
+  type: web
+  title: "Introduction to DuckDB"
+  author: "DuckDB Documentation"
+  url: "https://duckdb.org/docs/"
+
+duckdb_tds:
+  type: web
+  title: "DuckDB: The SQL Database Engine You Should Be Using"
+  author: "Towards Data Science"
+  url: "https://towardsdatascience.com/duckdb-the-sql-database-engine-you-should-be-using-54749e874b27"
+
+duckdb_dsc:
+  type: web
+  title: "Why DuckDB is Better than SQLite for Data Analysis"
+  author: "D. MacMillan"
+  year: 2023
+  url: "https://datasciencecentral.com/why-duckdb-is-better-than-sqlite-for-data-analysis/"
