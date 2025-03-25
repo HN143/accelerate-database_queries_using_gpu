@@ -14,7 +14,7 @@ Query này thực hiện:
 with
 	ss_items as (
 		select
-			i_item_id.item_id,
+			i_item_id,
 			sum(ss_ext_sales_price) ss_item_rev
 		from
 			store_sales,
@@ -43,7 +43,7 @@ with
 	),
 	cs_items as (
 		select
-			i_item_id.item_id,
+			i_item_id,
 			sum(cs_ext_sales_price) cs_item_rev
 		from
 			catalog_sales,
@@ -72,7 +72,7 @@ with
 	),
 	ws_items as (
 		select
-			i_item_id.item_id,
+			i_item_id,
 			sum(ws_ext_sales_price) ws_item_rev
 		from
 			web_sales,
