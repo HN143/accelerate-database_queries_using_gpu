@@ -35,8 +35,7 @@ where
 	and i_item_sk = cs_item_sk
 	and cs_warehouse_sk = w_warehouse_sk
 	and cs_sold_date_sk = d_date_sk
-	and d_date between (cast('1998-04-08' as date) - 30 days) and (cast('1998-04-08' as date) + 30 days)
-group by
+	and d_date between (cast('1998-04-08' as date) - interval 30 days) and (cast('1998-04-08' as date) + interval 30 days)group by
 	w_state,
 	i_item_id
 order by
