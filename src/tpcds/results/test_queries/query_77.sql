@@ -97,7 +97,7 @@ select
 	channel,
 	id,
 	sum(sales) as sales,
-	sum(returns) as returns,
+	sum(returns) as total_returns,
 	sum(profit) as profit
 from
 	(
@@ -105,7 +105,7 @@ from
 			'store channel' as channel,
 			ss.s_store_sk as id,
 			sales,
-			coalesce(returns, 0) as returns,
+			coalesce(returns, 0) as total_returns,
 			(profit - coalesce(profit_loss, 0)) as profit
 		from
 			ss
@@ -115,7 +115,7 @@ from
 			'catalog channel' as channel,
 			cs_call_center_sk as id,
 			sales,
-			returns,
+			returns as total_returns,
 			(profit - profit_loss) as profit
 		from
 			cs,
@@ -125,7 +125,7 @@ from
 			'web channel' as channel,
 			ws.wp_web_page_sk as id,
 			sales,
-			coalesce(returns, 0) returns,
+			coalesce(returns, 0) as total_returns,
 			(profit - coalesce(profit_loss, 0)) as profit
 		from
 			ws
