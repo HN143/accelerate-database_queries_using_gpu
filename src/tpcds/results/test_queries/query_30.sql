@@ -30,7 +30,6 @@ select
     c_birth_country,
     c_login,
     c_email_address,
-    c_last_review_date_sk,
     ctr_total_return
 from
     customer_total_return ctr1,

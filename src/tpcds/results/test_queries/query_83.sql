@@ -14,7 +14,7 @@
 with
 	sr_items as (
 		select
-			i_item_id item_id,
+			i_item_id.item_id,
 			sum(sr_return_quantity) sr_item_qty
 		from
 			store_returns,
@@ -43,7 +43,7 @@ with
 	),
 	cr_items as (
 		select
-			i_item_id item_id,
+			i_item_id.item_id,
 			sum(cr_return_quantity) cr_item_qty
 		from
 			catalog_returns,
@@ -72,7 +72,7 @@ with
 	),
 	wr_items as (
 		select
-			i_item_id item_id,
+			i_item_id.item_id,
 			sum(wr_return_quantity) wr_item_qty
 		from
 			web_returns,

@@ -18,7 +18,8 @@ with
 			store
 		where
 			ss_sold_date_sk = d_date_sk
-			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + interval 30 days)			and ss_store_sk = s_store_sk
+			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + 30 days)
+			and ss_store_sk = s_store_sk
 		group by
 			s_store_sk
 	),
@@ -33,7 +34,8 @@ with
 			store
 		where
 			sr_returned_date_sk = d_date_sk
-			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + interval 30 days)			and sr_store_sk = s_store_sk
+			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + 30 days)
+			and sr_store_sk = s_store_sk
 		group by
 			s_store_sk
 	),
@@ -47,7 +49,8 @@ with
 			date_dim
 		where
 			cs_sold_date_sk = d_date_sk
-			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + interval 30 days)		group by
+			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + 30 days)
+		group by
 			cs_call_center_sk
 	),
 	cr as (
@@ -60,7 +63,8 @@ with
 			date_dim
 		where
 			cr_returned_date_sk = d_date_sk
-			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + interval 30 days)		group by
+			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + 30 days)
+		group by
 			cr_call_center_sk
 	),
 	ws as (
@@ -74,7 +78,8 @@ with
 			web_page
 		where
 			ws_sold_date_sk = d_date_sk
-			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + interval 30 days)			and ws_web_page_sk = wp_web_page_sk
+			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + 30 days)
+			and ws_web_page_sk = wp_web_page_sk
 		group by
 			wp_web_page_sk
 	),
@@ -89,7 +94,8 @@ with
 			web_page
 		where
 			wr_returned_date_sk = d_date_sk
-			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + interval 30 days)			and wr_web_page_sk = wp_web_page_sk
+			and d_date between cast('1998-08-04' as date) and (cast('1998-08-04' as date) + 30 days)
+			and wr_web_page_sk = wp_web_page_sk
 		group by
 			wp_web_page_sk
 	)
@@ -97,7 +103,7 @@ select
 	channel,
 	id,
 	sum(sales) as sales,
-	sum(returns) as total_returns,
+	sum(returns) as returns,
 	sum(profit) as profit
 from
 	(
@@ -105,7 +111,7 @@ from
 			'store channel' as channel,
 			ss.s_store_sk as id,
 			sales,
-			coalesce(returns, 0) as total_returns,
+			coalesce(returns, 0) as returns,
 			(profit - coalesce(profit_loss, 0)) as profit
 		from
 			ss
@@ -115,7 +121,7 @@ from
 			'catalog channel' as channel,
 			cs_call_center_sk as id,
 			sales,
-			returns as total_returns,
+			returns,
 			(profit - profit_loss) as profit
 		from
 			cs,
@@ -125,7 +131,7 @@ from
 			'web channel' as channel,
 			ws.wp_web_page_sk as id,
 			sales,
-			coalesce(returns, 0) as total_returns,
+			coalesce(returns, 0) as returns,
 			(profit - coalesce(profit_loss, 0)) as profit
 		from
 			ws
