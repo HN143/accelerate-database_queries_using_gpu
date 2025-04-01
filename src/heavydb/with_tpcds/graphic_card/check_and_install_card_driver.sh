@@ -10,6 +10,7 @@ if command -v nvidia-smi &>/dev/null; then
     nvidia-smi
     echo "card đã cài đặt"
     exit 0
+fi
 
 # Kiểm tra card đồ họa NVIDIA hoặc AMD
 gpu_info=$(lspci | grep -i -E "(nvidia|amd)")
