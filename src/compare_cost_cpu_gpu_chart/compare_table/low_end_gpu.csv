@@ -1,0 +1,5 @@
+Cấu Hình,GPU,CPU,RAM,Mainboard,Nguồn Điện,Hệ Thống Làm Mát,Ổ Cứng,Cổng Kết Nối và Hiển Thị,Tiêu Thụ Điện Năng (W),Thời Gian Chạy DB Query (giây),Giá Mua (VND),Giá Thuê AWS (VND/giờ),Giá Thuê Google Cloud (VND/giờ),Giá Thuê Azure (VND/giờ)
+Cấu Hình 1,NVIDIA GTX 1650,Intel Core i3-10100,8 GB DDR4,Gigabyte H410M,450W,Quạt CPU tiêu chuẩn,1 TB HDD,"2x USB 3.0, HDMI",250,120,12000000,15000,17000,16000
+Cấu Hình 2,AMD Radeon RX 550,AMD Ryzen 3 3200G,8 GB DDR4,MSI B450M Pro-M2,450W,Quạt CPU tiêu chuẩn,1 TB HDD,"2x USB 3.0, HDMI",240,130,11500000,14500,16500,15500
+Cấu Hình 3,NVIDIA GTX 1050 Ti,Intel Core i3-9100F,8 GB DDR4,ASUS H310M,400W,Quạt CPU tiêu chuẩn,500 GB SSD,"2x USB 3.0, DisplayPort",260,110,13000000,16500,18000,17000
+Cấu Hình 4,AMD Radeon RX 560,AMD Ryzen 3 2200G,8 GB DDR4,ASRock B450M,450W,Quạt CPU tiêu chuẩn,500 GB SSD,"2x USB 3.0, DisplayPort",250,120,13200000,17000,19000,18000

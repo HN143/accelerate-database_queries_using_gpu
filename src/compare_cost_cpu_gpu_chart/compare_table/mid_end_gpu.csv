@@ -1,0 +1,5 @@
+Cấu Hình,GPU,CPU,RAM,Mainboard,Nguồn Điện,Hệ Thống Làm Mát,Ổ Cứng,Cổng Kết Nối và Hiển Thị,Tiêu Thụ Điện Năng (W),Thời Gian Chạy DB Query (giây),Giá Mua (VND),Giá Thuê AWS (VND/giờ),Giá Thuê Google Cloud (VND/giờ),Giá Thuê Azure (VND/giờ)
+Cấu Hình 1,NVIDIA RTX 3060,Intel Core i5-11600K,16 GB DDR4,ASUS Z590-A PRO,650W,Quạt CPU hiệu suất cao,1 TB SSD,"4x USB 3.0, DisplayPort, HDMI",300,80,28500000,40000,45000,42000
+Cấu Hình 2,AMD Radeon RX 6700 XT,AMD Ryzen 5 5600X,16 GB DDR4,MSI MAG B550 TOMAHAWK,650W,Quạt CPU hiệu suất cao,1 TB SSD,"4x USB 3.0, DisplayPort, HDMI",320,75,29000000,42000,47000,44000
+Cấu Hình 3,NVIDIA RTX 3050 Ti,Intel Core i5-11400F,16 GB DDR4,Gigabyte B560M,650W,Quạt CPU hiệu suất cao,1 TB SSD,"4x USB 3.0, DisplayPort, HDMI",290,85,26500000,38000,43000,40000
+Cấu Hình 4,AMD Radeon RX 6600 XT,AMD Ryzen 5 3600,16 GB DDR4,ASUS TUF Gaming B550M,650W,Quạt CPU hiệu suất cao,1 TB SSD,"4x USB 3.0, DisplayPort, HDMI",310,80,27000000,39500,44500,41500

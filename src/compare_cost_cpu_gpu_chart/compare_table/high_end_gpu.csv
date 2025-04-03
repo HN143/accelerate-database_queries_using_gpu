@@ -1,0 +1,5 @@
+Cấu Hình,GPU,CPU,RAM,Mainboard,Nguồn Điện,Hệ Thống Làm Mát,Ổ Cứng,Cổng Kết Nối và Hiển Thị,Tiêu Thụ Điện Năng (W),Thời Gian Chạy DB Query (giây),Giá Mua (VND),Giá Thuê AWS (VND/giờ),Giá Thuê Google Cloud (VND/giờ),Giá Thuê Azure (VND/giờ)
+Cấu Hình 1,NVIDIA RTX 3090,Intel Core i9-11900K,32 GB DDR4,ASUS ROG Strix Z590-E,850W,Hệ thống làm mát nước,1 TB NVMe SSD,"6x USB 3.0, 2x DisplayPort, HDMI",450,50,70000000,80000,95000,90000
+Cấu Hình 2,NVIDIA RTX 3080,AMD Ryzen 9 5900X,32 GB DDR4,MSI MEG X570 GODLIKE,850W,Hệ thống làm mát nước,1 TB NVMe SSD,"6x USB 3.0, 2x DisplayPort, HDMI",400,60,65000000,75000,90000,85000
+Cấu Hình 3,NVIDIA RTX 3070,Intel Core i7-11700K,32 GB DDR4,ASUS TUF Z590-Plus,850W,Hệ thống làm mát nước,1 TB NVMe SSD,"4x USB 3.0, DisplayPort, HDMI",350,70,55000000,70000,85000,80000
+Cấu Hình 4,AMD Radeon RX 6900 XT,AMD Ryzen 9 5950X,32 GB DDR4,ASUS ROG Crosshair VIII Hero,850W,Hệ thống làm mát nước,1 TB NVMe SSD,"4x USB 3.0, DisplayPort, HDMI",420,65,68000000,78000,93000,88000
