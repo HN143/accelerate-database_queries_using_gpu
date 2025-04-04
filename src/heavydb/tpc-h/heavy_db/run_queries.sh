@@ -1,8 +1,10 @@
 #!/bin/bash
 
 # Tạo tệp log để lưu thời gian
-log_file="query_execution_times.log"
+log_file="query_execution_times.csv"
 > $log_file # Xóa nội dung tệp log trước khi bắt đầu
+
+echo "query, start at (ms), end at (ms), time (ms)" >> $log_file
 
 # Chạy các truy vấn từ 1 đến 99
 for i in {1..22}
@@ -12,12 +14,12 @@ do
     
     if [[ -f "$query_file" ]]; then
         echo "Running query $i..."
-
+	start_time=$(date +"%H:%M:%S.%3N") 
         # Ghi lại thời gian thực thi vào log
         execution_time=$(cat $query_file | heavysql -t -p vien | grep "Execution time" | awk '{print $3}')
 
         # Ghi lại thời gian vào tệp log
-        echo "Query $i - Time: $execution_time ms" >> $log_file
+        echo "query $i, $start_time, $(date +"%H:%M:%S.%3N"), $execution_time" >> $log_file
     else
         echo "Query file $query_file does not exist"
     fi
