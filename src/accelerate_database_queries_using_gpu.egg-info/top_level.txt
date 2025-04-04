@@ -1,6 +1,5 @@
 duckdb
 heavydb
-heavydb_with_tpcds
 report
 scripts
 tpcds

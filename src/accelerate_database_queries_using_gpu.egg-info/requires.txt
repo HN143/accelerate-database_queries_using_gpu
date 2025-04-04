@@ -12,3 +12,4 @@ heavyai
 python-dotenv>=1.0.1
 iplantuml>=0.1.1
 plantuml>=0.3.0
+duckdb>=1.2.1
