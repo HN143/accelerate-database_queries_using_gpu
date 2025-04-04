@@ -14,6 +14,8 @@ chmod +x heavydb/load_data.sh
 chmod +x resource_calculation/launcher.sh
 ./resource_calculation/launcher.sh &
 
+sleep 0.5
+
 echo "Run queries..."
 chmod +x heavydb/run_queries.sh
 ./heavydb/run_queries.sh
