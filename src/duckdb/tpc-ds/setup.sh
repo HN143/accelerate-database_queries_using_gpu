@@ -3,7 +3,7 @@
 set -e  # Stop script if any command fails
 
 # Define paths for SQL files
-CREATE_SQL="../../heavy_db/with_tpcds/sql/create_table.sql"
+CREATE_SQL="../../heavydb/with_tpcds/sql/create_table.sql"
 LOAD_SQL="./load_data.sql"
 DUCKDB_DB="tpc-ds_nckh.duckdb"
 
