@@ -1,0 +1,15 @@
+tools/*.o
+tools/.ctags_updated
+tools/checksum
+tools/columns.h
+tools/distcomp
+tools/dsdgen
+tools/dsqgen
+tools/mkheader
+tools/streams.h
+tools/tables.h
+tools/tags
+tools/tpcds.idx
+tools/tpcds.idx.h
+
+results

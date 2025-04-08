@@ -38,8 +38,8 @@
 ################
 ## TARGET OS HERE
 ################
-# OS Values: AIX, LINUX, SOLARIS, NCR, HPUX
-OS	=	LINUX
+# OS Values: AIX, LINUX, SOLARIS, NCR, HPUX, MACOS
+OS = LINUX
 ###########
 # No changes should be necessary below this point
 # Each compile variable is adjusted for the target platform using the OS setting above
@@ -49,6 +49,7 @@ AIX_CC		= xlC
 HPUX_CC		= gcc
 LINUX_CC		= gcc
 NCR_CC		= cc
+MACOS_CC		= gcc
 SOLARIS_CC	= gcc
 SOL86_CC	= cc
 CC		= $($(OS)_CC)
@@ -57,6 +58,7 @@ AIX_CFLAGS		= -q64 -O3 -D_LARGE_FILES
 HPUX_CFLAGS		= -O3 -Wall
 LINUX_CFLAGS	= -g -Wall
 NCR_CFLAGS		= -g 
+MACOS_CFLAGS		= -g -Wall
 SOLARIS_CFLAGS	= -O3 -Wall
 SOL86_CFLAGS	= -O3 
 BASE_CFLAGS    = -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -DYYDEBUG #-maix64 -DMEM_TEST 
@@ -66,6 +68,7 @@ AIX_EXE	=
 HPUX_EXE	= 
 LINUX_EXE	= 
 NCR_EXE		= 
+MACOS_EXE		= 
 SOLARIS_EXE	= 
 SOL86_EXE	= 
 EXE		= $($(OS)_EXE)
@@ -74,6 +77,7 @@ AIX_LEX		= flex
 HPUX_LEX	= flex
 LINUX_LEX	= lex
 NCR_LEX		= lex
+MACOS_LEX		= lex
 SOLARIS_LEX	= lex
 SOL86_LEX	= lex
 LEX		= $($(OS)_LEX)
@@ -82,6 +86,7 @@ AIX_LIBS	= -lm
 HPUX_LIBS	= -lm -ll
 LINUX_LIBS	= -lm
 NCR_LIBS	= -lm -lc89
+MACOS_LIBS	= -lm
 SOLARIS_LIBS	= -ly -ll -lm
 SOL86_LIBS	= -ly -ll -lm
 LIBS		= $($(OS)_LIBS)
@@ -90,6 +95,7 @@ AIX_YACC	= yacc
 HPUX_YACC	= bison -y
 LINUX_YACC	= yacc
 NCR_YACC	= yacc
+MACOS_YACC	= yacc
 SOLARIS_YACC	= yacc
 SOL86_YACC	= yacc
 YACC		= $($(OS)_YACC)
@@ -98,6 +104,7 @@ AIX_YFLAGS	= -d -v
 HPUX_YFLAGS	= -y -d -v
 LINUX_YFLAGS	= -d -v
 NCR_YFLAGS	= -d -v
+MACOS_YFLAGS	= -d -v
 SOLARIS_YFLAGS	= -d -v
 SOL86_YFLAGS	= -d -v
 YFLAGS		= $($(OS)_YFLAGS)
