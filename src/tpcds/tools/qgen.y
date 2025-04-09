@@ -159,7 +159,6 @@ substitution_t *pSub;
 workload_spec:		statement_list	
 						{
 							AddQuerySegment(pCurrentQuery, "\n");
-							AddQuerySubstitution(pCurrentQuery, "_END", 0, 0);
 							AddQuerySegment(pCurrentQuery, "\n");
 						}
 	;

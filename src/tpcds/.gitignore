@@ -11,5 +11,6 @@ tools/tables.h
 tools/tags
 tools/tpcds.idx
 tools/tpcds.idx.h
+tools/y.output
 
 results
