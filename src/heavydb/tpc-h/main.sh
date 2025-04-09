@@ -17,6 +17,8 @@ sudo apt install sysstat -y
 chmod +x resource_calculation/launcher.sh
 ./resource_calculation/launcher.sh &
 
+sleep 1
+
 echo "Running query script..."
 chmod +x heavy_db/run_queries.sh
 ./heavy_db/run_queries.sh

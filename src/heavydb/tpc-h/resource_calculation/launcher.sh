@@ -2,7 +2,7 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"  # Đường dẫn tới thư mục
 SCRIPT_TO_RUN="$SCRIPT_DIR/script.sh"
-DURATION=50                  # Thời gian chạy (giây)
+DURATION=30                  # Thời gian chạy (giây)
 INTERVAL=0.1                # Khoảng thời gian giữa các tiến trình
 
 chmod +x "$SCRIPT_TO_RUN"
