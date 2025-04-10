@@ -71,12 +71,12 @@ get_ram_usage() {
 echo "### Running TPC-DS benchmark with ${SCALE_FACTOR}GB data (Run ${NUMBER_TIME}${SUFFIX})..."
 
 for i in $(seq 1 99); do
-    # Update query file name
-    QUERY_FILE="${QUERY_DIR}/query-${i}.sql"
+    # Update query file name with zero-padded number
     QUERY_ID="$(printf "%02d" $i)"
+    QUERY_FILE="${QUERY_DIR}/query-${QUERY_ID}.sql"
 
     if [ -f "$QUERY_FILE" ]; then
-        echo "Running query $i..."
+        echo "Running query $QUERY_ID..."
         
         # Get system metrics every 0.05s during query execution
         (
