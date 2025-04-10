@@ -1,0 +1,5 @@
+Cấu Hình,CPU,Giá Mua (VND),Mức Tiêu Thụ Điện Năng (W),Thời Gian Chạy DB Query (giây)
+Cấu Hình 1,Intel Core i9-11900K,12000000,125,100
+Cấu Hình 2,AMD Ryzen 9 5900X,11000000,105,110
+Cấu Hình 3,Intel Core i7-11700K,9000000,125,120
+Cấu Hình 4,AMD Ryzen 9 5950X,15000000,105,95

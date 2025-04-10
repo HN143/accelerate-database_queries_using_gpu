@@ -1,0 +1,5 @@
+Cấu Hình,CPU,Giá Mua (VND),Mức Tiêu Thụ Điện Năng (W),Thời Gian Chạy DB Query (giây)
+Cấu Hình 1,Intel Core i3-10100,2500000,65,180
+Cấu Hình 2,AMD Ryzen 3 3200G,2200000,65,190
+Cấu Hình 3,Intel Core i3-9100F,2000000,65,170
+Cấu Hình 4,AMD Ryzen 3 2200G,2000000,65,185

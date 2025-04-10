@@ -1,0 +1,75 @@
+Nhận xét và đánh giá kết quả dựa trên biểu đồ
+1. So sánh mức tiêu thụ điện năng giữa CPU và GPU
+GPU tiêu thụ điện năng cao hơn CPU:
+
+Trong tất cả các phân khúc (Low, Mid, High), mức tiêu thụ điện năng của GPU luôn cao hơn CPU.
+Ví dụ:
+Phân khúc Low:
+GPU (NVIDIA GTX 1650): ~250W.
+CPU (Intel Core i3-10100): ~65W.
+Chênh lệch: GPU tiêu thụ điện năng gấp ~4 lần CPU.
+Phân khúc High:
+GPU (NVIDIA RTX 3090): ~450W.
+CPU (Intel Core i9-11900K): ~125W.
+Chênh lệch: GPU tiêu thụ điện năng gấp ~3.6 lần CPU.
+Nguyên nhân:
+
+GPU được thiết kế để xử lý các tác vụ song song (parallel processing) với hiệu suất cao, đặc biệt là các tác vụ liên quan đến đồ họa và tính toán phức tạp, dẫn đến mức tiêu thụ điện năng lớn hơn.
+CPU tập trung vào xử lý tuần tự (sequential processing), thường tiêu thụ ít điện năng hơn.
+2. So sánh thời gian chạy DB query giữa CPU và GPU
+GPU có thời gian chạy DB query nhanh hơn CPU:
+
+Trong tất cả các phân khúc, GPU luôn hoàn thành truy vấn nhanh hơn CPU.
+Ví dụ:
+Phân khúc Low:
+GPU (NVIDIA GTX 1650): ~120 giây.
+CPU (Intel Core i3-10100): ~180 giây.
+Chênh lệch: GPU nhanh hơn ~33% so với CPU.
+Phân khúc High:
+GPU (NVIDIA RTX 3090): ~50 giây.
+CPU (Intel Core i9-11900K): ~100 giây.
+Chênh lệch: GPU nhanh hơn ~50% so với CPU.
+Nguyên nhân:
+
+GPU có khả năng xử lý song song mạnh mẽ, giúp tăng tốc độ xử lý các tác vụ tính toán lớn như truy vấn cơ sở dữ liệu.
+CPU, mặc dù mạnh mẽ trong xử lý tuần tự, nhưng không thể cạnh tranh với GPU trong các tác vụ yêu cầu xử lý song song.
+3. Mối quan hệ giữa mức tiêu thụ điện năng và thời gian chạy DB query
+Hiệu suất cao hơn đi kèm với mức tiêu thụ điện năng lớn hơn:
+
+GPU tiêu thụ nhiều điện năng hơn CPU, nhưng bù lại, thời gian chạy DB query của GPU ngắn hơn đáng kể.
+Ví dụ:
+Phân khúc High:
+GPU (NVIDIA RTX 3090): Tiêu thụ 450W, thời gian chạy 50 giây.
+CPU (Intel Core i9-11900K): Tiêu thụ 125W, thời gian chạy 100 giây.
+Hiệu suất: GPU tiêu thụ điện năng gấp ~3.6 lần CPU nhưng hoàn thành truy vấn nhanh hơn ~2 lần.
+Tỷ lệ giữa điện năng tiêu thụ và thời gian chạy:
+
+GPU có tỷ lệ điện năng tiêu thụ / thời gian chạy cao hơn CPU, nghĩa là GPU sử dụng nhiều năng lượng hơn để đạt được hiệu suất cao hơn.
+Điều này cho thấy GPU phù hợp với các tác vụ yêu cầu hiệu suất cao trong thời gian ngắn, trong khi CPU phù hợp với các tác vụ yêu cầu tiết kiệm năng lượng hơn.
+4. Đánh giá theo phân khúc
+Phân khúc Low:
+
+GPU (NVIDIA GTX 1650) tiêu thụ ~250W, thời gian chạy ~120 giây.
+CPU (Intel Core i3-10100) tiêu thụ ~65W, thời gian chạy ~180 giây.
+Nhận xét: GPU nhanh hơn ~33% nhưng tiêu thụ điện năng gấp ~4 lần CPU.
+Phân khúc Mid:
+
+GPU (NVIDIA RTX 3050 Ti) tiêu thụ ~290W, thời gian chạy ~85 giây.
+CPU (Intel Core i5-11400F) tiêu thụ ~65W, thời gian chạy ~135 giây.
+Nhận xét: GPU nhanh hơn ~37% nhưng tiêu thụ điện năng gấp ~4.5 lần CPU.
+Phân khúc High:
+
+GPU (NVIDIA RTX 3090) tiêu thụ ~450W, thời gian chạy ~50 giây.
+CPU (Intel Core i9-11900K) tiêu thụ ~125W, thời gian chạy ~100 giây.
+Nhận xét: GPU nhanh hơn ~50% nhưng tiêu thụ điện năng gấp ~3.6 lần CPU.
+5. Kết luận
+GPU vượt trội về hiệu suất:
+
+GPU hoàn thành truy vấn nhanh hơn CPU trong tất cả các phân khúc, đặc biệt là ở phân khúc High, nơi GPU nhanh hơn CPU gấp đôi.
+CPU tiết kiệm điện năng hơn:
+
+CPU tiêu thụ ít điện năng hơn GPU, đặc biệt rõ rệt ở phân khúc Low và Mid, nơi GPU tiêu thụ điện năng gấp 4-4.5 lần CPU.
+Lựa chọn giữa CPU và GPU:
+
+GPU: Phù hợp với các tác vụ yêu cầu hiệu suất cao và thời gian xử lý ngắn, chẳng hạn như xử lý dữ liệu lớn, AI, hoặc các tác vụ tính toán song song.
+CPU: Phù hợp với các tác vụ yêu cầu tiết kiệm năng lượng hoặc xử lý tuần tự, chẳng hạn như các ứng dụng văn phòng hoặc máy chủ cơ bản.

@@ -1,0 +1,5 @@
+Cấu Hình,CPU,Giá Mua (VND),Mức Tiêu Thụ Điện Năng (W),Thời Gian Chạy DB Query (giây)
+Cấu Hình 1,Intel Xeon Cascade Lake,15000000,85,150
+Cấu Hình 2,AMD Ryzen 5 5600X,4500000,65,120
+Cấu Hình 3,Intel Core i5-11400F,3500000,65,135
+Cấu Hình 4,AMD Ryzen 5 3600,4000000,65,130
