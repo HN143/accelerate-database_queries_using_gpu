@@ -2,36 +2,39 @@
 
 set -e  # Stop script if any command fails
 
-# Sinh dữ liệu cho các bảng để truy vấn
-#!/bin/bash
+# Check if scale factor argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <scale_factor>"
+    echo "Allowed scale factors: 1, 2, 5, 10, 20, 50, 100"
+    exit 1
+fi
 
-# Define paths for SQL files
-CREATE_SQL="../../heavydb/with_tpcds/sql/create_table.sql"
-# LOAD_SQL="./load_data.sql"
+SCALE_FACTOR=$1
+
+# Validate scale factor
+if [[ ! "$SCALE_FACTOR" =~ ^(1|2|5|10|20|50|100)$ ]]; then
+    echo "Error: Scale factor must be 1, 2, 5, 10, 20, 50, or 100"
+    echo "Usage: $0 <scale_factor>"
+    exit 1
+fi
+
+# Sinh dữ liệu cho các bảng để truy vấn
 DUCKDB_DB="tpc-ds_nckh.duckdb"
+
+# Kiểm tra nếu tệp cơ sở dữ liệu tồn tại, thì xóa nó
+if [ -f "$DUCKDB_DB" ]; then
+    echo "Database file '$DUCKDB_DB' exists. Removing it..."
+    rm "$DUCKDB_DB"
+fi
+
+echo "Generating TPC-DS data with scale factor $SCALE_FACTOR..."
 
 # Chạy DuckDB và thực thi các lệnh SQL
 duckdb "$DUCKDB_DB" <<EOF
 INSTALL tpcds;
 LOAD tpcds;
-SELECT * FROM dbgen(sf=1);
+SELECT * FROM dsdgen(sf=$SCALE_FACTOR);
 EOF
 
-# Check if files exist
-if [ ! -f "$CREATE_SQL" ]; then
-    echo "Error: File '$CREATE_SQL' does not exist."
-    exit 1
-fi
-
-# if [ ! -f "$LOAD_SQL" ]; then
-#     echo "Error: File '$LOAD_SQL' does not exist."
-#     exit 1
-# fi
-
 echo "Running DuckDB with database '$DUCKDB_DB'..."
-
-# Execute SQL scripts in DuckDB
-duckdb "$DUCKDB_DB" < "$CREATE_SQL"
-# duckdb "$DUCKDB_DB" < "$LOAD_SQL"
-
 echo "Process completed successfully."

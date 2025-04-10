@@ -2,35 +2,112 @@
 
 set -e  # Stop script if any command fails
 
-# Define paths
-DB_PATH="./tpc-ds_nckh.duckdb"  # Cùng cấp với script này
-QUERY_DIR="../../heavydb/with_tpcds/sql/queries"
-RESULTS_FILE="runtime_results.txt"
+# Check if both arguments are provided
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <scale_factor> <run_number>"
+    echo "Allowed scale factors: 1, 2, 5, 10, 20, 50, 100"
+    echo "Run number: Positive integer (1, 2, 3, ...)"
+    exit 1
+fi
 
-# Create or clear results file
-echo "### Running TPC-DS benchmark and saving results to $RESULTS_FILE..."
-> "$RESULTS_FILE"
+SCALE_FACTOR=$1
+NUMBER_TIME=$2
 
-# Run each query multiple times (e.g., 5 times per query)
-RUNS=5
-runtime_counter=1
+# Validate scale factor
+if [[ ! "$SCALE_FACTOR" =~ ^(1|2|5|10|20|50|100)$ ]]; then
+    echo "Error: Scale factor must be 1, 2, 5, 10, 20, 50, or 100"
+    echo "Usage: $0 <scale_factor> <run_number>"
+    exit 1
+fi
 
-for i in {1..99}; do
-    query_file="$QUERY_DIR/query-$(printf "%02d" $i).sql"
-    
-    if [[ -f "$query_file" ]]; then
+# Validate run number is a positive integer
+if ! [[ "$NUMBER_TIME" =~ ^[1-9][0-9]*$ ]]; then
+    echo "Error: Run number must be a positive integer"
+    echo "Usage: $0 <scale_factor> <run_number>"
+    exit 1
+fi
+
+# Define suffix for run number (1st, 2nd, 3rd, etc.)
+get_suffix() {
+    case "$1" in
+        *1[0-9]) echo "th";;
+        *1) echo "st";;
+        *2) echo "nd";;
+        *3) echo "rd";;
+        *) echo "th";;
+    esac
+}
+
+SUFFIX=$(get_suffix $NUMBER_TIME)
+
+# Define paths based on scale factor
+DB_PATH="tpc-ds_nckh.duckdb"
+QUERY_DIR="../../heavydb/with_tpcds/sql/query/query${SCALE_FACTOR}/splited"
+LOG_DIR="result_log/result_log_${SCALE_FACTOR}"
+CSV_FILE="${LOG_DIR}/${NUMBER_TIME}${SUFFIX}_query_execution_times.csv"
+
+# Create log directory if it doesn't exist
+mkdir -p "$LOG_DIR"
+
+# Create CSV file with headers using pipe separator, without numerical_order
+echo "query_id | cpu_time(ms) | cpu_used(%) | ram_time(ms) | ram_used(gb)" > "$CSV_FILE"
+
+# Function to get current timestamp in desired format
+get_timestamp() {
+    date '+%Y-%m-%d %H:%M:%S.%3N'
+}
+
+# Function to get CPU usage
+get_cpu_usage() {
+    top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d. -f1
+}
+
+# Function to get RAM usage in GB
+get_ram_usage() {
+    free -m | awk '/Mem:/ {printf "%.2f", $3/1024}'
+}
+
+# Run queries sequentially starting from 1
+echo "### Running TPC-DS benchmark with ${SCALE_FACTOR}GB data (Run ${NUMBER_TIME}${SUFFIX})..."
+
+for i in $(seq 1 99); do
+    # Update query file name
+    QUERY_FILE="${QUERY_DIR}/query-${i}.sql"
+    QUERY_ID="$(printf "%02d" $i)"
+
+    if [ -f "$QUERY_FILE" ]; then
         echo "Running query $i..."
-        for ((run=1; run<=RUNS; run++)); do
-            echo "Runtime $runtime_counter - Query $i" >> "$RESULTS_FILE"
-            start_time=$(date +%s%3N)  # Lấy thời gian trước khi chạy
-            duckdb "$DB_PATH" < "$query_file" | grep "Run Time (s):" >> "$RESULTS_FILE"
-            end_time=$(date +%s%3N)  # Lấy thời gian sau khi chạy
-            echo "Runtime $runtime_counter completed in $((end_time - start_time)) ms" >> "$RESULTS_FILE"
-            ((runtime_counter++))
-        done
+        
+        # Get system metrics every 0.05s during query execution
+        (
+            # Start query execution in background
+            {
+                duckdb "$DB_PATH" < "$QUERY_FILE" 2>/dev/null
+                exit_status=$?
+                if [ $exit_status -ne 0 ]; then
+                    echo "$QUERY_ID | $(get_timestamp) | 0 | $(get_timestamp) | 0" >> "$CSV_FILE"
+                    exit 1
+                fi
+            } &
+            query_pid=$!
+
+            # Monitor system while query runs
+            while kill -0 $query_pid 2>/dev/null; do
+                cpu_time=$(get_timestamp)
+                cpu_usage=$(get_cpu_usage)
+                ram_time=$(get_timestamp)
+                ram_usage=$(get_ram_usage)
+                echo "$QUERY_ID | $cpu_time | $cpu_usage | $ram_time | $ram_usage" >> "$CSV_FILE"
+                sleep 0.05
+            done
+        ) || {
+            # If query fails, log zeros
+            echo "$QUERY_ID | $(get_timestamp) | 0 | $(get_timestamp) | 0" >> "$CSV_FILE"
+        }
     else
-        echo "Query file $query_file does not exist, skipping..."
+        # If query file doesn't exist, log zeros
+        echo "$QUERY_ID | $(get_timestamp) | 0 | $(get_timestamp) | 0" >> "$CSV_FILE"
     fi
 done
 
-echo "### Benchmark completed! Results saved to $RESULTS_FILE."
+echo "### Benchmark completed! Results saved to $CSV_FILE."
