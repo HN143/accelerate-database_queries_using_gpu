@@ -1,6 +1,5 @@
 mkdir -p /tmp/heavy_data
 cp tools/tpcds.sql /tmp/heavy_data/tpcds.sql
-sudo chmod +x remove_primary_keys.sh
 
 # Define input and output file paths
 INPUT_FILE="/tmp/heavy_data/tpcds.sql"
