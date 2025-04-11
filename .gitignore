@@ -4,5 +4,5 @@ __pycache__
 .idea
 dist
 node_modules
-tpc-ds_nckh.duckdb
 tpc-h_nckh.duckdb
+tpc-ds_nckh.duckdb

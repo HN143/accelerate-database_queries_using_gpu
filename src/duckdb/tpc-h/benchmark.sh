@@ -42,7 +42,7 @@ SUFFIX=$(get_suffix $NUMBER_TIME)
 
 # Define paths based on scale factor
 DB_PATH="tpc-h_nckh.duckdb"
-QUERY_DIR="../../heavydb/tpc-h/sql/queries_${SCALE_FACTOR}"
+QUERY_DIR="sql/queries_${SCALE_FACTOR}"
 LOG_DIR="result_log/result_log_${SCALE_FACTOR}"
 CSV_FILE="${LOG_DIR}/${NUMBER_TIME}${SUFFIX}_query_execution_times.csv"
 
