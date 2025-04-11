@@ -21,6 +21,9 @@ uv python install 3.12.7
 uv python pin 3.12.7
 ```
 
+- HeavyDB
+- DuckDB
+
 ## Installation
 
 1. Install dependencies:
@@ -29,7 +32,9 @@ uv python pin 3.12.7
 task i
 ```
 
-2. Set up TPC-DS dataset:
+## HeavyDB
+
+### Setup
 
 For Ubuntu:
 
@@ -51,35 +56,6 @@ cd src/tpcds/tools
 make OS=MACOS # Build tools
 ```
 
-# Using
-
-```sh
-cd src/tpcds
-sudo chmod +x gen_data.sh gen_schema.sh gen_queries.sh
-
-# Generate TPC-DS data
-# Examples: ./gen_data.sh 1
-./gen_data.sh <GB>
-
-# Set up database schemas
-./gen_schema.sh
-
-# Generate benchmarking queries
-./gen_queries.sh
-```
-
-## Usage
-
-The generated data and schemas can be found in the `./results` folder. Use these files to benchmark and optimize your database queries using GPU acceleration.
-
-_More detailed usage instructions coming soon_
-
-## HeavyDB Setup
-
-### Prerequisites
-
-- HeavyDB
-
 ### Configuration
 
 Add the `allowed-import-paths = ["/"]` line to `/var/lib/heavyai/heavy.conf` and then reload the service:
@@ -89,23 +65,42 @@ vi /var/lib/heavyai/heavy.conf
 sudo systemctl restart heavydb
 ```
 
-### Import TPC-DS Test Data
-
-1. Move data to `/tmp/heavy_data`:
+### Generate benchmarking data
 
 ```sh
-mkdir -p /tmp/heavy_data
-mv results/data /tmp/heavy_data
+cd src/tpcds
+sudo chmod +x gen_data.sh gen_schema.sh gen_queries.sh
+
+# Generate TPC-DS data
+# Examples: ./gen_data.sh 1
+./gen_data.sh <GB>
+
+./gen_schema.sh # Generate database schemas
+
+./gen_queries.sh # Generate benchmarking queries
 ```
 
-2. Access to HeavyDB (username: `admin`, password: `HyperInteractive`):
+The generated data will be stored in `/tmp/heavy_data`
+
+## HeavyDB
+
+### Setup
+
+Add HeavyDB to executable path:
 
 ```sh
 sudo ln -s $HEAVYAI_PATH/bin/heavysql /usr/local/bin/heavysql
+```
+
+### Import TPC-DS Data
+
+1. Access to HeavyDB (username: `admin`, password: `HyperInteractive`):
+
+```sh
 heavysql -u admin -p HyperInteractive heavyai
 ```
 
-3. Use the following SQL commands to import generated test data of TPC-DS:
+2. Use the following SQL commands to import generated test data of TPC-DS:
 
 ```sql
 COPY call_center FROM '/tmp/heavy_data/call_center.dat' WITH (delimiter = '|', line_delimiter = '\n');

@@ -1,3 +1,3 @@
-rm -rf results/data
-mkdir -p results/data
-cd tools && ./dsdgen -sc $1 -dir ../results/data -TERMINATE N && cd ..
+rm -rf /tmp/heavy_data/data
+mkdir -p /tmp/heavy_data/data
+cd tools && ./dsdgen -sc $1 -dir /tmp/heavy_data/data -TERMINATE N && cd ..

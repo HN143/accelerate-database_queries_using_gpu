@@ -1,11 +1,11 @@
-rm -rf results/test_queries
-mkdir -p results/test_queries
+rm -rf /tmp/heavy_data/test_queries
+mkdir -p /tmp/heavy_data/test_queries
 
 set -eu
 
 SCALE="1"
 TEMPLATE_DIR="query_templates"
-OUTPUT_DIR="results/test_queries"
+OUTPUT_DIR="/tmp/heavy_data/test_queries"
 QUERY_ID=""
 
 function generate_query()
