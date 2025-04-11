@@ -1,4 +1,6 @@
-#!/bin/bash
+rm -rf results/test_queries
+mkdir -p results/test_queries
+
 set -eu
 
 SCALE="1"

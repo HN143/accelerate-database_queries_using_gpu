@@ -12,7 +12,7 @@ Add the `allowed-import-paths = ["/"]` line to `/var/lib/heavyai/heavy.conf` and
 
 ```sh
 vi /var/lib/heavyai/heavy.conf
-sudo systemctl daemon-reload
+sudo systemctl restart heavydb
 ```
 
 ### Import test data

@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 
 # Define input and output file paths
 INPUT_FILE="results/tpcds.sql"
