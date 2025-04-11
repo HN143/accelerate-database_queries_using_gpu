@@ -7,6 +7,8 @@ echo "Installing curl..."
 sudo apt update -y
 sudo apt install -y curl
 
+sudo apt install unzip
+
 echo "Installing card driver..."
 # Kiểm tra card đồ họa
 chmod +x graphic_card/check_and_install_card_driver.sh
@@ -24,7 +26,6 @@ chmod +x duckdb_script/install_duckdb.sh
 
 echo "Running DuckDB script..."
 chmod +x duckdb_script/use_duckdb_generate_1gb_data.sh
-./duckdb_script/use_duckdb_generate_1gb_data.sh
 
 # Kiểm tra thư mục HeavyDB
 if [[ ! -d "heavydb" ]]; then
