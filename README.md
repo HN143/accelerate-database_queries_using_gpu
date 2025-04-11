@@ -69,7 +69,7 @@ sudo systemctl restart heavydb
 
 ```sh
 cd src/tpcds
-sudo chmod +x gen_data.sh gen_schema.sh gen_queries.sh
+sudo chmod +x gen_data.sh gen_queries.sh
 
 # Generate TPC-DS data
 # Examples: ./gen_data.sh 1

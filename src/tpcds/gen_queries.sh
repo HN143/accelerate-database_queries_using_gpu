@@ -22,7 +22,9 @@ function generate_query()
 
 cd tools
 for i in {1..99}; do
-    QUERY_ID="$i"
-    generate_query
+    if [ "$i" -ne 47 ] && [ "$i" -ne 57 ]; then
+        QUERY_ID="$i"
+        generate_query
+    fi
 done
 cd -
