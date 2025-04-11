@@ -33,11 +33,11 @@
             left: 1cm,
             top: 0.5cm,
             [
-              *Nguyễn Văn A* - CT010101 \
-              *Nguyễn Văn B* - CT010102 \
-              *Nguyễn Văn C* - CT010103 \
-              *Nguyễn Văn D* - CT010104 \
-              *Nguyễn Văn E* - CT010105 \
+              *Nguyễn Thị Hồng Ngân* - CT060229 \
+              *Tô Quang Viễn* - CT060116 \
+              *Nguyễn Ngọc Tuyền* - CT060145 \
+              *Bùi Đức Khánh* - CT060119 \
+              
             ],
           )
           _Giảng viên hướng dẫn_: \
