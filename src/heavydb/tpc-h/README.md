@@ -13,12 +13,14 @@ This script need to download heavydb from script of tpc-ds folder.
    ```sh
    chmod +x main.sh
    ```
-1. Run main to grenerate data, load data to heavydb and benchmark them:
-
-   ```sh
-   ./main.sh
-   ```
 
 ## Usage
+
+1. For benchmark 2gb data, use query of 5gb, log to log/1gb, run:
+
+   ```sh
+   ./main.sh 2 5 log/1gb
+   ```
+
 
 _Coming soon_
