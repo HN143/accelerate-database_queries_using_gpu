@@ -1,24 +1,31 @@
 #!/bin/bash
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"  # Đường dẫn tới thư mục
+# Kiểm tra tham số logdir
+if [ -z "$1" ]; then
+  echo "Usage: $0 <logdir>"
+  exit 1
+fi
+
+LOG_DIR=$1
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCRIPT_TO_RUN="$SCRIPT_DIR/script.sh"
-DURATION=30                  # Thời gian chạy (giây)
-INTERVAL=0.1                # Khoảng thời gian giữa các tiến trình
+DURATION=65
+INTERVAL=0.1
 
 chmod +x "$SCRIPT_TO_RUN"
 
-echo "Starting process launcher. Running $SCRIPT_TO_RUN every $INTERVAL seconds for $DURATION seconds..."
+echo "Starting process launcher. Running $SCRIPT_TO_RUN every $INTERVAL seconds for $DURATION seconds with logdir=$LOG_DIR..."
 
-# Tạo tệp log để lưu thời gian
-log_file="query_execution_times.csv"
-> $log_file # Xóa nội dung tệp log trước khi bắt đầu
+# Tạo log tổng (nếu muốn theo dõi chung)
+LOG_FILE="$LOG_DIR/query_execution_times.csv"
+mkdir -p "$LOG_DIR"
+> "$LOG_FILE"
+echo "CPU_time(ms), CPU_USAGE(%), GPU_time(ms), GPU_USAGE(%), RAM_time(ms), RAM_USED(Gb), VRAM_time(ms), VRAM_USED(Gb), POWER_time(ms), POWER_USE(W)" >> "$LOG_FILE"
 
-echo "CPU_time(ms), CPU_USAGE(%), GPU_time(ms), GPU_USAGE(%), RAM_time(ms), RAM_USED(Gb), VRAM_time(ms), VRAM_USED(Gb), POWER_time(ms), POWER_USE(W)">> $log_file
-
-# Giới hạn thời gian chạy bằng timeout
+# Giới hạn thời gian chạy bằng timeout, truyền logdir vào SCRIPT_TO_RUN
 timeout $DURATION bash -c '
 while true; do
-    '"$SCRIPT_TO_RUN"' &  # Chạy script gốc trong nền
+    '"$SCRIPT_TO_RUN"' '"$LOG_DIR"' &  # Truyền logdir làm đối số
     sleep '"$INTERVAL"'
 done
 '
