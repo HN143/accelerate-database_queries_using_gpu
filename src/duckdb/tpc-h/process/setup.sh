@@ -19,7 +19,7 @@ if [[ ! "$SCALE_FACTOR" =~ ^(1|10|50|100)$ ]]; then
 fi
 
 # Sinh dữ liệu cho các bảng để truy vấn
-DUCKDB_DB="tpc-h_nckh.duckdb"
+DUCKDB_DB="../tpc-h_nckh.duckdb"
 
 # Kiểm tra nếu tệp cơ sở dữ liệu tồn tại, thì xóa nó
 if [ -f "$DUCKDB_DB" ]; then

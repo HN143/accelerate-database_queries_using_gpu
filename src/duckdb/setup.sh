@@ -10,21 +10,6 @@ curl https://install.duckdb.org | sh
 chmod +x $HOME/.duckdb/cli/latest/duckdb
 sudo ln -sf $HOME/.duckdb/cli/latest/duckdb /usr/local/bin/duckdb
 
-# Sinh dữ liệu cho các bảng để truy vấn
-#!/bin/bash
-
-TARGET_DIR="exported_data"  # Thư mục lưu dữ liệu xuất ra
-
-# Tạo thư mục lưu trữ nếu chưa có
-mkdir -p "$TARGET_DIR"
-
-# Chạy DuckDB và thực thi các lệnh SQL
-duckdb <<EOF
-INSTALL tpch;
-LOAD tpch;
-SELECT * FROM dbgen(sf=1);
-EXPORT DATABASE '$TARGET_DIR' (FORMAT CSV, DELIMITER '|');
-EOF
 
 echo "DuckDB has completed execution. Data exported to: $TARGET_DIR"
 
