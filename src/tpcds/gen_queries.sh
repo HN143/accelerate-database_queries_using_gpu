@@ -14,10 +14,10 @@ function generate_query()
     -DIRECTORY "../$TEMPLATE_DIR" \
     -INPUT "../$TEMPLATE_DIR/templates.lst" \
     -SCALE $SCALE \
-    -OUTPUT_DIR ../$OUTPUT_DIR \
+    -OUTPUT_DIR $OUTPUT_DIR \
     -DIALECT netezza \
     -TEMPLATE "query$QUERY_ID.tpl"
-    mv "../$OUTPUT_DIR/query_0.sql" "../$OUTPUT_DIR/query_$QUERY_ID.sql"
+    mv "$OUTPUT_DIR/query_0.sql" "$OUTPUT_DIR/query_$QUERY_ID.sql"
 }
 
 cd tools
