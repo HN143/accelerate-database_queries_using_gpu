@@ -56,30 +56,25 @@ cd src/tpcds/tools
 make OS=MACOS
 ```
 
-3. Generate TPC-DS data:
-
-```sh
-mkdir -p src/tpcds/results/data
-cd src/tpcds/tools
-./dsdgen -sc 1 -dir ../results/data -TERMINATE N
-cd ..
-sudo chmod +x reformat_data.sh
-./reformat_data.sh
-```
-
-4. Set up database schemas:
+# Using
 
 ```sh
 cd src/tpcds
+mkdir -p results
+
+# Generate TPC-DS data
+rm -rf results/data
+mkdir -p results/data
+cd tools && ./dsdgen -sc 1 -dir ../results/data -TERMINATE N && cd ..
+# sudo chmod +x reformat_data.sh
+# ./reformat_data.sh
+
+# Set up database schemas
 cp tools/tpcds.sql results/tpcds.sql
 sudo chmod +x remove_primary_keys.sh
 ./remove_primary_keys.sh # Remove primary key definition lines after copying
-```
 
-5. Generate benchmarking queries:
-
-```sh
-cd src/tpcds
+# Generate benchmarking queries
 mkdir -p results/test_queries
 sudo chmod +x convert_to_lf.sh generate_queries.sh
 ./generate_queries.sh
