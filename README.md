@@ -77,7 +77,7 @@ sudo chmod +x gen_data.sh gen_schema.sh gen_queries.sh
 
 ./gen_queries.sh # Generate benchmarking queries
 
-python ./gen_schema.py # Generate database schemas
+python3 ./gen_schema.py # Generate database schemas
 ```
 
 The generated data will be stored in `/tmp/heavy_data`
@@ -94,44 +94,20 @@ sudo ln -s $HEAVYAI_PATH/bin/heavysql /usr/local/bin/heavysql
 
 ### Import TPC-DS Data
 
-1. Access to HeavyDB (username: `admin`, password: `HyperInteractive`):
-
-```sh
-heavysql -u admin -p HyperInteractive heavyai
-```
-
-2. Create schema in HeavyDB from the generated SQL file:
+1. Create schema in HeavyDB from the generated SQL file:
 
 ```sh
 heavysql -u admin -p HyperInteractive heavyai < /tmp/heavy_data/tpcds.sql
 ```
 
+2. Access to HeavyDB (username: `admin`, password: `HyperInteractive`):
+
+```sh
+heavysql -u admin -p HyperInteractive heavyai
+```
+
 3. Use the following SQL commands to import generated test data of TPC-DS:
 
-```sql
-COPY call_center FROM '/tmp/heavy_data/data/call_center.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY catalog_page FROM '/tmp/heavy_data/data/catalog_page.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY catalog_returns FROM '/tmp/heavy_data/data/catalog_returns.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY catalog_sales FROM '/tmp/heavy_data/data/catalog_sales.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY customer_address FROM '/tmp/heavy_data/data/customer_address.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY customer FROM '/tmp/heavy_data/data/customer.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY customer_demographics FROM '/tmp/heavy_data/data/customer_demographics.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY date_dim FROM '/tmp/heavy_data/data/date_dim.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY dbgen_version FROM '/tmp/heavy_data/data/dbgen_version.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY household_demographics FROM '/tmp/heavy_data/data/household_demographics.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY income_band FROM '/tmp/heavy_data/data/income_band.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY inventory FROM '/tmp/heavy_data/data/inventory.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY item FROM '/tmp/heavy_data/data/item.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY promotion FROM '/tmp/heavy_data/data/promotion.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY reason FROM '/tmp/heavy_data/data/reason.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY ship_mode FROM '/tmp/heavy_data/data/ship_mode.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY store FROM '/tmp/heavy_data/data/store.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY store_returns FROM '/tmp/heavy_data/data/store_returns.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY store_sales FROM '/tmp/heavy_data/data/store_sales.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY time_dim FROM '/tmp/heavy_data/data/time_dim.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY warehouse FROM '/tmp/heavy_data/data/warehouse.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY web_page FROM '/tmp/heavy_data/data/web_page.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY web_returns FROM '/tmp/heavy_data/data/web_returns.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY web_sales FROM '/tmp/heavy_data/data/web_sales.dat' WITH (delimiter = '|', line_delimiter = '\n');
-COPY web_site FROM '/tmp/heavy_data/data/web_site.dat' WITH (delimiter = '|', line_delimiter = '\n');
+```sh
+heavysql -u admin -p HyperInteractive heavyai < src/tpcds/load_data.sql
 ```
