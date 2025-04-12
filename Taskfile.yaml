@@ -45,4 +45,3 @@ tasks:
   heavy-alias:
     cmds:
       - echo "alias heavysql='heavysql -u admin -p HyperInteractive heavyai'" >> ~/.bashrc
-      - source ~/.bashrc

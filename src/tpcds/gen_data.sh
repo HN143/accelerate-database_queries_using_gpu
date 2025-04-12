@@ -1,8 +1,10 @@
 #!/bin/bash
 
-rm -rf "$HOME/heavyai/tpcds/data"
-mkdir -p "$HOME/heavyai/tpcds/data"
+TPCDS_DATA_DIR="$HOME/heavyai/tpcds/data"
 
-cd tools && ./dsdgen -sc $1 -dir "$HOME/heavyai/tpcds/data" -TERMINATE N && cd ..
+rm -rf "$TPCDS_DATA_DIR"
+mkdir -p "$TPCDS_DATA_DIR"
+
+cd tools && ./dsdgen -sc $1 -dir "$TPCDS_DATA_DIR" -TERMINATE N && cd ..
 
 cp ./load_data.sql "$HOME/heavyai/tpcds/load_data.sql"

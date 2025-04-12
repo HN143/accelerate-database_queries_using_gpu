@@ -71,7 +71,7 @@ task gen-tpcds-queries
 Generate data
 
 ```sh
-task gen-tpcds-data -- <GB>
+task gen-tpcds-data -- <SC>
 ```
 
 Example: `task gen-tpcds-data -- 1`
@@ -92,6 +92,7 @@ Add the HeavyDB alias `heavysql`:
 
 ```sh
 task heavy-alias
+source ~/.bashrc
 ```
 
 ### Import TPC-DS Data
@@ -105,5 +106,6 @@ heavysql < ~/heavyai/tpcds/tpcds.sql
 2. Use the following SQL commands to import generated test data of TPC-DS:
 
 ```sh
+ln -s ~/heavyai/tpcds/data /var/lib/heavyai/storage/tpcds/data
 heavysql < ~/heavyai/tpcds/load_data.sql
 ```

@@ -1,13 +1,13 @@
 #!/bin/bash
 
-rm -rf "$HOME/heavyai/tpcds/test_queries"
-mkdir -p "$HOME/heavyai/tpcds/test_queries"
-set -eu
-
 SCALE="1"
 TEMPLATE_DIR="query_templates"
 OUTPUT_DIR="$HOME/heavyai/tpcds/test_queries"
 QUERY_ID=""
+
+rm -rf "$OUTPUT_DIR"
+mkdir -p "$OUTPUT_DIR"
+set -eu
 
 function generate_query()
 {
