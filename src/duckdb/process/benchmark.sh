@@ -15,14 +15,14 @@ if [ "$TYPE" -eq 1 ]; then
     DB_PATH="tpc-h/tpc-h_nckh.duckdb"
     QUERY_DIR="tpc-h/sql/queries_${SCALE_FACTOR}"
     MAX_QUERIES=22
-    LOG_DIR="tpc-h/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
+    LOG_DIR="../benchmark_result/on_g4dn_xlarge/duckdb/tpc-h/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
 else
     # TPC-DS
     BENCHMARK="TPC-DS"
     DB_PATH="tpc-ds/tpc-ds_nckh.duckdb"
     QUERY_DIR="tpc-ds/sql/query${SCALE_FACTOR}/splited"
     MAX_QUERIES=99
-    LOG_DIR="tpc-ds/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
+    LOG_DIR="../benchmark_result/on_g4dn_xlarge/duckdb/tpc-ds/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
 fi
 
 # Define common paths
