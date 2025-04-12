@@ -5,29 +5,36 @@
 
 #h1("Lời cảm ơn", numbering: false)
 
-...
+Trước tiên, nhóm nghiên cứu xin gửi lời cảm ơn chân thành và sâu sắc nhất đến Ban Giám hiệu Học viện Kỹ thuật mật mã, các thầy cô trong khoa Công nghệ Thông tin đã tạo điều kiện thuận lợi và hỗ trợ nhóm trong suốt quá trình thực hiện đề tài nghiên cứu khoa học này.
 
-Tôi xin chân thành cảm ơn! \
+Nhóm nghiên cứu xin đặc biệt cảm ơn *Ths.Cao Thanh Vinh*, giảng viên hướng dẫn, đã tận tình hướng dẫn, đóng góp ý kiến quý báu và định hướng nghiên cứu, giúp nhóm hoàn thành tốt đề tài *“Tăng tốc truy vấn cơ sở dữ liệu sử dụng GPU”*. Sự hỗ trợ và chỉ dẫn của cô là nguồn động lực lớn để nhóm vượt qua những khó khăn trong quá trình thực hiện.
 
-// #[
-//   #set align(right)
-//   Tp. Hồ Chí Minh, ngày 05 tháng 06 năm 2025 \
-//   Sinh viên thực hiện #h(75pt) \ \ \
-//   Ngô Quang Sang #h(80pt)
-// ]
+Nhóm cũng xin gửi lời cảm ơn đến các bạn bè, anh chị đã chia sẻ kinh nghiệm, góp ý và hỗ trợ nhóm trong việc thu thập tài liệu, xây dựng hệ thống thử nghiệm và phân tích kết quả.
+
+Cuối cùng, nhóm nghiên cứu xin cảm ơn gia đình đã luôn động viên, khích lệ và tạo điều kiện tốt nhất để nhóm tập trung hoàn thành đề tài này.
+
+Nhóm nghiên cứu xin chân thành cảm ơn!
+
+\
+
+#[
+  #set align(right)
+  Hà Nội, ngày 12 tháng 04 năm 2025 \
+  *Nhóm nghiên cứu* #h(50pt) \ \ \
+  
+]
 
 #h1("Lời cam đoan", numbering: false)
 
-..
+Nhóm nghiên cứu xin cam đoan bài nghiên cứu khoa học với đề tài “Tăng tốc truy vấn cơ sở dữ liệu sử dụng GPU” là sản phẩm của riêng nhóm nghiên cứu; sản phẩm không sao chép từ bất kỳ nguồn nào. Nhóm nghiên cứu hoàn toàn chịu trách nhiệm về tính chính xác trong đề tài.
+ \ \
 
-Nếu sai, tôi xin chịu mọi hình thức kỷ luật theo quy định của Học viện. \ \
-
-// #[
-//   #set align(right)
-//   Tp. Hồ Chí Minh, ngày 05 tháng 06 năm 2025 \
-//   Sinh viên thực hiện #h(75pt) \ \ \
-//   Ngô Quang Sang #h(80pt)
-// ]
+#[
+  #set align(right)
+  Hà Nội, ngày 12 tháng 04 năm 2025 \
+  *Nhóm nghiên cứu* #h(50pt) \ \ \
+  
+]
 
 #h1("Mục lục", numbering: false)
 #outline(

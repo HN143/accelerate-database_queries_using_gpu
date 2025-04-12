@@ -14,7 +14,10 @@
       *HỌC VIỆN KỸ THUẬT MẬT MÃ*
       #line(start: (0%, 20pt), length: 3.5cm)
       #image("./images/logo.png", width: 3.5cm) \
-      ĐỀ TÀI NGHIÊN CỨU KHOA HỌC \ \
+      BÁO CÁO TỔNG KẾT \ 
+      ĐỀ TÀI NGHIÊN CỨU KHOA HỌC SINH VIÊN
+      \ \
+      *ĐỀ TÀI* \
       #text(weight: "bold", size: 16pt, "TĂNG TỐC TRUY VẤN CƠ SỞ DỮ LIỆU SỬ DỤNG GPU") \ \ \
       #set align(left)
       #pad(

@@ -49,8 +49,8 @@
     numbering: (..nums) => text(size: textSize, weight: "bold", nums.pos().map(str).join(".") + "."),
     text(size: textSize, weight: "bold", children),
   )
-  block(inset: (top: -(2 * textSize)))
-  par("")
+ 
+  // par("")
 }
 
 /**
@@ -61,7 +61,7 @@
  * @returns A formatted level 3 heading with appropriate styling and spacing
  */
 #let h3(children) = {
-  block(inset: (top: (0.5 * textSize)))
+  block(inset: (top: -(0.5* textSize)))
   heading(
     level: 3,
     numbering: (..nums) => text(
@@ -71,6 +71,7 @@
       h(1cm) + nums.pos().map(str).join(".") + ".",
     ),
     text(size: textSize, style: "italic", weight: "regular", children),
+    
   )
 }
 
@@ -82,7 +83,7 @@
  * @returns A formatted level 4 heading with appropriate styling and spacing
  */
 #let h4(children) = {
-  block(inset: (top: (0.5 * textSize)))
+  block(inset: (top: -(0.5 * textSize)))
   heading(
     level: 4,
     numbering: (..nums) => text(
@@ -92,6 +93,7 @@
       h(1cm) + nums.pos().map(str).join(".") + ".",
     ),
     text(size: textSize, style: "italic", weight: "regular", children),
+    
   )
 }
 
