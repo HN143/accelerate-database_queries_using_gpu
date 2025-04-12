@@ -37,3 +37,12 @@ tasks:
     cmds:
       - ./gen_data.sh {{.CLI_ARGS}}
     dir: src/tpcds
+
+  heavy-allow-import-paths:
+    cmds:
+      - echo "allowed-import-paths = [\"/\"]" | cat - $HEAVYAI_BASE/heavy.conf > temp && mv temp $HEAVYAI_BASE/heavy.conf
+
+  heavy-alias:
+    cmds:
+      - echo "alias heavysql='heavysql -u admin -p HyperInteractive heavyai'" >> ~/.bashrc
+      - source ~/.bashrc

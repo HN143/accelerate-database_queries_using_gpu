@@ -82,11 +82,16 @@ The generated data will be stored in `~/heavyai/tpcds`
 
 ### Setup
 
-Add HeavyDB to executable path:
+Allow import paths at `/`:
 
 ```sh
-echo "alias heavysql='heavysql -u admin -p HyperInteractive heavyai --allowed-import-paths [\"/\"]'" >> ~/.bashrc
-source ~/.bashrc
+task heavy-allow-import-paths
+```
+
+Add the HeavyDB alias `heavysql`:
+
+```sh
+task heavy-alias
 ```
 
 ### Import TPC-DS Data
