@@ -1,5 +1,5 @@
-rm -rf /tmp/heavy_data/test_queries
-mkdir -p /tmp/heavy_data/test_queries
+rm -rf /heavy_data/test_queries
+mkdir -p /heavy_data/test_queries
 
 set -eu
 
