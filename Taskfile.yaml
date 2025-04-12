@@ -1,6 +1,39 @@
-version: '3'
+version: "3"
 
 tasks:
   i:
     cmds:
       - uv sync
+
+  i-ubuntu:
+    cmds:
+      - sudo apt install gcc make gcc-9 yacc bison flex
+
+  i-macos:
+    cmds:
+      - xcode-select --install
+
+  build-tpcds-ubuntu:
+    cmds:
+      - make CC=gcc-9
+    dir: src/tpcds/tools
+
+  build-tpcds-macos:
+    cmds:
+      - make OS=MACOS
+    dir: src/tpcds/tools
+
+  gen-tpcds-schema:
+    cmds:
+      - ./gen_schema.sh
+    dir: src/tpcds
+
+  gen-tpcds-queries:
+    cmds:
+      - ./gen_queries.sh
+    dir: src/tpcds
+
+  gen-tpcds-data:
+    cmds:
+      - ./gen_data.sh {{.CLI_ARGS}}
+    dir: src/tpcds

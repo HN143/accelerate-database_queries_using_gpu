@@ -1,5 +1,8 @@
+benchmark_result
 duckdb
+fomat_data
 heavydb
 report
 scripts
 tpcds
+tpch

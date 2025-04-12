@@ -26,52 +26,57 @@ uv python pin 3.12.7
 
 ## Installation
 
-1. Install dependencies:
+1. Install the necessary dependencies:
 
 ```sh
 task i
 ```
 
-## HeavyDB
-
-### Setup
-
-For Ubuntu:
+2. Install platform-specific dependencies:
 
 ```sh
-# Install required packages
-sudo apt install gcc make gcc-9 yacc bison flex
-
-# Build tools
-cd src/tpcds/tools
-make CC=gcc-9
+task i-ubuntu
 ```
 
-For Mac OS:
+```sh
+task i-macos
+```
+
+## TPC-DS
+
+### Build TPC-DS by platform
 
 ```sh
-xcode-select --install # Install Xcode Command Line Tools
+task build-tpcds-ubuntu
+```
 
-cd src/tpcds/tools
-make OS=MACOS # Build tools
+```sh
+task build-tpcds-macos
 ```
 
 ### Generate benchmarking data
 
+Generate schema
+
 ```sh
-cd src/tpcds
-sudo chmod +x gen_data.sh gen_queries.sh
-
-# Generate TPC-DS data
-# Examples: ./gen_data.sh 1
-./gen_data.sh <GB>
-
-./gen_queries.sh # Generate benchmarking queries
-
-python3 ./gen_schema.py # Generate database schemas
+task gen-tpcds-schema
 ```
 
-The generated data will be stored in `/opt/heavyai/data`
+Generate queries
+
+```sh
+task gen-tpcds-queries
+```
+
+Generate data
+
+```sh
+task gen-tpcds-data -- <GB>
+```
+
+Example: `task gen-tpcds-data -- 1`
+
+The generated data will be stored in `~/heavyai/tpcds`
 
 ## HeavyDB
 
@@ -89,11 +94,11 @@ source ~/.bashrc
 1. Create schema in HeavyDB from the generated SQL file:
 
 ```sh
-heavysql < /opt/heavyai/data/tpcds.sql
+heavysql < ~/heavyai/tpcds/tpcds.sql
 ```
 
 2. Use the following SQL commands to import generated test data of TPC-DS:
 
 ```sh
-heavysql < src/tpcds/load_data.sql
+heavysql < ~/heavyai/tpcds/load_data.sql
 ```

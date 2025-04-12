@@ -487,7 +487,7 @@ print_start (int tbl)
 
    if (!res)                    /* open failed! */
      {
-        INTERNAL ("Failed to open output file!");
+        fprintf(stderr, "Failed to open output file: %s\n", path);
 	exit(0);
      }
 #ifdef WIN32
