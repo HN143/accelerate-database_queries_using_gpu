@@ -106,6 +106,6 @@ heavysql < ~/heavyai/tpcds/tpcds.sql
 2. Use the following SQL commands to import generated test data of TPC-DS:
 
 ```sh
-ln -s ~/heavyai/tpcds/data /var/lib/heavyai/storage/tpcds/data
+ln -s ~/heavyai/tpcds /var/lib/heavyai/storage/ -f
 heavysql < ~/heavyai/tpcds/load_data.sql
 ```

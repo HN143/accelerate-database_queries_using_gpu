@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 TPCDS_DATA_DIR="$HOME/heavyai/tpcds/data"
 
 rm -rf "$TPCDS_DATA_DIR"
