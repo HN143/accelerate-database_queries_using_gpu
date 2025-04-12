@@ -1,72 +1,77 @@
 #!/bin/bash
+# filepath: /home/tuyen/accelerate-database_queries_using_gpu/src/duckdb/process/benchmark.sh
 
-# Kiểm tra đầu vào
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 <scale_factor> <run_number>"
-    echo "Allowed scale factors: 1, 10, 50, 100"
-    echo "Run number: Positive integer (1, 2, 3, ...)"
-    exit 1
+set -e  # Stop script if any command fails
+
+# Assume validation is done in main.sh
+TYPE=$1
+SCALE_FACTOR=$2
+NUMBER_TIME=$3
+
+# Set variables based on type
+if [ "$TYPE" -eq 1 ]; then
+    # TPC-H
+    BENCHMARK="TPC-H"
+    DB_PATH="tpc-h/tpc-h_nckh.duckdb"
+    QUERY_DIR="tpc-h/sql/queries_${SCALE_FACTOR}"
+    MAX_QUERIES=22
+    LOG_DIR="tpc-h/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
+else
+    # TPC-DS
+    BENCHMARK="TPC-DS"
+    DB_PATH="tpc-ds/tpc-ds_nckh.duckdb"
+    QUERY_DIR="tpc-ds/sql/query${SCALE_FACTOR}/splited"
+    MAX_QUERIES=99
+    LOG_DIR="tpc-ds/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
 fi
 
-SCALE_FACTOR=$1
-NUMBER_TIME=$2
-
-# Xác thực scale factor
-if [[ ! "$SCALE_FACTOR" =~ ^(1|10|50|100)$ ]]; then
-    echo "Error: Scale factor must be 1, 10, 50, or 100"
-    exit 1
-fi
-
-# Xác thực run number
-if ! [[ "$NUMBER_TIME" =~ ^[1-9][0-9]*$ ]]; then
-    echo "Error: Run number must be a positive integer"
-    exit 1
-fi
-
-# Định nghĩa đường dẫn
-DB_PATH="../tpc-h_nckh.duckdb"
-QUERY_DIR="../sql/queries_${SCALE_FACTOR}"
-LOG_DIR="../result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
+# Define common paths
 CSV_FILE="${LOG_DIR}/query_sys_params.csv"
 TIME_CSV_FILE="${LOG_DIR}/query_times.csv"
 
-# Tạo thư mục log nếu chưa tồn tại
+# Create log directory if it doesn't exist
 mkdir -p "$LOG_DIR"
 
-# Tạo file CSV với header
+# Create CSV files with headers
 echo "query_id, cpu_used(%), ram_used(gb)" > "$CSV_FILE"
 echo "query_id, real_time(s), user_time(s), sys_time(s)" > "$TIME_CSV_FILE"
 
-# Hàm lấy CPU usage
+# Function to get CPU usage
 get_cpu_usage() {
     # Change from comma to dot decimal separator
     top -bn1 | grep "Cpu(s)" | awk '{print $2}' | sed 's/,/./g' || echo "0"
 }
 
-# Hàm lấy RAM usage (GB)
+# Function to get RAM usage (GB)
 get_ram_usage() {
     free -m | awk '/Mem:/ {printf "%.2f", $3/1024}' | sed 's/,/./g' || echo "0"
 }
 
-# Chạy 22 truy vấn tuần tự
-echo "### Running TPC-H benchmark with ${SCALE_FACTOR}GB data..."
+echo "### Running $BENCHMARK benchmark with ${SCALE_FACTOR}GB data..."
 
-for i in $(seq 1 22); do
-    # Đặt tên file truy vấn
-    if [ $i -lt 10 ]; then
-        QUERY_FILE="${QUERY_DIR}/${i}.sql"
-        QUERY_ID="$i"
+for i in $(seq 1 $MAX_QUERIES); do
+    # Set query file path based on benchmark type
+    if [ "$TYPE" -eq 1 ]; then
+        # TPC-H
+        if [ $i -lt 10 ]; then
+            QUERY_FILE="${QUERY_DIR}/${i}.sql"
+            QUERY_ID="$i"
+        else
+            QUERY_FILE="${QUERY_DIR}/${i}.sql"
+            QUERY_ID="$(printf "%02d" $i)"
+        fi
     else
-        QUERY_FILE="${QUERY_DIR}/${i}.sql"
+        # TPC-DS
         QUERY_ID="$(printf "%02d" $i)"
+        QUERY_FILE="${QUERY_DIR}/query-${QUERY_ID}.sql"
     fi
 
     if [ -f "$QUERY_FILE" ]; then
         echo "Running query $i..."
         
-        # Chạy truy vấn và xử lý đầu ra trực tiếp
+        # Run query and process output
         {
-            # Lưu đầu ra vào biến
+            # Save output to variable
             output=$(echo -e ".timer on\n$(cat "$QUERY_FILE")" | duckdb "$DB_PATH" 2>&1)
             exit_status=$?
             if [ $exit_status -ne 0 ]; then
@@ -75,7 +80,7 @@ for i in $(seq 1 22); do
                 echo "$QUERY_ID, 0, 0" >> "$CSV_FILE"
                 echo "$QUERY_ID, 0, 0, 0" >> "$TIME_CSV_FILE"
             else
-                # Kiểm tra và trích xuất thời gian từ đầu ra
+                # Check and extract time from output
                 if echo "$output" | grep -q "Run Time (s)"; then
                     echo "$output" | grep "Run Time (s)" | awk -v qid="$QUERY_ID" '{
                         printf "%s, %s, %s, %s\n", qid, $5, $7, $9
@@ -89,12 +94,12 @@ for i in $(seq 1 22); do
         } &
         query_pid=$!
 
-        # Theo dõi hệ thống trong khi truy vấn chạy
+        # Monitor system while query is running
         while kill -0 $query_pid 2>/dev/null; do
             cpu_usage=$(get_cpu_usage)
             ram_usage=$(get_ram_usage)
             echo "$QUERY_ID, $cpu_usage, $ram_usage" >> "$CSV_FILE"
-            sleep 0.05
+            sleep 0.1
         done
         wait $query_pid || echo "Query $QUERY_ID process failed"
     else
