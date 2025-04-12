@@ -1,3 +1,3 @@
-sudo rm -rf /opt/heavy_data/data
-sudo mkdir -p /opt/heavy_data/data
-cd tools && ./dsdgen -sc $1 -dir /opt/heavy_data/data -TERMINATE N && cd ..
+sudo rm -rf /opt/heavyai/data/data
+sudo mkdir -p /opt/heavyai/data/data
+cd tools && ./dsdgen -sc $1 -dir /opt/heavyai/data/data -TERMINATE N && cd ..
