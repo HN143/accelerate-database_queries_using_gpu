@@ -5,7 +5,7 @@ set -eu
 
 SCALE="1"
 TEMPLATE_DIR="query_templates"
-OUTPUT_DIR="/tmp/heavy_data/test_queries"
+OUTPUT_DIR="/heavy_data/test_queries"
 QUERY_ID=""
 
 function generate_query()

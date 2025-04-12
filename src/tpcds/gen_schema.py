@@ -5,14 +5,14 @@ import sys
 
 def main():
     # Create directory if it doesn't exist
-    os.makedirs("/tmp/heavy_data", exist_ok=True)
+    os.makedirs("/heavy_data", exist_ok=True)
     
     # Copy the SQL file
-    shutil.copy("tools/tpcds.sql", "/tmp/heavy_data/tpcds.sql")
+    shutil.copy("tools/tpcds.sql", "/heavy_data/tpcds.sql")
     
     # Define input and output file paths
-    input_file = "/tmp/heavy_data/tpcds.sql"
-    temp_file = "/tmp/heavy_data/tpcds_no_pk.sql"
+    input_file = "/heavy_data/tpcds.sql"
+    temp_file = "/heavy_data/tpcds_no_pk.sql"
     
     # Check if the input file exists
     if not os.path.isfile(input_file):

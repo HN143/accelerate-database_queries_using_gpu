@@ -56,15 +56,6 @@ cd src/tpcds/tools
 make OS=MACOS # Build tools
 ```
 
-### Configuration
-
-Add the `allowed-import-paths = ["/"]` line to `/var/lib/heavyai/heavy.conf` and then reload the service:
-
-```sh
-vi /var/lib/heavyai/heavy.conf
-sudo systemctl restart heavydb
-```
-
 ### Generate benchmarking data
 
 ```sh
@@ -80,7 +71,7 @@ sudo chmod +x gen_data.sh gen_queries.sh
 python3 ./gen_schema.py # Generate database schemas
 ```
 
-The generated data will be stored in `/tmp/heavy_data`
+The generated data will be stored in `/heavy_data`
 
 ## HeavyDB
 
@@ -89,7 +80,8 @@ The generated data will be stored in `/tmp/heavy_data`
 Add HeavyDB to executable path:
 
 ```sh
-sudo ln -s $HEAVYAI_PATH/bin/heavysql /usr/local/bin/heavysql
+echo "alias heavysql='heavysql -u admin -p HyperInteractive heavyai --allowed-import-paths [\"/\"]'" >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ### Import TPC-DS Data
@@ -97,17 +89,11 @@ sudo ln -s $HEAVYAI_PATH/bin/heavysql /usr/local/bin/heavysql
 1. Create schema in HeavyDB from the generated SQL file:
 
 ```sh
-heavysql -u admin -p HyperInteractive heavyai < /tmp/heavy_data/tpcds.sql
+heavysql < /tmp/heavy_data/tpcds.sql
 ```
 
-2. Access to HeavyDB (username: `admin`, password: `HyperInteractive`):
+2. Use the following SQL commands to import generated test data of TPC-DS:
 
 ```sh
-heavysql -u admin -p HyperInteractive heavyai
-```
-
-3. Use the following SQL commands to import generated test data of TPC-DS:
-
-```sh
-heavysql -u admin -p HyperInteractive heavyai < src/tpcds/load_data.sql
+heavysql < src/tpcds/load_data.sql
 ```
