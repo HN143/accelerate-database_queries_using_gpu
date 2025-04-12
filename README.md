@@ -1,6 +1,6 @@
 # Accelerate Database Queries Using GPU
 
-Project to accelerate database query performance using GPU capabilities, featuring TPC-DS benchmark dataset support.
+A project to accelerate database query performance using GPU capabilities, featuring TPC-DS benchmark dataset support.
 
 ## Description
 
