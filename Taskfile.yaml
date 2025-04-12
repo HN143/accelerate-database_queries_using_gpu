@@ -41,6 +41,7 @@ tasks:
   heavy-allow-import-paths:
     cmds:
       - echo "allowed-import-paths = [\"/\"]" | cat - $HEAVYAI_BASE/heavy.conf > temp && mv temp $HEAVYAI_BASE/heavy.conf
+      - sudo systemctl restart heavydb
 
   heavy-alias:
     cmds:

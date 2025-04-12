@@ -13,10 +13,10 @@ def main():
         print(f"Error: Input file {input_file} not found.")
         sys.exit(1)
     
-    # Remove all lines containing primary key definitions
+    # Remove all lines containing primary key definitions and comments
     with open(input_file, 'r') as infile, open(temp_file, 'w') as outfile:
         for line in infile:
-            if "primary key" not in line:
+            if "primary key" not in line and not line.strip().startswith('--'):
                 outfile.write(line)
     
     # Fix trailing commas before closing parentheses
@@ -34,7 +34,7 @@ def main():
     shutil.move(temp_file, input_file)
     
     # Print success message
-    print(f"Primary key definitions have been removed in {input_file}")
+    print(f"Primary key definitions and comments have been removed in {input_file}")
 
 if __name__ == "__main__":
     main()
