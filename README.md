@@ -71,7 +71,7 @@ sudo chmod +x gen_data.sh gen_queries.sh
 python3 ./gen_schema.py # Generate database schemas
 ```
 
-The generated data will be stored in `/heavy_data`
+The generated data will be stored in `/opt/heavy_data`
 
 ## HeavyDB
 
@@ -89,7 +89,7 @@ source ~/.bashrc
 1. Create schema in HeavyDB from the generated SQL file:
 
 ```sh
-heavysql < /tmp/heavy_data/tpcds.sql
+heavysql < /opt/heavy_data/tpcds.sql
 ```
 
 2. Use the following SQL commands to import generated test data of TPC-DS:

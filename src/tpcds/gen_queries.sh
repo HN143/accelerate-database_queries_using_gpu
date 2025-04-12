@@ -1,11 +1,11 @@
-sudo rm -rf /heavy_data/test_queries
-sudo mkdir -p /heavy_data/test_queries
+sudo rm -rf /opt/heavy_data/test_queries
+sudo mkdir -p /opt/heavy_data/test_queries
 
 set -eu
 
 SCALE="1"
 TEMPLATE_DIR="query_templates"
-OUTPUT_DIR="/heavy_data/test_queries"
+OUTPUT_DIR="/opt/heavy_data/test_queries"
 QUERY_ID=""
 
 function generate_query()
