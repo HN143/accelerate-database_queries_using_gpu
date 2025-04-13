@@ -99,3 +99,10 @@ Nhóm nghiên cứu xin cam đoan bài nghiên cứu khoa học với đề tài
 )
 
 #h1("Mở đầu", numbering: false)
+Trong bối cảnh dữ liệu phát triển với tốc độ nhanh chóng và có xu hướng ngày càng lớn về quy mô và độ phức tạp, nhu cầu xử lý truy vấn cơ sở dữ liệu một cách hiệu quả và nhanh chóng trở nên cấp thiết hơn bao giờ hết. Các hệ thống truyền thống dựa trên CPU, mặc dù đã được tối ưu qua nhiều thế hệ, vẫn gặp khó khăn khi phải xử lý khối lượng lớn dữ liệu trong thời gian ngắn, đặc biệt đối với các tác vụ phân tích dữ liệu theo mô hình OLAP (Online Analytical Processing).
+
+GPU (Graphics Processing Unit), với khả năng tính toán song song mạnh mẽ, đã chứng minh tiềm năng vượt trội trong việc tăng tốc các tác vụ tính toán chuyên sâu, không chỉ trong lĩnh vực đồ họa mà còn trong xử lý dữ liệu lớn. Việc ứng dụng GPU vào hệ quản trị cơ sở dữ liệu đã mở ra một hướng tiếp cận mới, cho phép tăng tốc đáng kể quá trình xử lý truy vấn, đặc biệt trong các bài toán phân tích dữ liệu phức tạp và có tính lặp cao.
+
+Đề tài *“Tăng tốc truy vấn cơ sở dữ liệu sử dụng GPU”* được thực hiện nhằm mục tiêu khảo sát, thử nghiệm và đánh giá hiệu năng giữa hệ thống xử lý truy vấn dựa trên CPU và hệ thống tối ưu hóa cho GPU, từ đó đưa ra cái nhìn toàn diện về lợi ích và hạn chế của từng giải pháp. Các công cụ được lựa chọn cho nghiên cứu bao gồm DuckDB – đại diện tiêu biểu cho hệ quản trị cơ sở dữ liệu nhúng chạy trên CPU, và HeavyDB (trước đây là OmniSciDB) – một hệ quản trị tối ưu hóa cho GPU. Dữ liệu thử nghiệm được xây dựng dựa trên các chuẩn benchmark TPC-H và TPC-DS, đảm bảo tính khách quan và phổ quát trong quá trình đánh giá.
+
+Kết quả nghiên cứu dự kiến sẽ cung cấp thông tin thực tiễn hữu ích cho việc lựa chọn nền tảng xử lý truy vấn phù hợp trong các hệ thống cơ sở dữ liệu hiện đại, đặc biệt trong bối cảnh gia tăng nhu cầu phân tích dữ liệu lớn và thời gian thực.

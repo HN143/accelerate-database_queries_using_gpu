@@ -262,13 +262,13 @@ LIMIT 100;
 ```
 #h2("Các giả thuyết nghiên cứu")
 
-1. **Hiệu suất của GPU vượt trội hơn CPU trong các bài toán xử lý dữ liệu lớn**:
+1. *Hiệu suất của GPU vượt trội hơn CPU trong các bài toán xử lý dữ liệu lớn*:
    - GPU có khả năng xử lý song song mạnh mẽ, giúp giảm thời gian thực thi các truy vấn phức tạp.
 
-2. **Chi phí vận hành của GPU cao hơn CPU, nhưng hiệu quả hơn trong dài hạn**:
+2. *Chi phí vận hành của GPU cao hơn CPU, nhưng hiệu quả hơn trong dài hạn*:
    - GPU tiêu thụ nhiều tài nguyên hơn, nhưng thời gian thực thi ngắn hơn giúp giảm tổng chi phí trong các bài toán lớn.
 
-3. **DuckDB phù hợp cho các bài toán nhỏ và trung bình, trong khi HeavyDB phù hợp cho các bài toán lớn**:
+3. *DuckDB phù hợp cho các bài toán nhỏ và trung bình, trong khi HeavyDB phù hợp cho các bài toán lớn*:
    - DuckDB được tối ưu cho CPU và dữ liệu vừa và nhỏ, trong khi HeavyDB tận dụng GPU để xử lý dữ liệu lớn.
 
 #h2("Thang đo đánh giá")
@@ -328,5 +328,5 @@ Thang đo đánh giá được sử dụng để so sánh hiệu suất giữa D
 - *Ý nghĩa*:
   - Hiệu suất tổng thể cao cho thấy hệ thống có khả năng xử lý dữ liệu tốt, ổn định, và hiệu quả.
 
-#h2("Kết luận")
+#h2("Kết luận chương")
 Chương 3 đã trình bày phương pháp nghiên cứu, lý do lựa chọn công cụ và cấu hình thử nghiệm, cũng như các giả thuyết nghiên cứu. Các phân tích về chi phí và hiệu suất giữa CPU và GPU cung cấp cơ sở để đánh giá hiệu quả của hai giải pháp này trong các bài toán phân tích dữ liệu.

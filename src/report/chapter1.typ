@@ -53,3 +53,7 @@ Việc so sánh hiệu suất giữa CPU và GPU trong xử lý truy vấn cơ s
 Hỗ trợ ra quyết định: Các nhà phát triển phần mềm, kỹ sư dữ liệu và chuyên gia khoa học dữ liệu có thể sử dụng kết quả nghiên cứu này để lựa chọn nền tảng phù hợp khi xây dựng hệ thống phân tích dữ liệu.
 
 Thúc đẩy cải tiến công nghệ: Nghiên cứu giúp các nhà phát triển hệ quản trị cơ sở dữ liệu có cái nhìn sâu sắc hơn về cách tối ưu hóa hiệu suất sử dụng GPU trong các hệ thống hiện đại.
+
+#h2("Kết luận chương")
+
+Chương 1 đã trình bày lý do lựa chọn đề tài, mục tiêu, câu hỏi, phạm vi và ý nghĩa của nghiên cứu. Nghiên cứu tập trung vào so sánh hiệu suất giữa DuckDB (CPU) và HeavyDB (GPU) nhằm đánh giá sự khác biệt trong xử lý truy vấn cơ sở dữ liệu. Các câu hỏi nghiên cứu được đặt ra sẽ làm rõ lợi ích, hạn chế của GPU và cung cấp cơ sở khoa học cho việc lựa chọn nền tảng phù hợp. Nội dung chương này là nền tảng để triển khai các phương pháp nghiên cứu và thực nghiệm trong các chương tiếp theo.

@@ -294,3 +294,6 @@ HeavyDB mang lại nhiều lợi ích vượt trội khi áp dụng trong các b
 // Đánh giá các yếu tố ảnh hưởng đến hiệu suất, bao gồm kích thước dữ liệu, loại truy vấn, phần cứng sử dụng.
 
 
+#h2("Kết luận chương")
+
+Chương 2 đã trình bày các cơ sở lý thuyết và tổng quan tài liệu liên quan đến cơ sở dữ liệu phân tích, các phương pháp tối ưu hóa truy vấn, và so sánh giữa CPU và GPU trong xử lý dữ liệu. Đồng thời, chương này cũng làm rõ ưu, nhược điểm của DuckDB và HeavyDB, hai hệ quản trị cơ sở dữ liệu tiêu biểu. Những nội dung này không chỉ cung cấp nền tảng lý thuyết vững chắc mà còn làm nổi bật khoảng trống nghiên cứu, đặc biệt là sự thiếu vắng các đánh giá thực nghiệm toàn diện giữa CPU và GPU. Đây sẽ là cơ sở để triển khai các phương pháp nghiên cứu và thực nghiệm trong các chương tiếp theo.
