@@ -28,8 +28,8 @@ fi
 if [ "$TYPE" -eq 1 ]; then
     # Validate scale factor for TPC-H
     if [[ ! "$SCALE_FACTOR" =~ ^(1|10|50|100)$ ]]; then
-        echo "Error: For TPC-H, scale factor must be 1, 10, 50, or 100"
-        exit 1
+        echo "Warning: Invalid scale factor for TPC-H. Defaulting to scale factor 1."
+        SCALE_FACTOR=1
     fi
     # Set TPC-H specific variables
     BENCHMARK_NAME="TPC-H"
@@ -37,8 +37,8 @@ if [ "$TYPE" -eq 1 ]; then
 else
     # Validate scale factor for TPC-DS
     if [[ ! "$SCALE_FACTOR" =~ ^(1|2|5|10|20|50|100)$ ]]; then
-        echo "Error: For TPC-DS, scale factor must be 1, 2, 5, 10, 20, 50, or 100"
-        exit 1
+        echo "Warning: Invalid scale factor for TPC-DS. Defaulting to scale factor 1."
+        SCALE_FACTOR=1
     fi
     # Set TPC-DS specific variables
     BENCHMARK_NAME="TPC-DS"
