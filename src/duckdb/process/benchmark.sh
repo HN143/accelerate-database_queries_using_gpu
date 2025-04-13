@@ -14,6 +14,13 @@ if [ "$TYPE" -eq 1 ]; then
     BENCHMARK="TPC-H"
     DB_PATH="tpc-h/tpc-h_nckh.duckdb"
     QUERY_DIR="tpc-h/sql/queries_${SCALE_FACTOR}"
+    
+    # Check if query directory exists, fallback to scale_factor=1 if not
+    if [ ! -d "$QUERY_DIR" ]; then
+        echo "Warning: Directory $QUERY_DIR not found, falling back to scale_factor=1"
+        QUERY_DIR="tpc-h/sql/queries_1"
+    fi
+    
     MAX_QUERIES=22
     LOG_DIR="../benchmark_result/on_g4dn_xlarge/duckdb/tpc-h/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
 else
@@ -21,6 +28,13 @@ else
     BENCHMARK="TPC-DS"
     DB_PATH="tpc-ds/tpc-ds_nckh.duckdb"
     QUERY_DIR="tpc-ds/sql/query${SCALE_FACTOR}/splited"
+    
+    # Check if query directory exists, fallback to scale_factor=1 if not
+    if [ ! -d "$QUERY_DIR" ]; then
+        echo "Warning: Directory $QUERY_DIR not found, falling back to scale_factor=1"
+        QUERY_DIR="tpc-ds/sql/query1/splited"
+    fi
+    
     MAX_QUERIES=99
     LOG_DIR="../benchmark_result/on_g4dn_xlarge/duckdb/tpc-ds/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
 fi

@@ -8,8 +8,8 @@ if [ $# -ne 3 ]; then
     echo "Usage: $0 <type> <scale_factor> <num_runs>"
     echo "  type: 1 for TPC-H, 2 for TPC-DS"
     echo "  scale_factor: benchmark size"
-    echo "    TPC-H allowed scale factors: 1, 10, 50, 100"
-    echo "    TPC-DS allowed scale factors: 1, 2, 5, 10, 20, 50, 100"
+    echo "    TPC-H allowed scale factors: 1, 10, 50, 100 - if not specified, default is 1"
+    echo "    TPC-DS allowed scale factors: 1, 2, 5, 10, 20, 50, 100 - if not specified, default is 1"
     echo "  num_runs: number of benchmark runs to perform"
     exit 1
 fi
@@ -26,20 +26,10 @@ fi
 
 # Validate scale factor based on benchmark type
 if [ "$TYPE" -eq 1 ]; then
-    # Validate scale factor for TPC-H
-    if [[ ! "$SCALE_FACTOR" =~ ^(1|10|50|100)$ ]]; then
-        echo "Warning: Invalid scale factor for TPC-H. Defaulting to scale factor 1."
-        SCALE_FACTOR=1
-    fi
     # Set TPC-H specific variables
     BENCHMARK_NAME="TPC-H"
     DUCKDB_DB="tpc-h/tpc-h_nckh.duckdb"
 else
-    # Validate scale factor for TPC-DS
-    if [[ ! "$SCALE_FACTOR" =~ ^(1|2|5|10|20|50|100)$ ]]; then
-        echo "Warning: Invalid scale factor for TPC-DS. Defaulting to scale factor 1."
-        SCALE_FACTOR=1
-    fi
     # Set TPC-DS specific variables
     BENCHMARK_NAME="TPC-DS"
     DUCKDB_DB="tpc-ds/tpc-ds_nckh.duckdb"
