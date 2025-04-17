@@ -9,7 +9,7 @@ fi
 DATA_SIZE=$1  # Giá trị scale factor, ví dụ: 1, 5, 10, v.v.
 DUCKDB_BIN="../with_tpcds/duckdb"  # Nếu duckdb đã có trong hệ thống, thay bằng `duckdb`
 TARGET_DIR="exported_data"  # Thư mục lưu dữ liệu xuất ra
-DATA_DIR="data.duckdb"  # Thư mục lưu dữ liệu
+DATA_DIR="/mnt/data/storage/tpch/${DATA_SIZE}GB.duckdb"  # Thư mục lưu dữ liệu
 
 # Xóa thư mục nếu đã tồn tại, sau đó tạo mới
 if [ -d "$TARGET_DIR" ]; then
@@ -18,16 +18,16 @@ if [ -d "$TARGET_DIR" ]; then
 fi
 
 mkdir -p "$TARGET_DIR"
-
+sudo chmod 777 "${DATA_DIR}"
 # Chạy DuckDB với scale factor được truyền vào
 ./$DUCKDB_BIN $DATA_DIR<<EOF
-INSTALL tpch;
-LOAD tpch;
-SELECT * FROM dbgen(sf=${DATA_SIZE});
+-- INSTALL tpch;
+-- LOAD tpch;
+-- SELECT * FROM dbgen(sf=${DATA_SIZE});
 EXPORT DATABASE '$TARGET_DIR' (FORMAT CSV, DELIMITER '|');
 EOF
 
-rm -f -v $DATA_DIR
+#rm -f -v $DATA_DIR
 
 echo "DuckDB has completed execution with sf=${DATA_SIZE}. Data exported to: $TARGET_DIR"
 
