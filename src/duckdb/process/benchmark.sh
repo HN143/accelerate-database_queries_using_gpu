@@ -12,7 +12,7 @@ NUMBER_TIME=$3
 if [ "$TYPE" -eq 1 ]; then
     # TPC-H
     BENCHMARK="TPC-H"
-    DB_PATH="tpc-h/tpc-h_nckh.duckdb"
+    DB_PATH="/mnt/data/storage/tpch/${SCALE_FACTOR}.duckdb"
     QUERY_DIR="tpc-h/sql/queries_${SCALE_FACTOR}"
     
     # Check if query directory exists, fallback to scale_factor=1 if not
@@ -26,7 +26,7 @@ if [ "$TYPE" -eq 1 ]; then
 else
     # TPC-DS
     BENCHMARK="TPC-DS"
-    DB_PATH="tpc-ds/tpc-ds_nckh.duckdb"
+    DB_PATH="/mnt/data/storage/tpcds/${SCALE_FACTOR}.duckdb"
     QUERY_DIR="tpc-ds/sql/query${SCALE_FACTOR}/splited"
     
     # Check if query directory exists, fallback to scale_factor=1 if not
