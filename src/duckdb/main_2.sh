@@ -28,11 +28,11 @@ fi
 if [ "$TYPE" -eq 1 ]; then
     # Set TPC-H specific variables
     BENCHMARK_NAME="TPC-H"
-    # DUCKDB_DB="tpc-h/tpc-h_nckh.duckdb"
+    DUCKDB_DB="tpc-h/tpc-h_nckh.duckdb"
 else
     # Set TPC-DS specific variables
     BENCHMARK_NAME="TPC-DS"
-    # DUCKDB_DB="tpc-ds/tpc-ds_nckh.duckdb"
+    DUCKDB_DB="tpc-ds/tpc-ds_nckh.duckdb"
 fi
 
 # Validate num_runs is a positive integer
@@ -46,7 +46,7 @@ echo "Starting $BENCHMARK_NAME benchmark with scale factor $SCALE_FACTOR"
 echo "Will perform $NUM_RUNS benchmark runs"
 echo "======================================================"
 
-Step 1: Generate the data
+#Step 1: Generate the data
 echo "[1/2] Generating data..."
 ./process/generate_data.sh $TYPE $SCALE_FACTOR
 
