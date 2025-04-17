@@ -9,7 +9,8 @@ fi
 DATA_SIZE=$1  # Giá trị scale factor, ví dụ: 1, 5, 10, v.v.
 DUCKDB_BIN="duckdb"  # Có thể là ./duckdb nếu bạn dùng file local
 TARGET_DIR="exported_data"  # Thư mục lưu dữ liệu
-DATA_DIR="data.duckdb"  # Thư mục lưu dữ liệu
+#DATA_DIR="data.duckdb"  # Thư mục lưu dữ liệu
+DATA_DIR="mnt/data/storage/tpcds/${DATA_SIZE}GB.duckdb"
 
 # Xóa thư mục nếu đã tồn tại, sau đó tạo mới
 if [ -d "$TARGET_DIR" ]; then
