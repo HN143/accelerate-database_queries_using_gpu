@@ -126,11 +126,25 @@
  * @param cap - Caption text or false if no caption (default: false)
  * @returns A styled table with optional figure caption
  */
+// #let tabl(..fields, cap: false) = {
+//   if type(cap) == str {
+//     block(inset: (top: -(2 * textSize)))
+//     figure(placement: none, caption: cap, supplement: "Bảng", table())
+//     block(inset: (top: -(1 * textSize)))
+//   }
+//   table(inset: 10pt, align: left, ..fields)
+// }
+
 #let tabl(..fields, cap: false) = {
   if type(cap) == str {
-    block(inset: (top: -(2 * textSize)))
-    figure(placement: none, caption: cap, supplement: "Bảng", table())
-    block(inset: (top: -(1 * textSize)))
+    figure(
+      caption: cap,
+      supplement: "Bảng",
+      kind: "table", // quan trọng để lọc được
+      placement: none,
+      table(inset: 10pt, align: left, ..fields)
+    )
+  } else {
+    table(inset: 10pt, align: left, ..fields)
   }
-  table(inset: 10pt, align: left, ..fields)
 }
