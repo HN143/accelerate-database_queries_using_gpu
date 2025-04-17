@@ -26,7 +26,7 @@ if [ "$TYPE" -eq 1 ]; then
 else
     # TPC-DS
     BENCHMARK="TPC-DS"
-    DB_PATH="/mnt/data/storage/tpcds/${SCALE_FACTOR}.duckdb"
+    DB_PATH="/mnt/data/storage/tpcds/${SCALE_FACTOR}GB.duckdb"
     QUERY_DIR="tpc-ds/sql/query${SCALE_FACTOR}/splited"
     
     # Check if query directory exists, fallback to scale_factor=1 if not
