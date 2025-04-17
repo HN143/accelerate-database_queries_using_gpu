@@ -26,7 +26,7 @@ if [ "$TYPE" -eq 1 ]; then
 else
     # TPC-DS
     BENCHMARK="TPC-DS"
-    DB_PATH="/mnt/data/storage/tpcds/${SCALE_FACTOR}GB.duckdb"
+    DB_PATH="/mnt/data/storage/tpcds/${SCALE_FACTOR}.duckdb"
     QUERY_DIR="tpc-ds/sql/query${SCALE_FACTOR}/splited"
     
     # Check if query directory exists, fallback to scale_factor=1 if not
@@ -47,19 +47,19 @@ TIME_CSV_FILE="${LOG_DIR}/query_times.csv"
 mkdir -p "$LOG_DIR"
 
 # Create CSV files with headers
-echo "query_id, cpu_used(%), ram_used(gb)" > "$CSV_FILE"
+# echo "query_id, cpu_used(%), ram_used(gb)" > "$CSV_FILE"
 echo "query_id, real_time(s), user_time(s), sys_time(s)" > "$TIME_CSV_FILE"
 
 # Function to get CPU usage
-get_cpu_usage() {
-    # Change from comma to dot decimal separator
-    top -bn1 | grep "Cpu(s)" | awk '{print $2}' | sed 's/,/./g' || echo "0"
-}
+# get_cpu_usage() {
+#     # Change from comma to dot decimal separator
+#     top -bn1 | grep "Cpu(s)" | awk '{print $2}' | sed 's/,/./g' || echo "0"
+# }
 
 # Function to get RAM usage (GB)
-get_ram_usage() {
-    free -m | awk '/Mem:/ {printf "%.2f", $3/1024}' | sed 's/,/./g' || echo "0"
-}
+# get_ram_usage() {
+#     free -m | awk '/Mem:/ {printf "%.2f", $3/1024}' | sed 's/,/./g' || echo "0"
+# }
 
 echo "### Running $BENCHMARK benchmark with ${SCALE_FACTOR}GB data..."
 
@@ -91,7 +91,7 @@ for i in $(seq 1 $MAX_QUERIES); do
             if [ $exit_status -ne 0 ]; then
                 echo "Query $QUERY_ID failed with exit status $exit_status. Error output:"
                 echo "$output"
-                echo "$QUERY_ID, 0, 0" >> "$CSV_FILE"
+                # echo "$QUERY_ID, 0, 0" >> "$CSV_FILE"
                 echo "$QUERY_ID, 0, 0, 0" >> "$TIME_CSV_FILE"
             else
                 # Check and extract time from output
@@ -109,16 +109,16 @@ for i in $(seq 1 $MAX_QUERIES); do
         query_pid=$!
 
         # Monitor system while query is running
-        while kill -0 $query_pid 2>/dev/null; do
-            cpu_usage=$(get_cpu_usage)
-            ram_usage=$(get_ram_usage)
-            echo "$QUERY_ID, $cpu_usage, $ram_usage" >> "$CSV_FILE"
-            sleep 0.1
-        done
+        # while kill -0 $query_pid 2>/dev/null; do
+        #     cpu_usage=$(get_cpu_usage)
+        #     ram_usage=$(get_ram_usage)
+        #     echo "$QUERY_ID, $cpu_usage, $ram_usage" >> "$CSV_FILE"
+        #     sleep 0.1
+        # done
         wait $query_pid || echo "Query $QUERY_ID process failed"
     else
         echo "Query file $QUERY_FILE does not exist"
-        echo "$QUERY_ID, 0, 0" >> "$CSV_FILE"
+        # echo "$QUERY_ID, 0, 0" >> "$CSV_FILE"
         echo "$QUERY_ID, 0, 0, 0" >> "$TIME_CSV_FILE"
     fi
 done
