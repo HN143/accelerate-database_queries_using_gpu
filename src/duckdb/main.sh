@@ -28,11 +28,11 @@ fi
 if [ "$TYPE" -eq 1 ]; then
     # Set TPC-H specific variables
     BENCHMARK_NAME="TPC-H"
-    DUCKDB_DB="tpc-h/tpc-h_nckh.duckdb"
+    # DUCKDB_DB="tpc-h/tpc-h_nckh.duckdb"
 else
     # Set TPC-DS specific variables
     BENCHMARK_NAME="TPC-DS"
-    DUCKDB_DB="tpc-ds/tpc-ds_nckh.duckdb"
+    # DUCKDB_DB="tpc-ds/tpc-ds_nckh.duckdb"
 fi
 
 # Validate num_runs is a positive integer
@@ -47,19 +47,19 @@ echo "Will perform $NUM_RUNS benchmark runs"
 echo "======================================================"
 
 # Step 1: Generate the data
-echo "[1/2] Generating data..."
-./process/generate_data.sh $TYPE $SCALE_FACTOR
+# echo "[1/2] Generating data..."
+# ./process/generate_data.sh $TYPE $SCALE_FACTOR
 
-if [ $? -ne 0 ]; then
-    echo "Error: Data generation failed. Exiting."
-    exit 1
-fi
+# if [ $? -ne 0 ]; then
+#     echo "Error: Data generation failed. Exiting."
+#     exit 1
+# fi
 
-echo "Data generation completed successfully."
-echo
+# echo "Data generation completed successfully."
+# echo
 
 # Step 2: Run benchmarks multiple times
-echo "[2/2] Running benchmark tests..."
+echo "[2/2] Running benchmark ..."
 
 for run in $(seq 1 $NUM_RUNS); do
     echo "----------------------------------------------------"
@@ -77,16 +77,16 @@ for run in $(seq 1 $NUM_RUNS); do
     echo
 done
 
-# Step 3: Clean up the database file
-echo "[3/3] Cleaning up..."
+# # Step 3: Clean up the database file
+# echo "[3/3] Cleaning up..."
 
-if [ -f "$DUCKDB_DB" ]; then
-    echo "Removing database file '$DUCKDB_DB'..."
-    rm "$DUCKDB_DB"
-    echo "Database file removed."
-else
-    echo "Database file '$DUCKDB_DB' not found. No cleanup needed."
-fi
+# if [ -f "$DUCKDB_DB" ]; then
+#     echo "Removing database file '$DUCKDB_DB'..."
+#     rm "$DUCKDB_DB"
+#     echo "Database file removed."
+# else
+#     echo "Database file '$DUCKDB_DB' not found. No cleanup needed."
+# fi
 
 echo "======================================================"
 echo "All benchmark tasks completed."
