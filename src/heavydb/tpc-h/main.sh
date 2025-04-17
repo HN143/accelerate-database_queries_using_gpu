@@ -42,7 +42,7 @@ for run in {1..3}; do
     # Ghi log sử dụng tài nguyên
     echo "Starting resource usage logging..."
     chmod +x resource_calculation/launcher.sh
-    ./resource_calculation/launcher.sh "$CURRENT_LOG_DIR" &
+#    ./resource_calculation/launcher.sh "$CURRENT_LOG_DIR" &
 
     sleep 0.5
 
