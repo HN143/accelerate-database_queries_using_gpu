@@ -22,7 +22,7 @@ if [ "$TYPE" -eq 1 ]; then
     fi
     
     MAX_QUERIES=22
-    LOG_DIR="../benchmark_result/on_g4dn_xlarge/duckdb/tpc-h/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
+    LOG_DIR="../benchmark_result/on_c7a_8xlarge/duckdb/tpc-h/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
 else
     # TPC-DS
     BENCHMARK="TPC-DS"
@@ -36,11 +36,11 @@ else
     fi
     
     MAX_QUERIES=99
-    LOG_DIR="../benchmark_result/on_g4dn_xlarge/duckdb/tpc-ds/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
+    LOG_DIR="../benchmark_result/on_c7a_8xlarge/duckdb/tpc-ds/result_log/result_log_${SCALE_FACTOR}GB/time_${NUMBER_TIME}"
 fi
 
 # Define common paths
-CSV_FILE="${LOG_DIR}/query_sys_params.csv"
+# CSV_FILE="${LOG_DIR}/query_sys_params.csv"
 TIME_CSV_FILE="${LOG_DIR}/query_times.csv"
 
 # Create log directory if it doesn't exist
