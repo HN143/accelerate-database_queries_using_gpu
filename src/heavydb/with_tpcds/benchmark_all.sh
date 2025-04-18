@@ -8,6 +8,6 @@ fi
 LOG_DIR=$1
 BASE_PATH="$HOME/accelerate-database_queries_using_gpu/src/benchmark_result/${LOG_DIR}/heavydb/tpc-ds"
 
-for size in 1 5 10 20 50; do
+for size in 1 5 10 20 50 100; do
   ./benchmark.sh $size $size "${BASE_PATH}/${size}gb"
 done
