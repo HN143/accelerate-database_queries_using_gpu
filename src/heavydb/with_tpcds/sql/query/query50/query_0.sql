@@ -1194,7 +1194,7 @@ select  *
      and inv_warehouse_sk   = w_warehouse_sk
      and inv_date_sk    = d_date_sk
      and d_date between (cast ('2002-06-12' as date) - interval 30 days)
-                    and (cast ('2002-06-12' as date) + 30 days)
+                    and (cast ('2002-06-12' as date) + interval 30 days)
    group by w_warehouse_name, i_item_id) x
  where (case when inv_before > 0 
              then inv_after / inv_before 
@@ -2051,7 +2051,7 @@ select
  and cs_warehouse_sk    = w_warehouse_sk 
  and cs_sold_date_sk    = d_date_sk
  and d_date between (cast ('2001-04-26' as date) - interval 30 days)
-                and (cast ('2001-04-26' as date) + 30 days) 
+                and (cast ('2001-04-26' as date) + interval 30 days) 
  group by
     w_state,i_item_id
  order by w_state,i_item_id
