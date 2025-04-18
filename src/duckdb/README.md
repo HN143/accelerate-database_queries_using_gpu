@@ -22,7 +22,7 @@ Cú pháp:
 ```
 
 -   `type`: `1` cho TPC-H, `2` cho TPC-DS
--   `scale_factor`: Kích thước bộ dữ liệu (ví dụ: 1, 2, 5, 10, 20, 50, 100)
+-   `scale_factor`: Kích thước bộ dữ liệu (ví dụ: 1, 5, 10, 20, 50, 100)
 -   `num_runs`: Số lần lặp lại benchmark
 
 Ví dụ:
@@ -33,10 +33,10 @@ Ví dụ:
 
 Lệnh trên sẽ chạy benchmark TPC-H với scale factor 10, lặp lại 3 lần.
 
-**Đường dẫn file DuckDB sinh ra:**
+**Đường dẫn file DuckDB:**
 
--   TPC-H: `storage/tpch/<scale_factor>GB.duckdb`
--   TPC-DS: `storage/tpcds/<scale_factor>GB.duckdb`
+-   TPC-H: `/mnt/data/storage/tpch/<scale_factor>GB.duckdb`
+-   TPC-DS: `/mnt/data/storage/tpcds/<scale_factor>GB.duckdb`
 
 **Đường dẫn các file truy vấn SQL sử dụng để benchmark:**
 
