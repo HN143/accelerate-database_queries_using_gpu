@@ -248,7 +248,7 @@ with ssr as
      store
  where date_sk = d_date_sk
        and d_date between cast('2000-08-19' as date) 
-                  and (cast('2000-08-19' as date) +  14 days)
+                  and cast('2000-08-19' as date) + interval '14' day
        and store_sk = s_store_sk
  group by s_store_id)
  ,
@@ -279,7 +279,7 @@ with ssr as
      catalog_page
  where date_sk = d_date_sk
        and d_date between cast('2000-08-19' as date)
-                  and (cast('2000-08-19' as date) +  14 days)
+                  and cast('2000-08-19' as date) + interval '14' day
        and page_sk = cp_catalog_page_sk
  group by cp_catalog_page_id)
  ,
@@ -312,7 +312,7 @@ with ssr as
      web_site
  where date_sk = d_date_sk
        and d_date between cast('2000-08-19' as date)
-                  and (cast('2000-08-19' as date) +  14 days)
+                  and cast('2000-08-19' as date) + interval '14' day
        and wsr_web_site_sk = web_site_sk
  group by web_site_id)
   select  channel
@@ -2830,70 +2830,70 @@ with v1 as(
 
 -- end query 57 in stream 0 using template query57.tpl
 -- start query 58 in stream 0 using template query58.tpl
-with ss_items as
- (select i_item_id item_id
-        ,sum(ss_ext_sales_price) ss_item_rev 
- from store_sales
-     ,item
-     ,date_dim
- where ss_item_sk = i_item_sk
-   and d_date in (select d_date
-                  from date_dim
-                  where d_week_seq = (select d_week_seq 
-                                      from date_dim
-                                      where d_date = '1998-02-21'))
-   and ss_sold_date_sk   = d_date_sk
- group by i_item_id),
- cs_items as
- (select i_item_id item_id
-        ,sum(cs_ext_sales_price) cs_item_rev
-  from catalog_sales
-      ,item
-      ,date_dim
- where cs_item_sk = i_item_sk
-  and  d_date in (select d_date
-                  from date_dim
-                  where d_week_seq = (select d_week_seq 
-                                      from date_dim
-                                      where d_date = '1998-02-21'))
-  and  cs_sold_date_sk = d_date_sk
- group by i_item_id),
- ws_items as
- (select i_item_id item_id
-        ,sum(ws_ext_sales_price) ws_item_rev
-  from web_sales
-      ,item
-      ,date_dim
- where ws_item_sk = i_item_sk
-  and  d_date in (select d_date
-                  from date_dim
-                  where d_week_seq =(select d_week_seq 
-                                     from date_dim
-                                     where d_date = '1998-02-21'))
-  and ws_sold_date_sk   = d_date_sk
- group by i_item_id)
-  select  ss_items.item_id
-       ,ss_item_rev
-       ,ss_item_rev/((ss_item_rev+cs_item_rev+ws_item_rev)/3) * 100 ss_dev
-       ,cs_item_rev
-       ,cs_item_rev/((ss_item_rev+cs_item_rev+ws_item_rev)/3) * 100 cs_dev
-       ,ws_item_rev
-       ,ws_item_rev/((ss_item_rev+cs_item_rev+ws_item_rev)/3) * 100 ws_dev
-       ,(ss_item_rev+cs_item_rev+ws_item_rev)/3 average
- from ss_items,cs_items,ws_items
- where ss_items.item_id=cs_items.item_id
-   and ss_items.item_id=ws_items.item_id 
-   and ss_item_rev between 0.9 * cs_item_rev and 1.1 * cs_item_rev
-   and ss_item_rev between 0.9 * ws_item_rev and 1.1 * ws_item_rev
-   and cs_item_rev between 0.9 * ss_item_rev and 1.1 * ss_item_rev
-   and cs_item_rev between 0.9 * ws_item_rev and 1.1 * ws_item_rev
-   and ws_item_rev between 0.9 * ss_item_rev and 1.1 * ss_item_rev
-   and ws_item_rev between 0.9 * cs_item_rev and 1.1 * cs_item_rev
- order by item_id
-         ,ss_item_rev
- limit 100;
-
--- end query 58 in stream 0 using template query58.tpl
+WITH ss_items AS
+ (SELECT i_item_id AS item_id,
+         SUM(ss_ext_sales_price) AS ss_item_rev 
+  FROM store_sales,
+       item,
+       date_dim
+  WHERE ss_item_sk = i_item_sk
+    AND d_date IN (SELECT d_date
+                   FROM date_dim
+                   WHERE d_week_seq = (SELECT d_week_seq 
+                                       FROM date_dim
+                                       WHERE d_date = '1998-02-21'))
+    AND ss_sold_date_sk = d_date_sk
+  GROUP BY i_item_id),
+cs_items AS
+ (SELECT i_item_id AS item_id,
+         SUM(cs_ext_sales_price) AS cs_item_rev
+  FROM catalog_sales,
+       item,
+       date_dim
+  WHERE cs_item_sk = i_item_sk
+    AND d_date IN (SELECT d_date
+                   FROM date_dim
+                   WHERE d_week_seq = (SELECT d_week_seq 
+                                       FROM date_dim
+                                       WHERE d_date = '1998-02-21'))
+    AND cs_sold_date_sk = d_date_sk
+  GROUP BY i_item_id),
+ws_items AS
+ (SELECT i_item_id AS item_id,
+         SUM(ws_ext_sales_price) AS ws_item_rev
+  FROM web_sales,
+       item,
+       date_dim
+  WHERE ws_item_sk = i_item_sk
+    AND d_date IN (SELECT d_date
+                   FROM date_dim
+                   WHERE d_week_seq = (SELECT d_week_seq 
+                                       FROM date_dim
+                                       WHERE d_date = '1998-02-21'))
+    AND ws_sold_date_sk = d_date_sk
+  GROUP BY i_item_id)
+SELECT ss_items.item_id,
+       ss_item_rev,
+       ss_item_rev/((ss_item_rev + cs_item_rev + ws_item_rev)/3) * 100 AS ss_dev,
+       cs_item_rev,
+       cs_item_rev/((ss_item_rev + cs_item_rev + ws_item_rev)/3) * 100 AS cs_dev,
+       ws_item_rev,
+       ws_item_rev/((ss_item_rev + cs_item_rev + ws_item_rev)/3) * 100 AS ws_dev,
+       (ss_item_rev + cs_item_rev + ws_item_rev)/3 AS average
+FROM ss_items,
+     cs_items,
+     ws_items
+WHERE ss_items.item_id = cs_items.item_id
+  AND ss_items.item_id = ws_items.item_id 
+  AND ss_item_rev BETWEEN 0.9 * cs_item_rev AND 1.1 * cs_item_rev
+  AND ss_item_rev BETWEEN 0.9 * ws_item_rev AND 1.1 * ws_item_rev
+  AND cs_item_rev BETWEEN 0.9 * ss_item_rev AND 1.1 * ss_item_rev
+  AND cs_item_rev BETWEEN 0.9 * ws_item_rev AND 1.1 * ws_item_rev
+  AND ws_item_rev BETWEEN 0.9 * ss_item_rev AND 1.1 * ss_item_rev
+  AND ws_item_rev BETWEEN 0.9 * cs_item_rev AND 1.1 * cs_item_rev
+ORDER BY ss_items.item_id,
+         ss_item_rev
+LIMIT 100;-- end query 58 in stream 0 using template query58.tpl
 -- start query 59 in stream 0 using template query59.tpl
 with wss as 
  (select d_week_seq,
@@ -3730,7 +3730,7 @@ where d1.d_week_seq = d2.d_week_seq
   and d1.d_year = 1998
   and cd_marital_status = 'S'
 group by i_item_desc,w_warehouse_name,d1.d_week_seq
-order by total_cnt desc, i_item_desc, w_warehouse_name, d_week_seq
+order by total_cnt desc, i_item_desc, w_warehouse_name, d1.d_week_seq
 limit 100;
 
 -- end query 72 in stream 0 using template query72.tpl
@@ -4014,7 +4014,7 @@ with ss as
  select 'web channel' as channel
         , ws.wp_web_page_sk as id
         , sales
-        , coalesce(returns, 0) returns
+        ,COALESCE(returns, 0) AS returns
         , (profit - coalesce(profit_loss,0)) as profit
  from   ws left join wr
         on  ws.wp_web_page_sk = wr.wp_web_page_sk
