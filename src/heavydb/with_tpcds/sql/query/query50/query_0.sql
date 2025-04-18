@@ -1022,7 +1022,7 @@ from
   ,call_center
 where
     d_date between '2000-5-01' and 
-           (cast('2000-5-01' as date) + 60 days)
+           (cast('2000-5-01' as date) + interval 60 days)
 and cs1.cs_ship_date_sk = d_date_sk
 and cs1.cs_ship_addr_sk = ca_address_sk
 and ca_state = 'OK'
@@ -4706,7 +4706,7 @@ from
   ,web_site
 where
     d_date between '2002-2-01' and 
-           (cast('2002-2-01' as date) + 60 days)
+           (cast('2002-2-01' as date) + interval 60 days)
 and ws1.ws_ship_date_sk = d_date_sk
 and ws1.ws_ship_addr_sk = ca_address_sk
 and ca_state = 'ID'
@@ -4740,7 +4740,7 @@ from
   ,web_site
 where
     d_date between '2001-2-01' and 
-           (cast('2001-2-01' as date) + 60 days)
+           (cast('2001-2-01' as date) + interval 60 days)
 and ws1.ws_ship_date_sk = d_date_sk
 and ws1.ws_ship_addr_sk = ca_address_sk
 and ca_state = 'NC'

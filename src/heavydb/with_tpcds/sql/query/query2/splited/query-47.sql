@@ -1,4 +1,4 @@
-@with v1 as(
+with v1 as(
  select i_category, i_brand,
         s_store_name, s_company_name,
         d_year, d_moy,
@@ -25,7 +25,7 @@
           d_year, d_moy),
  v2 as(
  select v1.s_store_name, v1.s_company_name
-        ,v1.d_year
+        ,v1.d_year, v1.d_moy
         ,v1.avg_monthly_sales
         ,v1.sum_sales, v1_lag.sum_sales psum, v1_lead.sum_sales nsum
  from v1, v1 v1_lag, v1 v1_lead
@@ -44,6 +44,6 @@
  where  d_year = 2000 and    
         avg_monthly_sales > 0 and
         case when avg_monthly_sales > 0 then abs(sum_sales - avg_monthly_sales) / avg_monthly_sales else null end > 0.1
- order by sum_sales - avg_monthly_sales, nsum
+ order by sum_sales - avg_monthly_sales, avg_monthly_sales
  limit 100;
 

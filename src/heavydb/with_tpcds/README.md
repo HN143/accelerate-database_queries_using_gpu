@@ -39,7 +39,7 @@ This repository contains tools and methods to optimize database queries by lever
 1. For benchmark 2gb data, use query of 5gb, log to log/1gb, run:
 
    ```sh
-   ./run_query.sh 2 5 log/1gb
+   ./benchmark.sh 2 5 log/1gb
    ```
 
 _Coming soon_
