@@ -14,7 +14,7 @@ chmod +x heavydb/update_heavyai_conf.sh
 echo "ALTER USER admin (password = 'vien');" | heavysql -t -p HyperInteractive
 
 
-chmod +x run_query.sh
+chmod +x benchmark.sh
 
 #echo "Load data to heavydb..."
 #chmod +x heavydb/load_data.sh

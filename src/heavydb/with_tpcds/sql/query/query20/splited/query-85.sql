@@ -7,7 +7,7 @@
  where ws_web_page_sk = wp_web_page_sk
    and ws_item_sk = wr_item_sk
    and ws_order_number = wr_order_number
-   and ws_sold_date_sk = d_date_sk and d_year = 1998
+   and ws_sold_date_sk = d_date_sk and d_year = 2001
    and cd1.cd_demo_sk = wr_refunded_cdemo_sk 
    and cd2.cd_demo_sk = wr_returning_cdemo_sk
    and ca_address_sk = wr_refunded_addr_sk
@@ -15,11 +15,11 @@
    and
    (
     (
-     cd1.cd_marital_status = 'D'
+     cd1.cd_marital_status = 'M'
      and
      cd1.cd_marital_status = cd2.cd_marital_status
      and
-     cd1.cd_education_status = 'Primary'
+     cd1.cd_education_status = 'Secondary'
      and 
      cd1.cd_education_status = cd2.cd_education_status
      and
@@ -27,11 +27,11 @@
     )
    or
     (
-     cd1.cd_marital_status = 'S'
+     cd1.cd_marital_status = 'W'
      and
      cd1.cd_marital_status = cd2.cd_marital_status
      and
-     cd1.cd_education_status = 'College' 
+     cd1.cd_education_status = 'Advanced Degree' 
      and
      cd1.cd_education_status = cd2.cd_education_status
      and
@@ -39,11 +39,11 @@
     )
    or
     (
-     cd1.cd_marital_status = 'U'
+     cd1.cd_marital_status = 'S'
      and
      cd1.cd_marital_status = cd2.cd_marital_status
      and
-     cd1.cd_education_status = 'Advanced Degree'
+     cd1.cd_education_status = 'College'
      and
      cd1.cd_education_status = cd2.cd_education_status
      and
@@ -55,21 +55,21 @@
     (
      ca_country = 'United States'
      and
-     ca_state in ('NC', 'TX', 'IA')
+     ca_state in ('IA', 'NE', 'SC')
      and ws_net_profit between 100 and 200  
     )
     or
     (
      ca_country = 'United States'
      and
-     ca_state in ('WI', 'WV', 'GA')
+     ca_state in ('TN', 'MO', 'PA')
      and ws_net_profit between 150 and 300  
     )
     or
     (
      ca_country = 'United States'
      and
-     ca_state in ('OK', 'VA', 'KY')
+     ca_state in ('FL', 'OH', 'VA')
      and ws_net_profit between 50 and 250  
     )
    )
