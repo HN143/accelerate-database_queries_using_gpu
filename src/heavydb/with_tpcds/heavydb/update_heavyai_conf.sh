@@ -17,6 +17,7 @@ data = "/var/lib/heavyai/storage"
 null-div-by-zero = true
 allowed-import-paths = ["/"]
 allowed-export-paths = ["/"]
+log-severity = "DEBUG4"
 
 [web]
 port = 6273
