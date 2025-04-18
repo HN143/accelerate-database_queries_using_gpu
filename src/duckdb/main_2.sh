@@ -46,11 +46,7 @@ echo "Starting $BENCHMARK_NAME benchmark with scale factor $SCALE_FACTOR"
 echo "Will perform $NUM_RUNS benchmark runs"
 echo "======================================================"
 
-<<<<<<< HEAD
 # Step 1: Generate the data
-=======
-#Step 1: Generate the data
->>>>>>> 2d92de6fafbfd1cebd7e372ceb281293681dc287
 echo "[1/2] Generating data..."
 ./process/generate_data.sh $TYPE $SCALE_FACTOR
 
