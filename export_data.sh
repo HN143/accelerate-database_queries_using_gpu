@@ -3,7 +3,7 @@
 set -e
 
 DUCKDB_CMD="duckdb"
-SCALE_FACTORS=(1 5 10 20 50)
+SCALE_FACTORS=(1 5 10 20 30 50)
 
 # Export TPC-H
 for SF in "${SCALE_FACTORS[@]}"; do

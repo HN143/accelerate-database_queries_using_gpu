@@ -13,7 +13,7 @@ set -e
 
 # echo "DuckDB has completed execution. Data exported to: $TARGET_DIR"
 
-SCALE_FACTORS=(1 5 10 20 50 100)
+SCALE_FACTORS=(1 5 10 20 30 50 100)
 DUCKDB_CMD="duckdb"
 
 echo "Render data for TPC-H benchmark"
