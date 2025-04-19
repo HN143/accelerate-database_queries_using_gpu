@@ -1022,7 +1022,7 @@ from
   ,call_center
 where
     d_date between '1999-3-01' and 
-           (cast('1999-3-01' as date) + 60 days)
+           (cast('1999-3-01' as date) + interval 60 days)
 and cs1.cs_ship_date_sk = d_date_sk
 and cs1.cs_ship_addr_sk = ca_address_sk
 and ca_state = 'KY'
@@ -1194,7 +1194,7 @@ select  *
      and inv_warehouse_sk   = w_warehouse_sk
      and inv_date_sk    = d_date_sk
      and d_date between (cast ('1999-04-13' as date) - interval 30 days)
-                    and (cast ('1999-04-13' as date) + 30 days)
+                    and (cast ('1999-04-13' as date) + interval 30 days)
    group by w_warehouse_name, i_item_id) x
  where (case when inv_before > 0 
              then inv_after / inv_before 
