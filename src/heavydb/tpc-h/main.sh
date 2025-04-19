@@ -29,7 +29,8 @@ chmod +x grenerate_data/use_duckdb_generate_1gb_data.sh
 # Load vào HeavyDB
 echo "Loading data to HeavyDB..."
 chmod +x heavydb/load_data.sh
-./heavydb/load_data.sh || { echo "Failed to load data."; exit 1; }
+# ./heavydb/load_data.sh || { echo "Failed to load data."; exit 1; }
+./heavydb/load_data.sh "$DATA_SIZE" || { echo "Failed to load data."; exit 1; }
 
 # Lặp 3 lần với 3 thư mục con log riêng biệt
 for run in {1..3}; do
