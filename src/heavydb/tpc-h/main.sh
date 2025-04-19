@@ -24,7 +24,7 @@ chmod +x drop_table.sh
 # Tạo dữ liệu bằng DuckDB
 echo "Generating data with DuckDB..."
 chmod +x grenerate_data/use_duckdb_generate_1gb_data.sh
-./grenerate_data/use_duckdb_generate_1gb_data.sh "$DATA_SIZE" || { echo "Failed to generate data."; exit 1; }
+#./grenerate_data/use_duckdb_generate_1gb_data.sh "$DATA_SIZE" || { echo "Failed to generate data."; exit 1; }
 
 # Load vào HeavyDB
 echo "Loading data to HeavyDB..."

@@ -1,0 +1,4 @@
+2025-04-19T00:16:16.200422 W 37424 3 1 CudaMgr.cpp:604 Could not find CUDA installation path: environment variables CUDA_HOME or CUDA_DIR are not defined
+2025-04-19T00:16:16.200521 W 37424 3 1 Execute.cpp:313 File /libdevice.10.bc does not exist; support for some UDF functions might not be available.
+2025-04-19T00:16:16.211514 W 37424 3 1 Execute.cpp:400 Source of rt_libdevice_module LLVM module is unavailable. The module will be unavailable.
+2025-04-19T00:16:16.222076 W 37424 3 8 Execute.cpp:400 Source of rt_libdevice_module LLVM module is unavailable. The module will be unavailable.
