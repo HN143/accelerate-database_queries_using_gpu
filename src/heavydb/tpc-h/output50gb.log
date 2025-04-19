@@ -1,0 +1,372 @@
+nohup: ignoring input
+Installing sysstat if not already installed...
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Suggested packages:
+  isag
+The following NEW packages will be installed:
+  sysstat
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 487 kB of archives.
+After this operation, 1507 kB of additional disk space will be used.
+Get:1 http://us-east-2.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 sysstat amd64 12.5.2-2ubuntu0.2 [487 kB]
+Preconfiguring packages ...
+Fetched 487 kB in 0s (27.4 MB/s)
+Selecting previously unselected package sysstat.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 119829 files and directories currently installed.)
+Preparing to unpack .../sysstat_12.5.2-2ubuntu0.2_amd64.deb ...
+Unpacking sysstat (12.5.2-2ubuntu0.2) ...
+Setting up sysstat (12.5.2-2ubuntu0.2) ...
+
+Creating config file /etc/default/sysstat with new version
+update-alternatives: using /usr/bin/sar.sysstat to provide /usr/bin/sar (sar) in auto mode
+Created symlink /etc/systemd/system/sysstat.service.wants/sysstat-collect.timer → /lib/systemd/system/sysstat-collect.timer.
+Created symlink /etc/systemd/system/sysstat.service.wants/sysstat-summary.timer → /lib/systemd/system/sysstat-summary.timer.
+Created symlink /etc/systemd/system/multi-user.target.wants/sysstat.service → /lib/systemd/system/sysstat.service.
+Processing triggers for man-db (2.10.2-1) ...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+drop_table on heavydb
+User admin connected to database heavyai
+Table/View call_center for catalog heavyai does not exist.
+Table/View catalog_page for catalog heavyai does not exist.
+Table/View catalog_returns for catalog heavyai does not exist.
+Table/View catalog_sales for catalog heavyai does not exist.
+Table/View customer for catalog heavyai does not exist.
+Table/View customer_address for catalog heavyai does not exist.
+Table/View customer_demographics for catalog heavyai does not exist.
+Table/View date_dim for catalog heavyai does not exist.
+Table/View household_demographics for catalog heavyai does not exist.
+Table/View income_band for catalog heavyai does not exist.
+Table/View inventory for catalog heavyai does not exist.
+Table/View item for catalog heavyai does not exist.
+Table/View promotion for catalog heavyai does not exist.
+Table/View reason for catalog heavyai does not exist.
+Table/View ship_mode for catalog heavyai does not exist.
+Table/View store for catalog heavyai does not exist.
+Table/View store_returns for catalog heavyai does not exist.
+Table/View store_sales for catalog heavyai does not exist.
+Table/View time_dim for catalog heavyai does not exist.
+Table/View warehouse for catalog heavyai does not exist.
+Table/View web_page for catalog heavyai does not exist.
+Table/View web_returns for catalog heavyai does not exist.
+Table/View web_sales for catalog heavyai does not exist.
+Table/View web_site for catalog heavyai does not exist.
+Table/View flights_2008_10k for catalog heavyai does not exist.
+Table/View lineitem for catalog heavyai does not exist.
+Table/View nation for catalog heavyai does not exist.
+Table/View orders for catalog heavyai does not exist.
+Table/View part for catalog heavyai does not exist.
+Table/View partsupp for catalog heavyai does not exist.
+Table/View region for catalog heavyai does not exist.
+Table/View supplier for catalog heavyai does not exist.
+User admin disconnected from database heavyai
+Generating data with DuckDB...
+Loading data to HeavyDB...
+User admin connected to database heavyai
+User admin disconnected from database heavyai
+Create tables successful...........
+User admin connected to database heavyai
+Result
+Loaded: 7500000 recs, Rejected: 0 recs in 16.205000 secs
+1 rows returned.
+Execution time: 16345 ms, Total time: 16359 ms
+Result
+Loaded: 300005811 recs, Rejected: 0 recs in 235.635000 secs
+1 rows returned.
+Execution time: 235700 ms, Total time: 235703 ms
+Result
+Loaded: 25 recs, Rejected: 0 recs in 0.205000 secs
+1 rows returned.
+Execution time: 224 ms, Total time: 227 ms
+Result
+Loaded: 75000000 recs, Rejected: 0 recs in 61.525000 secs
+1 rows returned.
+Execution time: 61581 ms, Total time: 61583 ms
+Result
+Loaded: 10000000 recs, Rejected: 0 recs in 11.769000 secs
+1 rows returned.
+Execution time: 11865 ms, Total time: 11867 ms
+Result
+Loaded: 40000000 recs, Rejected: 0 recs in 57.529000 secs
+1 rows returned.
+Execution time: 57557 ms, Total time: 57559 ms
+Result
+Loaded: 5 recs, Rejected: 0 recs in 0.216000 secs
+1 rows returned.
+Execution time: 232 ms, Total time: 235 ms
+Result
+Loaded: 500000 recs, Rejected: 0 recs in 0.863000 secs
+1 rows returned.
+Execution time: 911 ms, Total time: 913 ms
+User admin disconnected from database heavyai
+Load data successful..........
+========== Run 1 ==========
+Logging to: /home/ubuntu/accelerate-database_queries_using_gpu/src/benchmark_result/g5_xlarge/heavydb/tpc-h/50gb/run1
+Starting resource usage logging...
+Running queries...
+Running query 1...
+Running query 2...
+Running query 3...
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift: Sat Apr 19 11:15:20 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Thrift: Sat Apr 19 11:15:28 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Cannot connect to HeavyDB Server.
+Thrift: Sat Apr 19 11:15:44 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Running query 4...
+Query would use too much memory
+Running query 5...
+Running query 6...
+Running query 7...
+overflow in multiplication
+Running query 8...
+overflow in multiplication
+Running query 9...
+overflow in multiplication
+Running query 10...
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift: Sat Apr 19 11:19:43 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Thrift: Sat Apr 19 11:19:51 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Cannot connect to HeavyDB Server.
+Thrift: Sat Apr 19 11:20:07 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Running query 11...
+SQL Error: Encountered "value" at line 1, column 56.
+Was expecting one of:
+    <QUOTED_STRING> ...
+    <BRACKET_QUOTED_IDENTIFIER> ...
+    <QUOTED_IDENTIFIER> ...
+    <BACK_QUOTED_IDENTIFIER> ...
+    <IDENTIFIER> ...
+    <UNICODE_QUOTED_IDENTIFIER> ...
+    
+Running query 12...
+Running query 13...
+Running query 14...
+ERR_OVERFLOW_OR_UNDERFLOW: Overflow or underflow
+SQL Error: Column list aliases in views are not yet supported.
+Running query 15...
+SQL Error: From line 3, column 1 to line 3, column 10: Object 'revenue0' not found
+Table/View revenue0 for catalog heavyai does not exist.
+Running query 16...
+Running query 17...
+Running query 18...
+Query would use too much memory
+Running query 19...
+Running query 20...
+Running query 21...
+Hash join failed, reason(s): No equijoin expression found | Cannot fall back to loop join for intermediate join quals
+Running query 22...
+Sorting the result would be too slow
+All queries executed. Time log saved in /home/ubuntu/accelerate-database_queries_using_gpu/src/benchmark_result/g5_xlarge/heavydb/tpc-h/50gb/run1/query50_execution_times.csv
+========== Run 2 ==========
+Logging to: /home/ubuntu/accelerate-database_queries_using_gpu/src/benchmark_result/g5_xlarge/heavydb/tpc-h/50gb/run2
+Starting resource usage logging...
+Running queries...
+Running query 1...
+Running query 2...
+Running query 3...
+Failed to run the cardinality estimation query: ERR_OUT_OF_GPU_MEM: Query couldn't keep the entire working set of columns in GPU memory
+Running query 4...
+Query would use too much memory
+Running query 5...
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift: Sat Apr 19 11:25:29 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Thrift: Sat Apr 19 11:25:37 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Cannot connect to HeavyDB Server.
+Thrift: Sat Apr 19 11:25:53 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Running query 6...
+Running query 7...
+Running query 8...
+overflow in multiplication
+Running query 9...
+overflow in multiplication
+Running query 10...
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift: Sat Apr 19 11:29:10 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Thrift: Sat Apr 19 11:29:18 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Cannot connect to HeavyDB Server.
+Thrift: Sat Apr 19 11:29:34 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Running query 11...
+SQL Error: Encountered "value" at line 1, column 56.
+Was expecting one of:
+    <QUOTED_STRING> ...
+    <BRACKET_QUOTED_IDENTIFIER> ...
+    <QUOTED_IDENTIFIER> ...
+    <BACK_QUOTED_IDENTIFIER> ...
+    <IDENTIFIER> ...
+    <UNICODE_QUOTED_IDENTIFIER> ...
+    
+Running query 12...
+Running query 13...
+Running query 14...
+ERR_OVERFLOW_OR_UNDERFLOW: Overflow or underflow
+SQL Error: Column list aliases in views are not yet supported.
+Running query 15...
+SQL Error: From line 3, column 1 to line 3, column 10: Object 'revenue0' not found
+Table/View revenue0 for catalog heavyai does not exist.
+Running query 16...
+Running query 17...
+Running query 18...
+Query would use too much memory
+Running query 19...
+Running query 20...
+Running query 21...
+Hash join failed, reason(s): No equijoin expression found | Cannot fall back to loop join for intermediate join quals
+Running query 22...
+Sorting the result would be too slow
+All queries executed. Time log saved in /home/ubuntu/accelerate-database_queries_using_gpu/src/benchmark_result/g5_xlarge/heavydb/tpc-h/50gb/run2/query50_execution_times.csv
+========== Run 3 ==========
+Logging to: /home/ubuntu/accelerate-database_queries_using_gpu/src/benchmark_result/g5_xlarge/heavydb/tpc-h/50gb/run3
+Starting resource usage logging...
+Running queries...
+Running query 1...
+Running query 2...
+Running query 3...
+Failed to run the cardinality estimation query: ERR_OUT_OF_GPU_MEM: Query couldn't keep the entire working set of columns in GPU memory
+Running query 4...
+Query would use too much memory
+Running query 5...
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift: Sat Apr 19 11:34:55 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Thrift: Sat Apr 19 11:35:03 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Cannot connect to HeavyDB Server.
+Thrift: Sat Apr 19 11:35:19 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Running query 6...
+Running query 7...
+Running query 8...
+overflow in multiplication
+Running query 9...
+overflow in multiplication
+Running query 10...
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift error: No more data to read.
+Thrift connection error: No more data to read.
+Retrying connection
+Thrift: Sat Apr 19 11:38:35 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Thrift: Sat Apr 19 11:38:43 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Cannot connect to HeavyDB Server.
+Thrift: Sat Apr 19 11:38:59 2025 TSocket::write_partial() send() <Host: localhost Port: 6274>: Broken pipe
+Thrift error: write() send(): Broken pipe
+Thrift connection error: write() send(): Broken pipe
+Retrying connection
+Running query 11...
+SQL Error: Encountered "value" at line 1, column 56.
+Was expecting one of:
+    <QUOTED_STRING> ...
+    <BRACKET_QUOTED_IDENTIFIER> ...
+    <QUOTED_IDENTIFIER> ...
+    <BACK_QUOTED_IDENTIFIER> ...
+    <IDENTIFIER> ...
+    <UNICODE_QUOTED_IDENTIFIER> ...
+    
+Running query 12...
+Running query 13...
+Running query 14...
+ERR_OVERFLOW_OR_UNDERFLOW: Overflow or underflow
+SQL Error: Column list aliases in views are not yet supported.
+Running query 15...
+SQL Error: From line 3, column 1 to line 3, column 10: Object 'revenue0' not found
+Table/View revenue0 for catalog heavyai does not exist.
+Running query 16...
+Running query 17...
+Running query 18...
+Query would use too much memory
+Running query 19...
+Running query 20...
+Running query 21...
+Hash join failed, reason(s): No equijoin expression found | Cannot fall back to loop join for intermediate join quals
+Running query 22...
+Sorting the result would be too slow
+All queries executed. Time log saved in /home/ubuntu/accelerate-database_queries_using_gpu/src/benchmark_result/g5_xlarge/heavydb/tpc-h/50gb/run3/query50_execution_times.csv
+✅ All 3 runs completed successfully.
+✅ Process completed successfully!
