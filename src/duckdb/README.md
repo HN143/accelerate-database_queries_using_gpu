@@ -14,24 +14,25 @@ Chạy script cài đặt để thiết lập DuckDB trên hệ thống:
 
 ### 2. Sinh dữ liệu và chạy benchmark
 
-Sử dụng script chính để sinh dữ liệu và chạy benchmark.  
+Sử dụng script chính để lấy dữ liệu đã tạo ra sẵn và chạy benchmark.  
 Cú pháp:
 
 ```bash
-./main.sh <type> <scale_factor> <num_runs>
+./main.sh <type> <scale_factor> <num_runs> <aws_instance>
 ```
 
 -   `type`: `1` cho TPC-H, `2` cho TPC-DS
--   `scale_factor`: Kích thước bộ dữ liệu (ví dụ: 1, 5, 10, 20, 50, 100)
+-   `scale_factor`: Kích thước bộ dữ liệu (ví dụ: 1, 5, 10, 20, 30, 50, 100)
 -   `num_runs`: Số lần lặp lại benchmark
+-   `aws_instance`: Loại instance AWS (ví dụ: on_c7a_8xlarge, on_g4dn_xlarge)
 
 Ví dụ:
 
 ```bash
-./main.sh 1 10 3
+./main.sh 1 10 3 on_g4dn_xlarge
 ```
 
-Lệnh trên sẽ chạy benchmark TPC-H với scale factor 10, lặp lại 3 lần.
+Lệnh trên sẽ chạy benchmark TPC-H với scale factor 10, lặp lại 3 lần trên instance g4dn.xlarge.
 
 **Đường dẫn file DuckDB:**
 
@@ -49,7 +50,7 @@ Script benchmark sẽ được gọi tự động bởi `main.sh` cho mỗi lầ
 Bạn cũng có thể chạy trực tiếp:
 
 ```bash
-./process/benchmark.sh <type> <scale_factor> <run_number>
+./process/benchmark.sh <type> <scale_factor> <run_number> <aws_instance>
 ```
 
 Kết quả sẽ được lưu tại thư mục `../benchmark_result/<aws_instance>/duckdb/`.
@@ -60,3 +61,4 @@ Kết quả sẽ được lưu tại thư mục `../benchmark_result/<aws_instan
 
 -   Đảm bảo bạn có quyền đọc/ghi các file dữ liệu cần thiết.
 -   Việc sinh dữ liệu được quản lý bởi script chính.
+-   Tham số `aws_instance` cho phép bạn phân loại kết quả theo loại instance AWS đang sử dụng.
