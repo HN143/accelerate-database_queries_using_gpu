@@ -225,7 +225,7 @@ with ssr as
  (select s_store_id,
         sum(sales_price) as sales,
         sum(profit) as profit,
-        sum(return_amt) as returns,
+        sum(return_amt) as "returns",
         sum(net_loss) as profit_loss
  from
   ( select  ss_store_sk as store_sk,
@@ -256,7 +256,7 @@ with ssr as
  (select cp_catalog_page_id,
         sum(sales_price) as sales,
         sum(profit) as profit,
-        sum(return_amt) as returns,
+        sum(return_amt) as "returns",
         sum(net_loss) as profit_loss
  from
   ( select  cs_catalog_page_sk as page_sk,
@@ -287,7 +287,7 @@ with ssr as
  (select web_site_id,
         sum(sales_price) as sales,
         sum(profit) as profit,
-        sum(return_amt) as returns,
+        sum(return_amt) as "returns",
         sum(net_loss) as profit_loss
  from
   ( select  ws_web_site_sk as wsr_web_site_sk,
@@ -318,7 +318,7 @@ with ssr as
   select  channel
         , id
         , sum(sales) as sales
-        , sum(returns) as returns
+        , sum(returns) as "returns"
         , sum(profit) as profit
  from 
  (select 'store channel' as channel
@@ -3940,7 +3940,7 @@ with ss as
  ,
  sr as
  (select s_store_sk,
-         sum(sr_return_amt) as returns,
+         sum(sr_return_amt) as "returns",
          sum(sr_net_loss) as profit_loss
  from store_returns,
       date_dim,
@@ -3963,7 +3963,7 @@ with ss as
  ), 
  cr as
  (select cr_call_center_sk,
-         sum(cr_return_amount) as returns,
+         sum(cr_return_amount) as "returns",
          sum(cr_net_loss) as profit_loss
  from catalog_returns,
       date_dim
@@ -3986,7 +3986,7 @@ with ss as
  group by wp_web_page_sk), 
  wr as
  (select wp_web_page_sk,
-        sum(wr_return_amt) as returns,
+        sum(wr_return_amt) as "returns",
         sum(wr_net_loss) as profit_loss
  from web_returns,
       date_dim,
@@ -3999,13 +3999,13 @@ with ss as
   select  channel
         , id
         , sum(sales) as sales
-        , sum(returns) as returns
+        , sum(returns) as "returns"
         , sum(profit) as profit
  from 
  (select 'store channel' as channel
         , ss.s_store_sk as id
         , sales
-        , coalesce(returns, 0) as returns
+        , coalesce(returns, 0) as "returns"
         , (profit - coalesce(profit_loss,0)) as profit
  from   ss left join sr
         on  ss.s_store_sk = sr.s_store_sk
@@ -4021,7 +4021,7 @@ with ss as
  select 'web channel' as channel
         , ws.wp_web_page_sk as id
         , sales
-        , coalesce(returns, 0) as returns
+        , coalesce(returns, 0) as "returns"
         , (profit - coalesce(profit_loss,0)) as profit
  from   ws left join wr
         on  ws.wp_web_page_sk = wr.wp_web_page_sk
@@ -4117,7 +4117,7 @@ limit 100;
 with ssr as
  (select  s_store_id as store_id,
           sum(ss_ext_sales_price) as sales,
-          sum(coalesce(sr_return_amt, 0)) as returns,
+          sum(coalesce(sr_return_amt, 0)) as "returns",
           sum(ss_net_profit - coalesce(sr_net_loss, 0)) as profit
   from store_sales left outer join store_returns on
          (ss_item_sk = sr_item_sk and ss_ticket_number = sr_ticket_number),
@@ -4138,7 +4138,7 @@ with ssr as
  csr as
  (select  cp_catalog_page_id as catalog_page_id,
           sum(cs_ext_sales_price) as sales,
-          sum(coalesce(cr_return_amount, 0)) as returns,
+          sum(coalesce(cr_return_amount, 0)) as "returns",
           sum(cs_net_profit - coalesce(cr_net_loss, 0)) as profit
   from catalog_sales left outer join catalog_returns on
          (cs_item_sk = cr_item_sk and cs_order_number = cr_order_number),
@@ -4159,7 +4159,7 @@ group by cp_catalog_page_id)
  wsr as
  (select  web_site_id,
           sum(ws_ext_sales_price) as sales,
-          sum(coalesce(wr_return_amt, 0)) as returns,
+          sum(coalesce(wr_return_amt, 0)) as "returns",
           sum(ws_net_profit - coalesce(wr_net_loss, 0)) as profit
   from web_sales left outer join web_returns on
          (ws_item_sk = wr_item_sk and ws_order_number = wr_order_number),
@@ -4179,7 +4179,7 @@ group by web_site_id)
   select  channel
         , id
         , sum(sales) as sales
-        , sum(returns) as returns
+        , sum(returns) as "returns"
         , sum(profit) as profit
  from 
  (select 'store channel' as channel
