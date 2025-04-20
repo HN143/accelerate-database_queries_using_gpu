@@ -275,6 +275,62 @@ Việc sử dụng hai bộ kit TPC-H và TPC-DS với cách tiếp cận khác 
 
 #h2("Cách triển khai benchmark")
 
+#h3("Benchmark trên DuckDB")
+
+Một hệ thống benchmark tự động đã được xây dựng để đánh giá hiệu năng DuckDB một cách khoa học, khách quan và dễ tái tạo trên các máy ảo AWS, tạo nền tảng so sánh với HeavyDB.
+
+#h4("Quy trình thực hiện benchmark")
+
+- *Cài đặt DuckDB*:
+   - Sử dụng script `install_duckdb.sh` để cài đặt DuckDB trên hệ thống.
+   - Script này đảm bảo phiên bản DuckDB được cài đặt là phiên bản mới nhất và ổn định.
+
+- *Chuẩn bị dữ liệu và chạy benchmark*:
+   - Sử dụng script chính `main.sh` để lấy dữ liệu đã được tạo sẵn và tiến hành benchmark.
+   - Cú pháp sử dụng: `./main.sh <type> <scale_factor> <num_runs> <aws_instance>`
+     - `type`: `1` cho TPC-H, `2` cho TPC-DS
+     - `scale_factor`: Kích thước bộ dữ liệu (ví dụ: 1, 5, 10, 20, 30, 50, 100)
+     - `num_runs`: Số lần lặp lại benchmark để đảm bảo kết quả ổn định
+     - `aws_instance`: Loại instance AWS đang sử dụng (ví dụ: on_c7a_8xlarge, on_g4dn_xlarge)
+
+  - *Vị trí dữ liệu*:
+    - Dữ liệu cho TPC-H được lưu tại: `/mnt/data/storage/tpch/<scale_factor>GB.duckdb`
+    - Dữ liệu cho TPC-DS được lưu tại: `/mnt/data/storage/tpcds/<scale_factor>GB.duckdb`
+
+  - *Vị trí file truy vấn (các file tương tự như của HeavyDB)*:
+    - Các truy vấn TPC-H: `tpc-h/sql/queries_<scale_factor>/`
+    - Các truy vấn TPC-DS: `tpc-ds/sql/query<scale_factor>/splited/`
+
+- *Thực thi benchmark*:
+   - Script `benchmark.sh` được gọi tự động bởi `main.sh` cho mỗi lần chạy.
+   - Có thể chạy trực tiếp script này với cú pháp: `./process/benchmark.sh <type> <scale_factor> <run_number> <aws_instance>`
+
+- *Lưu trữ kết quả*:
+   - Kết quả benchmark được lưu tại thư mục `../benchmark_result/<aws_instance>/duckdb/`.
+   - Định dạng kết quả bao gồm thời gian thực thi của từng truy vấn và tổng thời gian chạy.
+
+#h4("Ví dụ thực hiện")
+
+Ví dụ, để thực hiện benchmark TPC-H với scale factor 10, lặp lại 3 lần trên instance c7a.8xlarge, chúng tôi sử dụng lệnh:
+
+```bash
+./main.sh 1 10 3 on_c7a_8xlarge
+```
+
+Lệnh này sẽ:
+- Kiểm tra xem dữ liệu TPC-H với scale factor 10 đã tồn tại chưa
+- Nếu chưa, script sẽ tự động tạo dữ liệu
+- Thực hiện 3 lần benchmark trên bộ dữ liệu này
+- Lưu kết quả vào thư mục `../benchmark_result/on_c7a_8xlarge/duckdb/`
+
+#h4("Ưu điểm của phương pháp benchmark")
+
+- *Tự động hoá cao*: Toàn bộ quy trình từ cài đặt, chuẩn bị dữ liệu đến thực thi benchmark được tự động hóa, giảm thiểu sai sót do con người.
+- *Khả năng tái tạo*: Có thể dễ dàng tái tạo kết quả benchmark trên các môi trường khác nhau.
+- *Linh hoạt*: Hỗ trợ cả hai bộ benchmark phổ biến (TPC-H và TPC-DS) với nhiều kích thước dữ liệu khác nhau.
+- *Phân loại kết quả*: Kết quả được tổ chức theo loại instance AWS, giúp dễ dàng so sánh hiệu năng giữa các cấu hình phần cứng khác nhau.
+- *Độ tin cậy*: Việc chạy nhiều lần (thông qua tham số `num_runs`) giúp đảm bảo kết quả ổn định và đáng tin cậy.
+
 #h2("Kết quả thực nghiệm và nhận xét")
 #h2("Kết luận")
 #h2("Hướng phát triển")
