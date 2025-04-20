@@ -1,0 +1,17 @@
+query,time (ms)
+query 1,63.0
+query 2,926.0
+query 3,397.0
+query 4,2326.0
+query 5,54.0
+query 6,20.0
+query 7,57.0
+query 8,121.0
+query 9,274.0
+query 12,28.0
+query 13,250.0
+query 16,4874.0
+query 17,1345.0
+query 18,3717.0
+query 19,121.0
+query 20,1643.0

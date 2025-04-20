@@ -23,12 +23,13 @@ chmod +x drop_table.sh
 # Tạo dữ liệu bằng DuckDB
 echo "Generating data with DuckDB..."
 chmod +x duckdb_script/use_duckdb_generate_1gb_data.sh
-./duckdb_script/use_duckdb_generate_1gb_data.sh "$DATA_SIZE" || { echo "Failed to generate data."; exit 1; }
+#./duckdb_script/use_duckdb_generate_1gb_data.sh "$DATA_SIZE" || { echo "Failed to generate data."; exit 1; }
 
 # Load vào HeavyDB
 echo "Loading data to HeavyDB..."
 chmod +x heavydb/load_data.sh
-./heavydb/load_data.sh || { echo "Failed to load data."; exit 1; }
+# ./heavydb/load_data.sh || { echo "Failed to load data."; exit 1; }
+./heavydb/load_data.sh "$DATA_SIZE" || { echo "Failed to load data."; exit 1; }
 
 # Lặp 3 lần với 3 thư mục con log riêng biệt
 for run in {1..3}; do

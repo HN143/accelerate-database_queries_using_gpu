@@ -13,7 +13,7 @@ set -e
 
 # echo "DuckDB has completed execution. Data exported to: $TARGET_DIR"
 
-SCALE_FACTORS=(1 5 10 20 50 100)
+SCALE_FACTORS=(1 5 10 20 30 50 100)
 DUCKDB_CMD="duckdb"
 
 echo "Render data for TPC-H benchmark"
@@ -25,18 +25,20 @@ for SF in "${SCALE_FACTORS[@]}"; do
     DB_PATH="storage/tpch/${SF}GB.duckdb"
     mkdir -p "$(dirname "$DB_PATH")"
 
+    start_time=$(date +%s)
     # Generate TPC-H data and load into DuckDB
     $DUCKDB_CMD "$DB_PATH" <<EOF
 INSTALL tpch;
 LOAD tpch;
 CALL dbgen(sf=$SF);
 EOF
-
+    end_time=$(date +%s)
+    elapsed=$((end_time - start_time))
+    echo "Finished generating TPC-H ${SF}GB in ${elapsed} seconds"
 done
 
 echo "Render data successfully for TPC-H benchmark"
 echo "======================================================"
-
 
 echo "Render data for TPC-DS benchmark"
 echo "======================================================"
@@ -47,13 +49,16 @@ for SF in "${SCALE_FACTORS[@]}"; do
     DB_PATH="storage/tpcds/${SF}GB.duckdb"
     mkdir -p "$(dirname "$DB_PATH")"
 
+    start_time=$(date +%s)
     # Generate TPC-DS data and load into DuckDB
     $DUCKDB_CMD "$DB_PATH" <<EOF
 INSTALL tpcds;
 LOAD tpcds;
 CALL dsdgen(sf=$SF);
 EOF
-
+    end_time=$(date +%s)
+    elapsed=$((end_time - start_time))
+    echo "Finished generating TPC-DS ${SF}GB in ${elapsed} seconds"
 done
 echo "Render data successfully for TPC-DS benchmark"
 echo "======================================================"

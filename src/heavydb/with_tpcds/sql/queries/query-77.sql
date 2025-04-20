@@ -13,7 +13,7 @@ with ss as
  ,
  sr as
  (select s_store_sk,
-         sum(sr_return_amt) as returns,
+         sum(sr_return_amt) as "returns",
          sum(sr_net_loss) as profit_loss
  from store_returns,
       date_dim,
@@ -36,7 +36,7 @@ with ss as
  ), 
  cr as
  (select cr_call_center_sk,
-         sum(cr_return_amount) as returns,
+         sum(cr_return_amount) as "returns",
          sum(cr_net_loss) as profit_loss
  from catalog_returns,
       date_dim
@@ -59,7 +59,7 @@ with ss as
  group by wp_web_page_sk), 
  wr as
  (select wp_web_page_sk,
-        sum(wr_return_amt) as returns,
+        sum(wr_return_amt) as "returns",
         sum(wr_net_loss) as profit_loss
  from web_returns,
       date_dim,
@@ -72,13 +72,13 @@ with ss as
   select  channel
         , id
         , sum(sales) as sales
-        , sum(returns) as returns
+        , sum(returns) as "returns"
         , sum(profit) as profit
  from 
  (select 'store channel' as channel
         , ss.s_store_sk as id
         , sales
-        , coalesce(returns, 0) as returns
+        , coalesce(returns, 0) as "returns"
         , (profit - coalesce(profit_loss,0)) as profit
  from   ss left join sr
         on  ss.s_store_sk = sr.s_store_sk
@@ -94,7 +94,7 @@ with ss as
  select 'web channel' as channel
         , ws.wp_web_page_sk as id
         , sales
-        , coalesce(returns, 0) returns
+        , coalesce(returns, 0) as "returns"
         , (profit - coalesce(profit_loss,0)) as profit
  from   ws left join wr
         on  ws.wp_web_page_sk = wr.wp_web_page_sk

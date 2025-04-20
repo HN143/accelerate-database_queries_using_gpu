@@ -4,19 +4,21 @@
 set -e  # Stop script if any command fails
 
 # Check if arguments are provided
-if [ $# -ne 3 ]; then
-    echo "Usage: $0 <type> <scale_factor> <num_runs>"
+if [ $# -ne 4 ]; then
+    echo "Usage: $0 <type> <scale_factor> <num_runs> <aws_instance>"
     echo "  type: 1 for TPC-H, 2 for TPC-DS"
     echo "  scale_factor: benchmark size"
-    echo "    TPC-H allowed scale factors: 1, 10, 50, 100 - if not specified, default is 1"
-    echo "    TPC-DS allowed scale factors: 1, 2, 5, 10, 20, 50, 100 - if not specified, default is 1"
+    echo "    TPC-H allowed scale factors: 1, 5, 10, 20, 30, 50, 100 - if not specified, default is 1"
+    echo "    TPC-DS allowed scale factors: 1, 5, 10, 20, 30, 50, 100 - if not specified, default is 1"
     echo "  num_runs: number of benchmark runs to perform"
+    echo "  aws_instance: instance type (e.g., on_c7a_8xlarge, on_g4dn_xlarge)"
     exit 1
 fi
 
 TYPE=$1
 SCALE_FACTOR=$2
 NUM_RUNS=$3
+AWS_INSTANCE=$4
 
 # Validate benchmark type
 if [[ ! "$TYPE" =~ ^(1|2)$ ]]; then
@@ -29,10 +31,20 @@ if [ "$TYPE" -eq 1 ]; then
     # Set TPC-H specific variables
     BENCHMARK_NAME="TPC-H"
     # DUCKDB_DB="tpc-h/tpc-h_nckh.duckdb"
+    # Validate TPC-H scale factor
+    if [[ ! "$SCALE_FACTOR" =~ ^(1|5|10|20|30|50|100)$ ]]; then
+        echo "Error: For TPC-H, allowed scale factors are: 1, 5, 10, 20, 30, 50, 100"
+        exit 1
+    fi
 else
     # Set TPC-DS specific variables
     BENCHMARK_NAME="TPC-DS"
     # DUCKDB_DB="tpc-ds/tpc-ds_nckh.duckdb"
+    # Validate TPC-DS scale factor
+    if [[ ! "$SCALE_FACTOR" =~ ^(1|5|10|20|30|50|100)$ ]]; then
+        echo "Error: For TPC-DS, allowed scale factors are: 1, 5, 10, 20, 30, 50, 100"
+        exit 1
+    fi
 fi
 
 # Validate num_runs is a positive integer
@@ -66,7 +78,7 @@ for run in $(seq 1 $NUM_RUNS); do
     echo "Starting benchmark run $run of $NUM_RUNS"
     echo "----------------------------------------------------"
     
-    ./process/benchmark.sh $TYPE $SCALE_FACTOR $run
+    ./process/benchmark.sh $TYPE $SCALE_FACTOR $run $AWS_INSTANCE
     
     if [ $? -ne 0 ]; then
         echo "Warning: Benchmark run $run failed."
