@@ -6,3 +6,4 @@ dist
 node_modules
 tpc-h_nckh.duckdb
 tpc-ds_nckh.duckdb
+src/report/*.pdf
