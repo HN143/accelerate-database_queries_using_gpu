@@ -37,7 +37,7 @@
             top: 0.5cm,
             [
               *Nguyễn Thị Hồng Ngân* - CT060229 \
-              *Tô Quang Viễn* - CT060116 \
+              *Tô Quang Viễn* - CT060146 \
               *Nguyễn Ngọc Tuyền* - CT060145 \
               *Bùi Đức Khánh* - CT060119 \
               
