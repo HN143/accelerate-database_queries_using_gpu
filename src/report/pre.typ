@@ -21,7 +21,7 @@ Nhóm nghiên cứu xin chân thành cảm ơn!
   #set align(right)
   Hà Nội, ngày 12 tháng 04 năm 2025 \
   *Nhóm nghiên cứu* #h(50pt) \ \ \
-  
+
 ]
 
 #h1("Lời cam đoan", numbering: false)
@@ -33,7 +33,7 @@ Nhóm nghiên cứu xin cam đoan bài nghiên cứu khoa học với đề tài
   #set align(right)
   Hà Nội, ngày 12 tháng 04 năm 2025 \
   *Nhóm nghiên cứu* #h(50pt) \ \ \
-  
+
 ]
 
 #h1("Mục lục", numbering: false)
@@ -80,23 +80,17 @@ Nhóm nghiên cứu xin cam đoan bài nghiên cứu khoa học với đề tài
 )
 
 #h1("Danh mục bảng", numbering: false)
-#par(
-  first-line-indent: 0pt,
-  outline(
-    title: none,
-    target: figure.where(kind: table),
-  ),
+#outline(
+  title: none,
+  target: figure.where(kind: "table"),
 )
 
 
 #h1("Danh mục hình vẽ, đồ thị", numbering: false)
 
-#par(
-  first-line-indent: 0pt,
-  outline(
-    title: none,
-    target: figure.where(kind: image),
-  ),
+#outline(
+  title: none,
+  target: figure.where(kind: "image"),
 )
 
 #h1("Mở đầu", numbering: false)

@@ -49,7 +49,7 @@
     numbering: (..nums) => text(size: textSize, weight: "bold", nums.pos().map(str).join(".") + "."),
     text(size: textSize, weight: "bold", children),
   )
- 
+
   // par("")
 }
 
@@ -71,7 +71,7 @@
       h(1cm) + nums.pos().map(str).join(".") + ".",
     ),
     text(size: textSize, style: "italic", weight: "regular", children),
-    
+
   )
 }
 
@@ -93,7 +93,7 @@
       h(1cm) + nums.pos().map(str).join(".") + ".",
     ),
     text(size: textSize, style: "italic", weight: "regular", children),
-    
+
   )
 }
 
@@ -109,6 +109,7 @@
 #let img(src, cap: "", width: 100%) = {
   src = "images/" + src
   figure(
+    kind: "image",
     [
       #block(inset: (top: 0pt))
       #image(src, width: width)
@@ -128,9 +129,14 @@
  */
 #let tabl(..fields, cap: false) = {
   if type(cap) == str {
-    block(inset: (top: -(2 * textSize)))
-    figure(placement: none, caption: cap, supplement: "Bảng", table())
-    block(inset: (top: -(1 * textSize)))
+    figure(
+      caption: cap,
+      supplement: "Bảng",
+      kind: "table", // quan trọng để lọc được
+      placement: none,
+      table(inset: 10pt, align: left, ..fields)
+    )
+  } else {
+    table(inset: 10pt, align: left, ..fields)
   }
-  table(inset: 10pt, align: left, ..fields)
 }

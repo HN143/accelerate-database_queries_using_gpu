@@ -84,20 +84,21 @@ Dữ liệu thử nghiệm được tạo với các kích thước khác nhau �
 - *50GB*: Dữ liệu cực lớn, kiểm tra khả năng mở rộng tối đa của hệ thống.
 - *100GB*: Dữ liệu khổng lồ, kiểm tra giới hạn hiệu suất của hệ thống trong các bài toán phân tích dữ liệu lớn.
 
-Dưới đây là bảng tổng hợp kích thước dữ liệu và thời gian sinh dữ liệu cho TPC-H và TPC-DS:
+Dưới đây là bảng tổng hợp kích thước dữ liệu và thời gian sinh dữ liệu cho TPC-H và TPC-DS (Chạy trên máy c7a.8xlarge):
 #tabl(
   columns: (auto, auto, auto, auto, auto),
   align: (x, y) => if y == 0 { center } else { center }, // Tiêu đề căn giữa, nội dung căn trái
   stroke: 0.5pt,
   fill: (x, y) => if y == 0 { gray.lighten(50%) } else { white },
   
-  [*Kích thước *], [*Tổng số bản ghi TPC-H*], [*Tổng số bản ghi TPC-DS*],[*Thời gian sinh dữ liệu TPC-H*], [*Thời gian sinh dữ liệu TPC-DS*],
-  [1GB], [8.661.245], [19.5M], [1 phút], [2 phút],
-  [5GB], [43M], [97.5M], [5 phút], [10 phút],
-  [10GB], [86M], [195M], [10 phút], [20 phút],
-  [20GB], [172M], [390M], [20 phút], [40 phút],
-  [50GB], [430M], [975M], [50 phút], [100 phút],
-  [100GB], [860M], [1.95B], [100 phút], [200 phút],
+  [*Kích thước (GB)*], [*Tổng số bản ghi TPC-H*], [*Tổng số bản ghi TPC-DS*],[*Thời gian sinh dữ liệu TPC-H (s)* ], [*Thời gian sinh dữ liệu TPC-DS (s)*],
+  [1],	[8.661.245],	[19.557.579],	[9],	[19],
+  [5], [43.299.825], [79.615.123], [41], [75],
+  [10], [86.586.082], [191.500.208], [86], [155],
+  [20], [173.194.638], [131.673.124], [164], [239],
+  [30], [259.798.402], [200.436.595], [241], [369],
+  [50], [433.005.841], [337.148.059], [406], [597],
+  [100], [866.037.932], [959.031.513], [800], [1268],
   cap: "Tổng số bản ghi và thời gian sinh dữ liệu cho TPC-H và TPC-DS",
 )
 #h3("Cách tạo bộ dữ liệu")
@@ -226,7 +227,7 @@ Cấu trúc dữ liệu này được thiết kế để hỗ trợ các truy v�
 
 #h2("Tạo các bộ truy vấn thử nghiệm")
 
-Trong quá trình thực nghiệm, các bộ truy vấn thử nghiệm được tạo ra dựa trên hai bộ kit chuẩn là **TPC-H** và **TPC-DS**. Các bộ kit này cung cấp các truy vấn chuẩn hóa, được thiết kế để đánh giá hiệu suất của các hệ quản trị cơ sở dữ liệu trong các bài toán phân tích dữ liệu lớn. Dưới đây là chi tiết cách tạo các bộ truy vấn thử nghiệm:
+Trong quá trình thực nghiệm, các bộ truy vấn thử nghiệm được tạo ra dựa trên hai bộ kit chuẩn là *TPC-H* và *TPC-DS*. Các bộ kit này cung cấp các truy vấn chuẩn hóa, được thiết kế để đánh giá hiệu suất của các hệ quản trị cơ sở dữ liệu trong các bài toán phân tích dữ liệu lớn. Dưới đây là chi tiết cách tạo các bộ truy vấn thử nghiệm:
 
 #h3("Bộ truy vấn TPC-H")
 
