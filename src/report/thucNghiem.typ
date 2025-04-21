@@ -401,51 +401,76 @@ Lệnh này sẽ:
 - *Phân tích Tổng Quan*:
   Xu hướng hiệu suất đã bắt đầu thay đổi rõ rệt hơn so với các bộ dữ liệu nhỏ hơn. HeavyDB (GPU) tiếp tục cho thấy sự cải thiện hiệu suất đáng kể ở nhiều truy vấn khi kích thước dữ liệu tăng lên.
 
-- *Nhận xét Chi Tiết (10GB)*:
+- *Nhận xét Chi Tiết*:
   - *HeavyDB tiếp tục cải thiện:* Số lượng truy vấn mà HeavyDB (GPU) nhanh hơn DuckDB (CPU) tiếp tục tăng lên. Mức độ tăng tốc ở nhiều truy vấn cũng trở nên rõ rệt hơn.
   - *Ưu thế rõ ràng của HeavyDB:* Các truy vấn Q01, Q03, Q05, Q06, Q07, Q08, Q09, Q12, Q13, và Q19 cho thấy HeavyDB nhanh hơn đáng kể, với tỷ lệ tăng tốc ngày càng cao.
   - *DuckDB vẫn giữ ưu thế ở một số truy vấn:* DuckDB vẫn nhanh hơn ở các truy vấn Q02, Q04, Q10, Q16, Q17, Q18, Q20, và Q22. Tuy nhiên, mức độ chênh lệch có xu hướng tăng lên ở hầu hết các truy vấn này, cho thấy HeavyDB gặp khó khăn hơn với các loại workload này khi dữ liệu lớn hơn.
   - *Sự khác biệt ngày càng lớn ở các truy vấn "khó" cho GPU:* Thời gian thực thi của HeavyDB ở các truy vấn Q04, Q10, Q16, Q18, và Q20 tiếp tục tăng đáng kể so với DuckDB, cho thấy những truy vấn này có thể không tận dụng được kiến trúc GPU hoặc bị ảnh hưởng nặng nề bởi overhead ở quy mô này.
 
-- *Đánh giá (10GB)*:
+- *Đánh giá*:
   - Với kích thước dữ liệu 10GB, HeavyDB (GPU) đã trở thành lựa chọn hiệu quả hơn về hiệu suất cho đa số các truy vấn so với DuckDB (CPU). Lợi thế của GPU trong việc xử lý song song lượng lớn dữ liệu ngày càng rõ ràng.
   - Tuy nhiên, DuckDB (CPU) vẫn duy trì hiệu suất tốt hơn đáng kể ở một số truy vấn cụ thể, cho thấy sự khác biệt cơ bản trong cách hai hệ thống xử lý các loại workload khác nhau.
   - Sự gia tăng đáng kể về khoảng cách hiệu suất ở các truy vấn mà DuckDB nhanh hơn cho thấy có những giới hạn nhất định trong khả năng xử lý của HeavyDB (hoặc cách nó được tối ưu hóa) cho các loại truy vấn này khi dữ liệu lớn hơn.
 
-- *Kết luận (10GB)*:
+- *Kết luận*:
   Ở quy mô dữ liệu 10GB, HeavyDB (GPU) đang dần khẳng định ưu thế về hiệu suất tổng thể so với DuckDB (CPU) trong benchmark TPC-H. Tuy nhiên, sự khác biệt lớn ở một số truy vấn vẫn cho thấy rằng CPU vẫn có vai trò quan trọng tùy thuộc vào đặc điểm của workload. Các benchmark trên các bộ dữ liệu lớn hơn nữa sẽ tiếp tục làm sáng tỏ xu hướng này.
 
-#h4("Đối với bộ dữ liệu 20B")
+#h4("Đối với bộ dữ liệu 20GB")
 #img("benchmark/average_case_tpc_h/average_case_tpc_h_20gb.png", cap: "Biểu đồ so sánh thời gian truy vấn trung bình giữa HeavyDB và DuckDB đối với bộ dữ liệu 20GB")<imgxxx1>
 
-#h4("Đối với bộ dữ liệu 30B")
-#img("benchmark/average_case_tpc_h/average_case_tpc_h_30gb.png", cap: "Biểu đồ so sánh thời gian truy vấn trung bình giữa HeavyDB và DuckDB đối với bộ dữ liệu 20GB")<imgxxx1>
+- *Phân tích Tổng Quan*:
+  Trên bộ dữ liệu TPC-H 20GB, HeavyDB (GPU) tiếp tục cho thấy sự cải thiện vượt trội về hiệu suất so với các quy mô dữ liệu nhỏ hơn (1GB, 5GB, 10GB). Xu hướng này ngày càng rõ rệt, với HeavyDB vượt qua DuckDB (CPU) ở nhiều truy vấn hơn, chứng minh khả năng tận dụng song song hóa của GPU khi xử lý dữ liệu lớn.
 
-// #h4("Đối với bộ dữ liệu 50B")
-// #img("benchmark/average_case_tpc_h/average_case_tpc_h_50gb.png", cap: "Biểu đồ so sánh thời gian truy vấn trung bình giữa HeavyDB và DuckDB đối với bộ dữ liệu 50GB")<imgxxx1>
+- *Nhận xét Chi Tiết*:
+  - *Truy vấn mà HeavyDB kém hiệu quả*: Truy vấn Q03 vẫn là một điểm yếu lớn của HeavyDB, với thời gian thực thi chậm hơn gần 5 lần so với DuckDB (925 ms so với 196.5 ms). Điều này cho thấy một số loại truy vấn vẫn không phù hợp với kiến trúc GPU hoặc bị ảnh hưởng bởi overhead lớn.
+  
+  - *Sự cải thiện đáng kể*: Ở Q01, chênh lệch đã giảm đáng kể so với các quy mô nhỏ hơn, với HeavyDB chỉ chậm hơn DuckDB khoảng 2.3 lần (so với 4 lần ở 1GB), cho thấy sự cải thiện rõ rệt của HeavyDB khi dữ liệu lớn hơn.
+  
+  - *Thu hẹp khoảng cách*: Các truy vấn như Q02 và Q12 cho thấy HeavyDB đang thu hẹp khoảng cách với DuckDB, với thời gian thực thi chỉ chậm hơn nhẹ (dưới 2 lần), một bước tiến lớn so với các bộ dữ liệu trước đó.
+  
+  - *Truy vấn cân bằng*: Q05 và Q07 có hiệu suất gần tương đương giữa hai hệ thống, cho thấy HeavyDB đã đạt được sự cân bằng ở một số truy vấn mà trước đây DuckDB chiếm ưu thế.
+  
+  - *Truy vấn HeavyDB vượt trội*: Đáng chú ý, HeavyDB vượt trội ở Q08 (nhanh hơn gần 2 lần), Q09 và Q19 (nhanh hơn hơn 1.5 lần), tiếp tục xu hướng cải thiện tốc độ ở các truy vấn mà GPU có thể khai thác tốt khả năng song song hóa.
 
+- *Đánh giá*:
+  - Với bộ dữ liệu TPC-H 20GB, HeavyDB (GPU) đã khẳng định ưu thế vượt trội hơn so với DuckDB (CPU) ở nhiều truy vấn, với số lượng truy vấn mà HeavyDB nhanh hơn tiếp tục tăng và mức độ tăng tốc ngày càng lớn.
+  
+  - Kiến trúc GPU của HeavyDB cho thấy khả năng xử lý song song hiệu quả hơn khi khối lượng dữ liệu tăng, đặc biệt ở các truy vấn như Q08, Q09, và Q19.
+  
+  - Overhead của GPU dường như đã được giảm thiểu đáng kể ở quy mô 20GB, giúp HeavyDB tận dụng tốt hơn sức mạnh tính toán song song.
+
+- *Kết luận*:
+  Benchmark trên bộ dữ liệu TPC-H 20GB cho thấy HeavyDB (GPU) tiếp tục cải thiện mạnh mẽ, vượt qua DuckDB (CPU) ở nhiều truy vấn hơn và với mức độ tăng tốc lớn hơn so với các quy mô dữ liệu trước đó. Xu hướng này khẳng định tiềm năng của HeavyDB trong việc xử lý dữ liệu lớn, đặc biệt khi khối lượng dữ liệu tăng lên.
+
+#h4("Đối với bộ dữ liệu 30GB")
+#img("benchmark/average_case_tpc_h/average_case_tpc_h_30gb.png", cap: "Biểu đồ so sánh thời gian truy vấn trung bình giữa HeavyDB và DuckDB đối với bộ dữ liệu 30GB")<imgxxx1>
+
+- *Phân tích Tổng Quan*:
+  Trên bộ dữ liệu TPC-H 30GB, xu hướng hiệu suất của HeavyDB (GPU) đã đảo ngược hoàn toàn so với các quy mô dữ liệu nhỏ hơn (1GB, 5GB, 10GB, và 20GB). Nếu như HeavyDB từng cho thấy sự cải thiện ở các quy mô trước, thì tại 30GB, HeavyDB có thời gian thực thi truy vấn cao hơn đáng kể so với DuckDB (CPU) ở hầu hết các truy vấn. Điều này cho thấy HeavyDB đang gặp khó khăn nghiêm trọng trong việc xử lý dữ liệu lớn hơn, không tận dụng được lợi thế song song hóa của GPU như kỳ vọng.
+
+- *Nhận xét Chi Tiết*:
+  - *Điểm yếu lớn nhất*: Truy vấn Q03 là điểm yếu lớn nhất của HeavyDB, với thời gian thực thi lên đến 2186 ms, trong khi DuckDB chỉ mất 196.5 ms—chậm hơn gần 11 lần. Đây là một bước thụt lùi nghiêm trọng so với hiệu suất ở 20GB (925 ms so với 196.5 ms).
+  
+  - *Suy giảm hiệu suất rõ rệt*: Các truy vấn như Q08 (HeavyDB: 1457.5 ms, DuckDB: 609 ms) và Q13 (HeavyDB: 1419 ms, DuckDB: 481.5 ms) cũng cho thấy HeavyDB chậm hơn đáng kể, lần lượt khoảng 2.4 lần và 3 lần so với DuckDB, đánh dấu sự suy giảm hiệu suất rõ rệt so với quy mô 20GB (313 ms so với 609 ms ở Q08).
+  
+  - *Hiệu suất tương đương giảm*: Một số truy vấn như Q02, Q06, và Q07 có thời gian thực thi gần tương đương giữa hai hệ thống, nhưng HeavyDB không còn thể hiện lợi thế như ở các quy mô nhỏ hơn (ví dụ, Q02 tại 20GB: HeavyDB 80 ms, DuckDB 90 ms, nay tại 30GB: HeavyDB 126 ms, DuckDB 96 ms).
+  
+  - *Lợi thế giảm sút*: Ở các truy vấn mà HeavyDB từng nhanh hơn như Q09 (HeavyDB: 120 ms, DuckDB: 184.5 ms), mức độ cải thiện đã giảm mạnh và không đủ để bù đắp cho sự suy giảm ở các truy vấn khác, so với 20GB (các giá trị này không thay đổi nhưng tổng thể hiệu suất của HeavyDB đã giảm).
+
+- *Đánh giá*:
+  - *Giới hạn của phiên bản HeavyDB open-source*: HeavyDB đang sử dụng phiên bản open-source và miễn phí từ 2 năm trước (khoảng năm 2023). Phiên bản này có thể chưa được vá các lỗi quan trọng liên quan đến hiệu suất, đặc biệt khi xử lý khối lượng dữ liệu lớn như 30GB. Các lỗi chưa vá có thể bao gồm quản lý bộ nhớ GPU không hiệu quả, tối ưu hóa truy vấn kém, hoặc xung đột trong lập lịch tác vụ GPU, dẫn đến hiệu suất truy vấn không ổn định và suy giảm nghiêm trọng ở quy mô này.
+  
+  - *Độ phức tạp tăng cao ở quy mô 30GB*: Với dữ liệu 30GB, các truy vấn TPC-H trở nên phức tạp hơn, đòi hỏi khả năng quản lý tài nguyên vượt trội. Phiên bản HeavyDB cũ dường như không thể xử lý hiệu quả các tác vụ này, dẫn đến thời gian thực thi tăng vọt, đặc biệt ở các truy vấn như Q03 (tăng từ 925 ms ở 20GB lên 2186 ms ở 30GB).
+  
+  - *Overhead của GPU trở nên rõ rệt*: Ở quy mô dữ liệu lớn hơn, overhead liên quan đến việc chuyển dữ liệu giữa CPU và GPU, cũng như lập lịch tác vụ trên GPU, trở thành nút thắt cổ chai nghiêm trọng. Phiên bản HeavyDB cũ không được tối ưu hóa để giảm thiểu các chi phí này, khiến hiệu suất giảm mạnh so với DuckDB (ví dụ, Q13 tăng từ 247.5 ms ở 20GB lên 1419 ms ở 30GB).
+  
+  - *Ưu thế của DuckDB trên CPU*: DuckDB, với kiến trúc CPU được tối ưu hóa liên tục và cập nhật thường xuyên, tỏ ra vượt trội ở quy mô 30GB. DuckDB tận dụng tốt RAM và xử lý dữ liệu theo cột, giúp giảm thời gian thực thi, đặc biệt ở các truy vấn phức tạp mà HeavyDB không thể xử lý hiệu quả (như Q03, giữ ổn định ở mức 196.5 ms từ 20GB đến 30GB).
+
+- *Kết luận*:
+  Benchmark trên bộ dữ liệu TPC-H 30GB cho thấy HeavyDB (GPU) đã chạm đến giới hạn hiệu suất của phiên bản open-source từ 2 năm trước. Xu hướng đảo ngược này, với HeavyDB chậm hơn đáng kể so với DuckDB (CPU), khẳng định rằng các lỗi chưa vá và thiếu tối ưu hóa trong phiên bản HeavyDB cũ đang cản trở khả năng xử lý dữ liệu lớn. Để cải thiện hiệu suất, cần nâng cấp lên phiên bản HeavyDB mới hơn với các bản vá lỗi và tối ưu hóa GPU tốt hơn.
 
 #h3("Kết quả từ bộ benchmark TPC-DS")
-#h4("Đối với bộ dữ liệu 1GB")
-#img("benchmark/average_case_tpc_ds/average_case_tpc_ds_1gb.png", cap: "Biểu đồ so sánh thời gian truy vấn trung bình giữa HeavyDB và DuckDB đối với bộ dữ liệu 1GB")<imgxxx1>
-
-
-#h4("Đối với bộ dữ liệu 5GB")
-#img("benchmark/average_case_tpc_ds/average_case_tpc_ds_5gb.png", cap: "Biểu đồ so sánh thời gian truy vấn trung bình giữa HeavyDB và DuckDB đối với bộ dữ liệu 5GB")<imgxxx1>
-
-#h4("Đối với bộ dữ liệu 10GB")
-#img("benchmark/average_case_tpc_ds/average_case_tpc_ds_10gb.png", cap: "Biểu đồ so sánh thời gian truy vấn trung bình giữa HeavyDB và DuckDB đối với bộ dữ liệu 10GB")<imgxxx1>
-
-#h4("Đối với bộ dữ liệu 20B")
-#img("benchmark/average_case_tpc_ds/average_case_tpc_ds_20gb.png", cap: "Biểu đồ so sánh thời gian truy vấn trung bình giữa HeavyDB và DuckDB đối với bộ dữ liệu 20GB")<imgxxx1>
-
-
-#h4("Đối với bộ dữ liệu 30B")
-#img("benchmark/average_case_tpc_ds/average_case_tpc_ds_30gb.png", cap: "Biểu đồ so sánh thời gian truy vấn trung bình giữa HeavyDB và DuckDB đối với bộ dữ liệu 20GB")<imgxxx1>
-
-#h4("Đối với bộ dữ liệu 50B")
-#img("benchmark/average_case_tpc_ds/average_case_tpc_ds_50gb.png", cap: "Biểu đồ so sánh thời gian truy vấn trung bình giữa HeavyDB và DuckDB đối với bộ dữ liệu 50GB")<imgxxx1>
-
+#import "thucNghiem_tpcds.typ"
 
 #h2("Kết luận")
 #h2("Hướng phát triển")
